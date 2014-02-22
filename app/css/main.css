@@ -4,6 +4,12 @@
   font-family: 'Times New Roman';
 }
 
+.set-text-container p {
+  font-size: 1em;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .styles {
   position: absolute;
   top: 200px;

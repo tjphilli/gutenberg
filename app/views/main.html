@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="set-text-container" style="{{'line-height:'+type.leading.value}}">
+	<div class="set-text-container" style="{{'line-height:'+type.leading.value+'; font-size:'+type.size.value + type.size.unit}}">
 		<p>
 			Lorem ipsum Mollit in occaecat laborum tempor tempor sunt laborum sunt Duis. Lorem ipsum Qui dolore anim nisi enim in quis aliquip tempor. Lorem ipsum Esse ut sint mollit laboris est esse cillum officia sunt. Lorem ipsum In labore elit reprehenderit consequat ex sit dolore veniam nulla aliqua deserunt cillum. Lorem ipsum Occaecat ut nulla Ut consectetur mollit dolor dolore in pariatur.
 		</p>
@@ -17,6 +17,20 @@
 		<div class="controls">
 			<button ng-click="type.leading.increase()">+</button>
 			<button ng-click="type.leading.decrease()">-</button>
+			<button ng-click="type.leading.microIncrease()">+</button>
+			<button ng-click="type.leading.microDecrease()">-</button>
+		</div>
+	</div>
+	<div class="size">
+		<div class="property">
+			<span class="name">Size</span>
+			<span class="value">{{type.size.value}}</span>
+		</div>
+		<div class="controls">
+			<button ng-click="type.size.increase()">+</button>
+			<button ng-click="type.size.decrease()">-</button>
+			<button ng-click="type.size.microIncrease()">+</button>
+			<button ng-click="type.size.microDecrease()">-</button>
 		</div>
 	</div>
 </div>
