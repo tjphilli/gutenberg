@@ -1,79 +1,19 @@
 @import "nib"
-@import "_circles"
-@import "_variables"
-@import "_withdraw-amount"
+@import "_modules/_set-text"
 
 
 body
-	background-color #e3efd8
+	background-color #fff
 	font-family 'Helvetica Neue'
 	color #333
 
-.container
-	padding-top 80px
-	max-width 1280px
-	min-width 768px
-	margin 0 auto
-h1.begin
-	text-align center
-	font-weight 300
-.home
-	h1
-		font-size 2.6em
-		font-weight 100
-		text-align center
 
-.buttons-container
-	width 500px
-	margin 50px auto 0
-
-size = 200px
-.deposit-button, .withdraw-button
-	.btn
-		display block
-		padding-top 90px
-		width size
-		height size
-		border-radius (size/2)
-		font-weight 100
-		color #fff
-		text-decoration none
-		text-align center
-		box-sizing border-box
-		transition all 0.3s
-		[class^=icon]
-			display block
-			opacity 0.5
-			transition all 0.3s
-			font-size 1.7em
-
-.withdraw-button
-	float left
-	.btn
-		background-color withdraw-color 
-		&:hover 
-			background-color darken(withdraw-color, 20%)
-			[class^=icon]
-				transform translateY(10px)
-		[class^=icon]
-			margin-top 10px
-
-.deposit-button
-	float right
-	.btn
-		background-color deposit-color 
-		&:hover 
-			background-color darken(deposit-color, 20%)
-			[class^=icon]
-				transform translateY(-10px)
-		[class^=icon]
-			margin-top -40px
-			margin-bottom 10px
 
 .is-hiding
 	position absolute
 	left -9999px
 	opacity 0
+
 @keyframes slideIn
 	0%
 		opacity 0
@@ -92,38 +32,4 @@ size = 200px
 .is-showing
 	animation slideIn 0.4s both ease-in
 
-
-.success-message
-	width 900px
-	margin 0 auto
-	.complete
-		font-weight 300
-		font-size 3em
-	.thanks
-		font-weight 100
-		font-style italic
-		font-size 3em
-.complete-btn
-	margin-top 30px
-	display inline-block
-	padding 20px 10px
-	width 300px
-	text-decoration none
-	color #fff
-	border-radius 3px
-	text-align center
-	font-weight 300
-	transition all 0.3s
-.new-transaction
-	b = withdraw-color
-	background-color b
-	&:hover
-		background-color darken(b, 20%)
-.done
-	margin-left 30px
-	background-color deposit-color
-	&:hover
-		background-color darken(deposit-color, 20%)
-.buttons-container
-	margin-top 100px
 

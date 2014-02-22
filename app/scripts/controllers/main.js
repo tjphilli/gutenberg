@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('atmApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.test = "string";
+angular.module('gutenbergApp')
+  .controller('MainController', function ($scope) {
+    $scope.test = "Something";
   });
