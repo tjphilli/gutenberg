@@ -24,6 +24,12 @@ body {
   color: #333;
 }
 
+.toggle-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .is-hiding {
   position: absolute;
   left: -9999px;
@@ -36,6 +42,18 @@ body {
   -webkit-animation: slideIn .4s both ease-in;
   -ms-animation: slideIn .4s both ease-in;
   animation: slideIn .4s both ease-in;
+}
+
+.times-new-roman {
+  font-family: "Times New Roman";
+}
+
+.helvetica-neue {
+  font-family: "Helvetica Neue";
+}
+
+.garamond {
+  font-family: "Garamond";
 }
 
 @-webkit-keyframes slideIn {

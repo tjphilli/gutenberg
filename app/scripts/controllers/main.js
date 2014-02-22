@@ -3,7 +3,10 @@
 angular.module('gutenbergApp')
   .controller('MainController', function ($scope) {
     $scope.test = "Something";
-
+    $scope.controls = false;
+    $scope.toggleControls = function() {
+    	$scope.controls = !$scope.controls;
+    }
     $scope.type = {
     	test: 5,
     	leading: {
@@ -39,6 +42,14 @@ angular.module('gutenbergApp')
     		microDecrease: function() {
     			this.value -=1
     		}
+    	},
+    	typeface: {
+    		value: "times-new-roman",
+    		options: [
+    			{name: "Times New Roman", 'class':'times-new-roman'},
+    			{name: "Helvetica Neue" , 'class': 'helvetica-neue'}, 
+    			{name: "Garamond", 'class': 'garamond'}
+    		]
     	}
     };
 
