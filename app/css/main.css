@@ -4,6 +4,14 @@
   font-family: 'Times New Roman';
 }
 
+.styles {
+  position: absolute;
+  top: 200px;
+  right: 0;
+  width: 300px;
+  background-color: #ddd;
+}
+
 body {
   background-color: #fff;
   font-family: 'Helvetica Neue';

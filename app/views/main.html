@@ -1,10 +1,22 @@
 <div class="container">
-	<div class="set-text-container">
+	<div class="set-text-container" style="{{'line-height:'+type.leading.value}}">
 		<p>
 			Lorem ipsum Mollit in occaecat laborum tempor tempor sunt laborum sunt Duis. Lorem ipsum Qui dolore anim nisi enim in quis aliquip tempor. Lorem ipsum Esse ut sint mollit laboris est esse cillum officia sunt. Lorem ipsum In labore elit reprehenderit consequat ex sit dolore veniam nulla aliqua deserunt cillum. Lorem ipsum Occaecat ut nulla Ut consectetur mollit dolor dolore in pariatur.
 		</p>
 		<p>
 			Lorem ipsum Mollit in occaecat laborum tempor tempor sunt laborum sunt Duis. Lorem ipsum Qui dolore anim nisi enim in quis aliquip tempor. Lorem ipsum Esse ut sint mollit laboris est esse cillum officia sunt. Lorem ipsum In labore elit reprehenderit consequat ex sit dolore veniam nulla aliqua deserunt cillum. Lorem ipsum Occaecat ut nulla Ut consectetur mollit dolor dolore in pariatur.
 		</p>
+	</div>
+</div>
+<div class="styles">
+	<div class="leading">
+		<div class="property">
+			<span class="name">Leading</span>
+			<span class="value">{{type.leading.value}}</span>
+		</div>
+		<div class="controls">
+			<button ng-click="type.leading.increase()">+</button>
+			<button ng-click="type.leading.decrease()">-</button>
+		</div>
 	</div>
 </div>
