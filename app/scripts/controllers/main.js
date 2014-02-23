@@ -1,8 +1,22 @@
 'use strict';
 
 angular.module('gutenbergApp')
-  .controller('MainController', function ($scope) {
-    $scope.test = "Something";
+  .controller('MainController', ['$scope', '$document', function($scope, $document) {
+      var doc = null;
+		$scope.values = {
+              low : 4,
+              high: 7
+          };
+          $scope.value = 5;
+          $scope.translate = function(value) {
+            return '$'+value;
+          };
+          doc = $document;
+              
+          $scope.fireResizeEvent = function() {
+            $scope.$broadcast('refreshSlider');
+          };
+    $scope.test = 7;
     $scope.controls = false;
     $scope.toggleControls = function() {
     	$scope.controls = !$scope.controls;
@@ -53,4 +67,4 @@ angular.module('gutenbergApp')
     	}
     };
 
-  });
+  }]);

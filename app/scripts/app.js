@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('gutenbergApp', [])
+var app = angular.module('gutenbergApp', ['ngTouch', 'vr.directives.slider'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/fonts.css">
         <!-- endbuild -->
+
 </head>
   <body ng-app="gutenbergApp">
     <!--[if lt IE 7]>
@@ -42,7 +43,11 @@
     </script>
 
     <script src="bower_components/jquery/jquery.js"></script>
+    <script src="lib/modernizr.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-touch.min.js"></script>
+    
+    <script src="lib/angular-slider.js"></script>
 
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -53,7 +58,6 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/withdraw.js"></script>
         <script src="scripts/directives/KeypressDirective.js"></script>
         <!-- endbuild -->
 </body>

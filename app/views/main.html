@@ -22,6 +22,14 @@
 			<button ng-click="type.leading.decrease()">-</button>
 			<button ng-click="type.leading.microIncrease()">+</button>
 			<button ng-click="type.leading.microDecrease()">-</button>
+			<slider
+		    ng-model="type.leading.value"
+		    floor="0"
+		    ceiling="4"
+		    precision="2"
+		    stretch="3"
+		    step="0.05">
+			</slider>
 		</div>
 	</div>
 	<div class="size">
@@ -34,6 +42,14 @@
 			<button ng-click="type.size.decrease()">-</button>
 			<button ng-click="type.size.microIncrease()">+</button>
 			<button ng-click="type.size.microDecrease()">-</button>
+			<slider
+		    ng-model="type.size.value"
+		    floor="4"
+		    ceiling="72"
+		    precision="0"
+		    stretch="3"
+		    step="1">
+			</slider>
 		</div>
 	</div>
 	<div class="size">

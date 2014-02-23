@@ -1,0 +1,38 @@
+slider
+	display block
+	position relative
+	height 20px
+	width 100%
+	// margin 50px 0 50px 100px
+	vertical-align middle
+	span.bar
+		height 50%
+		z-index 0
+		background #eee
+		left 0
+		top 25%
+		cursor pointer
+		&.selection 
+			background #0a0
+			opacity 0.5
+		&.unselected
+			width      auto
+			background #a00
+			opacity    0.5
+	span.pointer 
+		cursor pointer
+		width 15px
+		border-radius 7px
+		top 0
+		bottom 0
+		background-color #00a
+	span.bubble
+		font-size 0.7em
+		line-height 1.4em
+		font-family sans-serif
+		text-align  center
+		text-shadow none
+		top -1.3em
+		cursor pointer
+	// slider span.bar.selection, slider span.bar.unselected {
+	// }
