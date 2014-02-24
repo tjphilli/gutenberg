@@ -42,18 +42,24 @@ app.factory('Properties',['Property',
 	    			precision: 0,
 	    			step: 1
 	    		}
+			},
+			tracking: {
+				name: 'Tracking',
+				'property-name':'letter-spacing',
+				value: '0',
+				unit:'px',
+				inc: 5,
+				micro_inc: 1,
+				slider: {
+	    			floor: '-4',
+	    			ceiling: 4,
+	    			precision: 0,
+	    			step: 1
+	    		}
 			}
 		};
 		this.create = function(name) {
-			switch(name) {
-				case "leading":
-					return new Property(templates.leading);
-	    		case "size":
-					return new Property(templates.size);
-				case "width":
-					return new Property(templates.width);
-				
-			}
+			return new Property(templates[name]);
 		}
 		this.getAvailable = function(compObj) {
 			var obj = {};

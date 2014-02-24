@@ -15,7 +15,6 @@
   top: 200px;
   right: 0;
   width: 300px;
-  background-color: #ddd;
 }
 
 slider {
@@ -68,6 +67,12 @@ slider span.bubble {
   text-shadow: none;
   top: -1.3em;
   cursor: pointer;
+}
+
+.property-container {
+  margin-top: 10px;
+  margin-right: 20px;
+  background-color: #ebebeb;
 }
 
 body {
