@@ -1,5 +1,7 @@
 angular.module('gutenbergApp').directive('property', function () {
     return {
+        replace: true,
+        transclude: true,
         scope: {
             property: '='
         },

@@ -13,11 +13,14 @@
 	</div>
 </div>
 <div class="styles" ng-class="{'is-hiding': controls}">
-	<div property="type.properties.width">
+	<div class="add-property">
+		<button>Add Property</button>
+		<ul>
+			<li ng-repeat="(prop, name) in available_properties"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
+		</ul>
 	</div>
-	<div property="type.properties.leading">
-	</div>
-	<div property="type.properties.size">
+	<div ng-repeat="property in type.properties">
+		<div property="property"></div>
 	</div>
 	<div class="face">
 		<div class="property">
