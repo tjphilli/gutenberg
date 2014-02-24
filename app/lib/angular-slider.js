@@ -103,7 +103,7 @@ angular.module('vr.directives.slider',['ngTouch'])
 				ngModelHigh: '=',
 				translate  : '&'
 			},
-			template: "<span class='bar full'></span><span class='bar selection'></span><span class='bar unselected low'></span><span class='bar unselected high'></span><span class='pointer low'></span><span class='pointer high'></span><span class='bubble low'></span><span class='bubble high'></span><span class='bubble middle'></span><span class='bubble selection'></span><span class='bubble limit floor'></span><span class='bubble limit ceiling'></span><input type='range' class='input low' /><input type='range' class='input high' /><input type='range' class='input selection' />",
+			templateUrl: "lib/angular-slider.html",
 			compile : function(element, attributes) {
 				var ceilBub, cmbBub, e, flrBub, fullBar, highBub, lowBub, maxPtr, minPtr, range, inputs, refHigh, refLow, refSel, selBar, unSelBarLow, unSelBarHigh, selBub, minInput, maxInput, selInput, watchables, _i, _len, _ref, _ref1;
 

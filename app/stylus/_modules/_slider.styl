@@ -7,7 +7,7 @@ slider
 	vertical-align middle
 	span.bar
 		height 50%
-		z-index 0
+		z-index 1000
 		background #eee
 		left 0
 		top 25%
@@ -20,6 +20,8 @@ slider
 			background #a00
 			opacity    0.5
 	span.pointer 
+		// z-index 1000 !important
+		display block
 		cursor pointer
 		width 15px
 		border-radius 7px

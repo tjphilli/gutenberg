@@ -1,8 +1,9 @@
 <div class="toggle-controls" keypress>
 	<button ng-click="toggleControls()">Toggle</button>
+	<button ng-click="changeIt()">Change Bitch!</button>
 </div>
 <div class="container">
-	<div class="set-text-container {{type.typeface.value}}" style="{{'line-height:'+type.leading.value+'; font-size:'+type.size.value + type.size.unit}}">
+	<div class="set-text-container {{type.typeface.value}}" style="" ng-style="type.style()">
 		<p>
 			Lorem ipsum Mollit in occaecat laborum tempor tempor sunt laborum sunt Duis. Lorem ipsum Qui dolore anim nisi enim in quis aliquip tempor. Lorem ipsum Esse ut sint mollit laboris est esse cillum officia sunt. Lorem ipsum In labore elit reprehenderit consequat ex sit dolore veniam nulla aliqua deserunt cillum. Lorem ipsum Occaecat ut nulla Ut consectetur mollit dolor dolore in pariatur.
 		</p>
@@ -12,47 +13,13 @@
 	</div>
 </div>
 <div class="styles" ng-class="{'is-hiding': controls}">
-	<div class="leading">
-		<div class="property">
-			<span class="name">Leading</span>
-			<span class="value">{{type.leading.value}}</span>
-		</div>
-		<div class="controls">
-			<button ng-click="type.leading.increase()">+</button>
-			<button ng-click="type.leading.decrease()">-</button>
-			<button ng-click="type.leading.microIncrease()">+</button>
-			<button ng-click="type.leading.microDecrease()">-</button>
-			<slider
-		    ng-model="type.leading.value"
-		    floor="0"
-		    ceiling="4"
-		    precision="2"
-		    stretch="3"
-		    step="0.05">
-			</slider>
-		</div>
+	<div property="type.properties.width">
 	</div>
-	<div class="size">
-		<div class="property">
-			<span class="name">Size</span>
-			<span class="value">{{type.size.value}}</span>
-		</div>
-		<div class="controls">
-			<button ng-click="type.size.increase()">+</button>
-			<button ng-click="type.size.decrease()">-</button>
-			<button ng-click="type.size.microIncrease()">+</button>
-			<button ng-click="type.size.microDecrease()">-</button>
-			<slider
-		    ng-model="type.size.value"
-		    floor="4"
-		    ceiling="72"
-		    precision="0"
-		    stretch="3"
-		    step="1">
-			</slider>
-		</div>
+	<div property="type.properties.leading">
 	</div>
-	<div class="size">
+	<div property="type.properties.size">
+	</div>
+	<div class="face">
 		<div class="property">
 			<select name="" id="" ng-model="type.typeface.value" ng-options="o.class as o.name for o in type.typeface.options"></select>
 		</div>

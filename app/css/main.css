@@ -28,7 +28,7 @@ slider {
 
 slider span.bar {
   height: 50%;
-  z-index: 0;
+  z-index: 1000;
   background: #eee;
   left: 0;
   top: 25%;
@@ -51,6 +51,7 @@ slider span.bar.unselected {
 }
 
 slider span.pointer {
+  display: block;
   cursor: pointer;
   width: 15px;
   border-radius: 7px;
