@@ -7,23 +7,23 @@ angular.module('gutenbergApp').directive('keypress', function () {
         };
         $(window).bind("keydown keypress", function (event) {
             if(wasPressed(event, 38)) {
-                scope.type.leading.microIncrease()
+                scope.type.properties.leading.microIncrease()
                 scope.$apply()
                 event.preventDefault();
             }
             else if(wasPressed(event, 40)) {
-                scope.type.leading.microDecrease()
+                scope.type.properties.leading.microDecrease()
                 scope.$apply()
                 event.preventDefault();
                 window.test = event.shiftKey;
             }
             else if(wasPressed(event, 187)) {
-                scope.type.size.microIncrease()
+                scope.type.properties.size.microIncrease()
                 scope.$apply()
                 event.preventDefault();
             }
             else if(wasPressed(event, 189)) {
-                scope.type.size.microDecrease()
+                scope.type.properties.size.microDecrease()
                 scope.$apply()
                 event.preventDefault();
                 window.test = event.shiftKey;

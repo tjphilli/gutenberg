@@ -55,10 +55,15 @@ app.factory('Properties',['Property',
 				
 			}
 		}
-		this.getAvailable = function() {
+		this.getAvailable = function(compObj) {
 			var obj = {};
+			console.log(compObj);
 			for(var property in templates) {
-				obj[property] = templates[property]['name']
+				console.log(property);
+				if (property in compObj) {}
+				else {
+					obj[property] = templates[property]['name']
+				}
 			}
 			return obj;
 		}

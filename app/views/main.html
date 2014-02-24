@@ -1,6 +1,5 @@
 <div class="toggle-controls" keypress>
 	<button ng-click="toggleControls()">Toggle</button>
-	<button ng-click="changeIt()">Change Bitch!</button>
 </div>
 <div class="container">
 	<div class="set-text-container {{type.typeface.value}}" style="" ng-style="type.style()">
@@ -16,7 +15,7 @@
 	<div class="add-property">
 		<button>Add Property</button>
 		<ul>
-			<li ng-repeat="(prop, name) in available_properties"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
+			<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 		</ul>
 	</div>
 	<div ng-repeat="property in type.properties">
