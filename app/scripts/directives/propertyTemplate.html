@@ -1,9 +1,10 @@
-<div class="{{property.className()}} property-container">
+<div class="{{property.className()}} property-container expander" expander>
 	<div class="property">
+		<span class="delete" ng-click="remove(name)">X</span>
 		<span class="name">{{property.name}}</span>
 		<span class="value">{{property.propertyValue()}}</span>
 	</div>
-	<div class="controls">
+	<div class="controls expander-target">
 		<button ng-click="property.increase()">+</button>
 		<button ng-click="property.decrease()">-</button>
 		<button ng-click="property.microIncrease()">+</button>
@@ -16,5 +17,8 @@
 		    step="{{property.slider.step}}"
 	    >
 		</slider>
+	</div>
+	<div class="expander-trigger">
+		<span class="">+</span>
 	</div>
 </div>

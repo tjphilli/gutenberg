@@ -18,8 +18,8 @@
 			<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 		</ul>
 	</div>
-	<div ng-repeat="property in type.properties">
-		<div property="property"></div>
+	<div ng-repeat="(key,property) in type.properties">
+		<div property="property" name="key" remove="removeProperty"></div>
 	</div>
 	<div class="face">
 		<div class="property">

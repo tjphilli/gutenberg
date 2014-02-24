@@ -29,7 +29,6 @@ angular.module('gutenbergApp')
             for (var key in this.properties) {
                 obj[key] = this.properties[key]['name'];
             }
-            console.log(obj);
             return obj;
 
         }
@@ -41,16 +40,14 @@ angular.module('gutenbergApp')
     $scope.addProperty = function (name) {
         $scope.type.properties[name] = Properties.create(name);
     }
-    $scope.currentProperties = function(){
-        var obj = {};
-        for (var key in $scope.type.properties) {
-            obj[key] = $scope.type.properties[key]['name'];
-        }
-        console.log(obj);
-        return obj;
-
+    $scope.removeProperty = function (name) {
+        console.log("called");
+        delete $scope.type.properties[name]
     }
     $scope.availableProperties = function() {
-        return   Properties.getAvailable($scope.currentProperties());
+        return   Properties.getAvailable($scope.type.currentProperties());
+    }
+    $scope.test = function() {
+        console.log('message');
     }
   }]);

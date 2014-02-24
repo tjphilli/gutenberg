@@ -63,9 +63,7 @@ app.factory('Properties',['Property',
 		}
 		this.getAvailable = function(compObj) {
 			var obj = {};
-			console.log(compObj);
 			for(var property in templates) {
-				console.log(property);
 				if (property in compObj) {}
 				else {
 					obj[property] = templates[property]['name']

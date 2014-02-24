@@ -70,9 +70,54 @@ slider span.bubble {
 }
 
 .property-container {
+  color: #444;
   margin-top: 10px;
   margin-right: 20px;
   background-color: #ebebeb;
+}
+
+.property-container .delete {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 12px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.property-container .delete:hover {
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+
+.property-container .property {
+  padding: 0 5px;
+  font-weight: 300;
+  line-height: 2;
+}
+
+.property-container .controls {
+  background-color: #f8f8f8;
+  padding-bottom: 5px;
+}
+
+.property-container slider {
+  display: none;
+}
+
+button.expander {
+  background-color: transparent;
+  border: none;
+}
+
+.expander-trigger {
+  text-align: center;
+  border-top: 1px solid #dfdfdf;
+  background-color: #f8f8f8;
+}
+
+.expander-trigger span {
+  cursor: pointer;
 }
 
 body {
