@@ -6,7 +6,7 @@
 	.delete
 		display inline-block
 		margin-right 5px
-		font-size 12px
+		// font-size 12px
 		color #aaa
 		cursor pointer
 		&:hover 
@@ -20,3 +20,25 @@
 		padding-bottom 5px
 	slider
 		display none
+
+#clip
+	display block
+	margin-top 20px
+	margin-right 10px
+	padding 10px 20px
+	text-align center
+	text-decoration none
+	font-weight 300
+	color: #333
+	border-radius 3px
+	background-color #ccc
+	transition all 0.3s
+	[class^=icon]
+		margin-right 7px
+		color #666
+	&.zeroclipboard-is-hover
+		background-color darken(#ccc, 10%)
+	&.zeroclipboard-is-active
+		margin-top 25px
+		background-color darken(#ccc, 30%)
+		

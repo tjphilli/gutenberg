@@ -13,3 +13,9 @@ angular.module('gutenbergApp').directive('property', function () {
         }
     };
 });
+angular.module('gutenbergApp').directive('hoverhover', function () {
+    return {
+        link: function (scope, element, attrs) {          
+        }
+    };
+});

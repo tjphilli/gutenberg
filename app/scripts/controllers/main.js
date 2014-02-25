@@ -24,6 +24,14 @@ angular.module('gutenbergApp')
             }
             return obj
         },
+        css: function() {
+            var style = this.style();
+            var str = "";
+            for(var property in style) {
+                str += property + ": "+ style[property] + ";\n"  ;
+            }
+            return str;
+        },
         currentProperties: function(){
             var obj = {};
             for (var key in this.properties) {
@@ -34,7 +42,7 @@ angular.module('gutenbergApp')
         }
 
     };
-
+    $scope.testString = "something";
     $scope.type.properties["leading"] = Properties.create("leading");
     $scope.type.properties["size"] = Properties.create("size");
     $scope.addProperty = function (name) {

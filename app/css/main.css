@@ -79,7 +79,6 @@ slider span.bubble {
 .property-container .delete {
   display: inline-block;
   margin-right: 5px;
-  font-size: 12px;
   color: #aaa;
   cursor: pointer;
 }
@@ -105,18 +104,61 @@ slider span.bubble {
   display: none;
 }
 
-button.expander {
+#clip {
+  display: block;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  color: #333;
+  border-radius: 3px;
+  background-color: #ccc;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#clip [class^=icon] {
+  margin-right: 7px;
+  color: #666;
+}
+
+#clip.zeroclipboard-is-hover {
+  background-color: #b8b8b8;
+}
+
+#clip.zeroclipboard-is-active {
+  margin-top: 25px;
+  background-color: #8f8f8f;
+}
+
+.add-property .expander-trigger {
+  padding: 11px 12px;
+  color: #666;
+  background-color: #ccc;
+  border: none;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.add-property .expander-trigger:hover {
+  background-color: #b8b8b8;
+}
+
+.property-container button.expander {
   background-color: transparent;
   border: none;
 }
 
-.expander-trigger {
+.property-container .expander-trigger {
   text-align: center;
   border-top: 1px solid #dfdfdf;
   background-color: #f8f8f8;
 }
 
-.expander-trigger span {
+.property-container .expander-trigger span {
   cursor: pointer;
 }
 

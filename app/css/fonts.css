@@ -1,16 +1,16 @@
 @font-face {
-	font-family: 'atm';
-	src:url('fonts/atm.eot?-o0y0kj');
-	src:url('fonts/atm.eot?#iefix-o0y0kj') format('embedded-opentype'),
-		url('fonts/atm.woff?-o0y0kj') format('woff'),
-		url('fonts/atm.ttf?-o0y0kj') format('truetype'),
-		url('fonts/atm.svg?-o0y0kj#atm') format('svg');
+	font-family: 'gutenberg';
+	src:url('fonts/gutenberg.eot?cgwloi');
+	src:url('fonts/gutenberg.eot?#iefixcgwloi') format('embedded-opentype'),
+		url('fonts/gutenberg.woff?cgwloi') format('woff'),
+		url('fonts/gutenberg.ttf?cgwloi') format('truetype'),
+		url('fonts/gutenberg.svg?cgwloi#gutenberg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'atm';
+	font-family: 'gutenberg';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -23,33 +23,90 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-up:before {
+.icon-arrow-down:before {
 	content: "\e600";
 }
-.icon-arrow-down:before {
+.icon-arrow-up:before {
 	content: "\e601";
 }
-.icon-arrow-left:before {
+.icon-plus:before {
 	content: "\e602";
 }
-.icon-uniE603:before {
+.icon-cross:before {
 	content: "\e603";
 }
-.icon-arrow-down2:before {
+.icon-eye:before {
+	content: "\e61a";
+}
+.icon-align-left:before {
 	content: "\e604";
 }
-.icon-arrow-up2:before {
+.icon-align-center:before {
 	content: "\e605";
 }
-.icon-arrow-right:before {
+.icon-align-right:before {
 	content: "\e606";
 }
-.icon-arrow-left2:before {
+.icon-text-height:before {
 	content: "\e607";
 }
-.icon-arrow-down3:before {
+.icon-text-width:before {
 	content: "\e608";
 }
-.icon-arrow-up--upload:before {
+.icon-bold:before {
 	content: "\e609";
+}
+.icon-italic:before {
+	content: "\e60a";
+}
+.icon-align-justify:before {
+	content: "\e60b";
+}
+.icon-paragraph-left:before {
+	content: "\e60c";
+}
+.icon-paragraph-center:before {
+	content: "\e60d";
+}
+.icon-paragraph-right:before {
+	content: "\e60e";
+}
+.icon-paragraph-justify:before {
+	content: "\e60f";
+}
+.icon-paragraph-left2:before {
+	content: "\e610";
+}
+.icon-paragraph-center2:before {
+	content: "\e611";
+}
+.icon-paragraph-right2:before {
+	content: "\e612";
+}
+.icon-paragraph-justify2:before {
+	content: "\e613";
+}
+.icon-file-css:before {
+	content: "\e614";
+}
+.icon-file-xml:before {
+	content: "\e615";
+}
+.icon-plus2:before {
+	content: "\e617";
+}
+.icon-minus:before {
+	content: "\e618";
+}
+.icon-plus3:before {
+	content: "\e619";
+}
+.icon-copy:before {
+	content: "\e616";
+}
+.icon-copy2:before {
+	content: "\e61b";
+}
+.icon-copy3:before {
+	content: "\e61c";
 }
