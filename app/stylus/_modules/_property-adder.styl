@@ -1,10 +1,34 @@
 .add-property
+	margin-bottom 70px
 	.expander-trigger
+		margin-bottom 10px
 		padding 11px 12px
 		color #666
 		background-color #ccc
 		border none
 		border-radius 3px
 		transition all 0.3s
+		outline none
+		i
+			display block
+			transition all 0.3s
 		&:hover
 			background-color darken(#ccc, 10%)
+			i
+				transform rotateZ(90deg)
+	ul
+		margin 0 20px 0 0
+		padding 0
+		list-style none
+		li
+			line-height 40px
+			border-top 1px solid #ddd
+			&:first-child
+				border-top none
+			a
+				display block
+				padding-left 10px
+				background-color #eee
+				&:hover
+					background-color darken(#eee, 10%)
+					

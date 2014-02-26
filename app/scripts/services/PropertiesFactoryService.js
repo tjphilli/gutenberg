@@ -15,6 +15,19 @@ app.factory('Properties',['Property',
 	    			step: 0.05
 	    		}
 			},
+			columns: {
+				name: 'Columns',
+				'property-name':'columns',
+				value: '1',
+				inc: 1,
+				micro_inc: 1,
+				slider: {
+	    			floor: 1,
+	    			ceiling: 6,
+	    			precision: 1,
+	    			step: 1
+	    		}
+			},
 			size: {
 				name: 'Size',
 				'property-name':'font-size',

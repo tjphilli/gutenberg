@@ -3,12 +3,11 @@
 </div>
 <div class="container">
 	<div class="set-text-container {{type.typeface.value}}" style="" ng-style="type.style()">
-		<p>
-			Lorem ipsum Mollit in occaecat laborum tempor tempor sunt laborum sunt Duis. Lorem ipsum Qui dolore anim nisi enim in quis aliquip tempor. Lorem ipsum Esse ut sint mollit laboris est esse cillum officia sunt. Lorem ipsum In labore elit reprehenderit consequat ex sit dolore veniam nulla aliqua deserunt cillum. Lorem ipsum Occaecat ut nulla Ut consectetur mollit dolor dolore in pariatur.
+		<!-- <p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec faucibus est. Cras a luctus felis. Donec ornare massa lorem, eget blandit erat semper ac. Sed ullamcorper mauris quis tellus venenatis euismod. Duis luctus venenatis sapien, non tristique magna ultricies vel. Etiam vulputate vitae metus eget viverra. In hac habitasse platea dictumst.
 		</p>
-		<p>
-			Lorem ipsum Mollit in occaecat laborum tempor tempor sunt laborum sunt Duis. Lorem ipsum Qui dolore anim nisi enim in quis aliquip tempor. Lorem ipsum Esse ut sint mollit laboris est esse cillum officia sunt. Lorem ipsum In labore elit reprehenderit consequat ex sit dolore veniam nulla aliqua deserunt cillum. Lorem ipsum Occaecat ut nulla Ut consectetur mollit dolor dolore in pariatur.
-		</p>
+		<p>Nunc mattis et eros vitae laoreet. Pellentesque faucibus eros nec quam porta euismod. Morbi gravida ut enim tempor convallis. Fusce hendrerit sed orci vel pellentesque. Integer mollis justo lacus, sit amet vulputate neque commodo ac. Suspendisse ac odio purus. Etiam venenatis suscipit sollicitudin. In hac habitasse platea dictumst. Ut eu lacus augue. Ut euismod luctus purus ut dapibus.</p> -->
+		<p ng-repeat="para in paras">{{para}}</p>
 	</div>
 </div>
 <div class="styles" ng-class="{'is-hiding': controls}">

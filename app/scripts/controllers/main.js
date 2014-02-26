@@ -7,10 +7,17 @@ angular.module('gutenbergApp')
     $scope.toggleControls = function() {
     	$scope.controls = !$scope.controls;
     }
+    $scope.paras = "";
+    $scope.getText =  function(num) {
+        PlaceholderTextService.getLocalText(num).success(function(data){
+            $scope.paras = data;
+        });
+    }
+    $scope.getText(6);
     $scope.type = {
         properties: {},
         typeface: {
-            value: "times-new-roman",
+            value: "garamond",
             options: [
                 {name: "Times New Roman", 'class':'times-new-roman'},
                 {name: "Helvetica Neue" , 'class': 'helvetica-neue'}, 

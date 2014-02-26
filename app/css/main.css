@@ -12,7 +12,7 @@
 
 .styles {
   position: absolute;
-  top: 200px;
+  top: 80px;
   right: 0;
   width: 300px;
 }
@@ -133,7 +133,12 @@ slider span.bubble {
   background-color: #8f8f8f;
 }
 
+.add-property {
+  margin-bottom: 70px;
+}
+
 .add-property .expander-trigger {
+  margin-bottom: 10px;
   padding: 11px 12px;
   color: #666;
   background-color: #ccc;
@@ -141,10 +146,48 @@ slider span.bubble {
   border-radius: 3px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  outline: none;
+}
+
+.add-property .expander-trigger i {
+  display: block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .add-property .expander-trigger:hover {
   background-color: #b8b8b8;
+}
+
+.add-property .expander-trigger:hover i {
+  -webkit-transform: rotateZ(90deg);
+  -ms-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+}
+
+.add-property ul {
+  margin: 0 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.add-property ul li {
+  line-height: 40px;
+  border-top: 1px solid #ddd;
+}
+
+.add-property ul li:first-child {
+  border-top: none;
+}
+
+.add-property ul li a {
+  display: block;
+  padding-left: 10px;
+  background-color: #eee;
+}
+
+.add-property ul li a:hover {
+  background-color: #d6d6d6;
 }
 
 .property-container button.expander {
@@ -162,10 +205,31 @@ slider span.bubble {
   cursor: pointer;
 }
 
-body {
-  background-color: #fff;
-  font-family: 'Helvetica Neue';
+a {
   color: #333;
+  font-weight: 300;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+body {
+  color: #333;
+  font-family: 'Helvetica Neue';
+  background-color: #fff;
+}
+
+.page-border {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 8px solid #eee;
+  z-index: -9999;
 }
 
 .toggle-controls {

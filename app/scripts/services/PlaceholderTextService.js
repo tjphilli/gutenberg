@@ -8,8 +8,8 @@ app.factory('PlaceholderTextService', ['$http', '$q', function($http, $q){
 		getHipsterIpsum: function(){
 		   return $http.jsonp("http://hipsterjesus.com/api/");
 		},
-		getLocalText: function() {
-			return $http.get("http://localhost:3000/test");
+		getLocalText: function(num) {
+			return $http.get("http://localhost:3000/test/"+num);
 		}
 	}
 
