@@ -3,6 +3,16 @@ var app = express();
 
 app.use(express.static(__dirname +'/app'));
 
+app.get('/download/:id', function(req, res, next){
+	var id = req.params.id;
+    res.setHeader('Content-disposition', 'attachment; filename=theDocument.txt');
+	res.setHeader('Content-type', 'text/plain');
+	res.charset = 'UTF-8';
+	res.write("Hello, world" + id);
+	res.end();
+});
+
+
 app.get('/api:num', function(req, res){
   var http = require("http");
 

@@ -13,7 +13,7 @@ angular.module('gutenbergApp')
             $scope.paras = data;
         });
     }
-    $scope.getText(6);
+    $scope.getText(2);
     $scope.type = {
         properties: {},
         typeface: {
