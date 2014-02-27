@@ -1,5 +1,7 @@
 <div class="toggle-controls" keypress>
 	<button ng-click="toggleControls()">Toggle</button>
+	<input type="text" ng-model="randnum">
+	<button ng-click="getDl(randnum)">Download</button>
 </div>
 <div class="container">
 	<div class="set-text-container {{type.typeface.value}}" style="" ng-style="type.style()">

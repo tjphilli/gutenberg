@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gutenbergApp')
-  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'Property', 'Properties', function($scope, $document, PlaceholderTextService, Property, Properties) {
+  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Property', 'Properties', function($scope, $document, PlaceholderTextService, DownloadService, Property, Properties) {
 	
     $scope.controls = false;
     $scope.toggleControls = function() {
@@ -14,6 +14,19 @@ angular.module('gutenbergApp')
         });
     }
     $scope.getText(2);
+
+    $scope.obj = {test: "hello!"};
+    $scope.getDownload =  function(obj) {
+        DownloadService.getDownload(obj).success(function(data){
+            console.log(data);
+        });
+    }
+    $scope.getDl =  function(num) {
+        DownloadService.getDownload(num).success(function(data){
+            console.log(data);
+        });
+    }
+
     $scope.type = {
         properties: {},
         typeface: {

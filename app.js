@@ -1,14 +1,28 @@
 var express = require('express');
 var app = express();
 
+app.use(express.json()); 
+app.use(express.urlencoded());
+
 app.use(express.static(__dirname +'/app'));
 
-app.get('/download/:id', function(req, res, next){
+app.get('/dl/:id', function(req, res, next){
 	var id = req.params.id;
     res.setHeader('Content-disposition', 'attachment; filename=theDocument.txt');
 	res.setHeader('Content-type', 'text/plain');
 	res.charset = 'UTF-8';
 	res.write("Hello, world" + id);
+	res.end();
+});
+
+app.post('/download/', function(req, res, next){
+	var test = req.body.test;
+    res.setHeader('Content-disposition', 'attachment; filename=theDocument.txt');
+
+	res.setHeader('Content-type', 'text/html');
+	res.charset = 'UTF-8';
+	res.write("Hello, world" + test);
+	console.log(req.body.test);
 	res.end();
 });
 
@@ -45,5 +59,7 @@ app.get('/api:num', function(req, res){
 	});
 });
 
-app.listen(3000);
+
+var port = process.env.PORT || 3000;
+app.listen(port);
 console.log('Listening on port 3000');
