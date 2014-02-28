@@ -1,2 +1,2 @@
 config: set NODE_ENV=development
-web: node app.js
+web: NODE_ENV=development node app.js
