@@ -4,13 +4,7 @@ var app = express();
 app.use(express.json()); 
 app.use(express.urlencoded());
 
-
-	
-
-
-
-	app.use(express.static(__dirname +'/app'));
-
+app.use(express.static(__dirname +'/dist'));
 
 app.get('/dl/:id', function(req, res, next){
 	var id = req.params.id;
