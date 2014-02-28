@@ -1,1 +1,2 @@
-web: NODE_ENV=production node app.js
+config: NODE_ENV=production
+web: node app.js
