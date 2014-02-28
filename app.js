@@ -5,7 +5,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.configure('production', function(){
-	app.use(express.static(__dirname +'/dist'));
+	app.use(express.static(__dirname +'/app'));
 })
 
 app.configure('development', function(){
