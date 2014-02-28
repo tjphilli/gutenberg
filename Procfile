@@ -1,1 +1,1 @@
-web: node app.js
+web: NODE_EVN=production node app.js

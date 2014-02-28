@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gutenbergApp')
+app
   .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Property', 'Properties', function($scope, $document, PlaceholderTextService, DownloadService, Property, Properties) {
 	
     $scope.controls = false;

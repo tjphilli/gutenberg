@@ -1,4 +1,4 @@
-angular.module('gutenbergApp').directive('expander', function () {
+app.directive('expander', function () {
     return {
         link: function (scope, element, attrs) {
            var $target = $(element).find('.expander-target').addClass('is-hiding');

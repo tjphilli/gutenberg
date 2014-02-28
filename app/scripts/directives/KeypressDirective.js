@@ -1,4 +1,4 @@
-angular.module('gutenbergApp').directive('keypress', function () {
+app.directive('keypress', function () {
     return function (scope, element, attrs) {
         var modifier = "shiftKey";
         var test = "";

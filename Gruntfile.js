@@ -33,10 +33,6 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
         tasks: ['coffee:dist']
       },
-      coffeeTest: {
-        files: ['test/spec/{,*/}*.coffee'],
-        tasks: ['coffee:test']
-      },
       styles: {
         files: ['<%= yeoman.app %>/stylus/{,*/}*.styl'],
         tasks: ['copy:styles', 'autoprefixer', 'stylus']
@@ -72,9 +68,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '.tmp/css/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '.tmp/css/'
         }]
       }
     },
@@ -91,16 +87,6 @@ module.exports = function (grunt) {
               lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
-            ];
-          }
-        }
-      },
-      test: {
-        options: {
-          middleware: function (connect) {
-            return [
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'test')
             ];
           }
         }
@@ -156,15 +142,6 @@ module.exports = function (grunt) {
           ext: '.js'
         }]
       },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/spec',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/spec',
-          ext: '.js'
-        }]
-      }
     },
     // not used since Uglify task does concat,
     // but still available if needed
@@ -176,9 +153,9 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
+            '<%= yeoman.dist %>/css/{,*/}*.css',
             '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/styles/fonts/*'
+            '<%= yeoman.dist %>/css/fonts/*'
           ]
         }
       }
@@ -191,7 +168,7 @@ module.exports = function (grunt) {
     },
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      css: ['<%= yeoman.dist %>/css/{,*/}*.css'],
       options: {
         dirs: ['<%= yeoman.dist %>']
       }
@@ -263,7 +240,9 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            'css/fonts/*',
+            'lib/*',
+            'scripts/**/*'
           ]
         }, {
           expand: true,
@@ -276,18 +255,14 @@ module.exports = function (grunt) {
       },
       styles: {
         expand: true,
-        cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
+        cwd: '<%= yeoman.app %>/css',
+        dest: '.tmp/css/',
         src: '{,*/}*.css'
       }
     },
     concurrent: {
       server: [
         'coffee:dist',
-        'copy:styles'
-      ],
-      test: [
-        'coffee',
         'copy:styles'
       ],
       dist: [
@@ -297,12 +272,6 @@ module.exports = function (grunt) {
         'svgmin',
         'htmlmin'
       ]
-    },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
-      }
     },
     cdnify: {
       dist: {
@@ -346,14 +315,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma'
-  ]);
-
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
@@ -371,7 +332,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'jshint',
-    'test',
     'build'
   ]);
 };

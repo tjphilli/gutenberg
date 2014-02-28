@@ -9,7 +9,7 @@ app.factory('PlaceholderTextService', ['$http', '$q', function($http, $q){
 		   return $http.jsonp("http://hipsterjesus.com/api/");
 		},
 		getLocalText: function(num) {
-			return $http.get("http://localhost:3000/api"+num);
+			return $http.get("http://localhost:3000/api/"+num);
 		}
 	}
 

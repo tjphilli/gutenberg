@@ -4,7 +4,13 @@ var app = express();
 app.use(express.json()); 
 app.use(express.urlencoded());
 
-app.use(express.static(__dirname +'/app'));
+app.configure('production', function(){
+	app.use(express.static(__dirname +'/dist'));
+})
+
+app.configure('development', function(){
+	app.use(express.static(__dirname +'/app'));
+})
 
 app.get('/dl/:id', function(req, res, next){
 	var id = req.params.id;
@@ -27,9 +33,8 @@ app.post('/download/', function(req, res, next){
 });
 
 
-app.get('/api:num', function(req, res){
-  var http = require("http");
-
+app.get('/api/:num', function(req, res){
+  	var http = require("http");
   	var num = req.params.num || 2
 	res.set('Access-Control-Allow-Origin', '*');
   	res.set('Access-Control-Allow-MethodGenetic and Morphological Relationships Between Ungulatess', 'GET, POST');
@@ -57,6 +62,7 @@ app.get('/api:num', function(req, res){
 	        res.jsonp(arr);
 	    });
 	});
+	// res.jsonp(["Lorem ipsum Sunt ea qui incididunt sed commodo et in dolore. Lorem ipsum Dolor amet aliquip amet proident aliqua et voluptate eiusmod.", "Gutnberg solor dat ip atsum dada mone."]);
 });
 
 

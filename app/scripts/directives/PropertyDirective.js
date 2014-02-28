@@ -1,4 +1,4 @@
-angular.module('gutenbergApp').directive('property', function () {
+app.directive('property', function () {
     return {
         replace: true,
         transclude: true,
