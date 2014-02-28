@@ -6,10 +6,12 @@ app.use(express.urlencoded());
 
 app.configure('production', function(){
 	app.use(express.static(__dirname +'/dist'));
+	console.log("production used");
 })
 
 app.configure('development', function(){
 	app.use(express.static(__dirname +'/app'));
+	console.log("development used");
 })
 
 app.get('/dl/:id', function(req, res, next){
