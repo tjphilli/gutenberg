@@ -51,6 +51,28 @@ module.exports = function (grunt) {
         ]
       }
     },
+    ngconstant: {
+      options: {
+        space: '  '
+      },
+      // targets
+      development: [{
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        wrap: '"use strict";\n\n <%= __ngModule %>',
+        name: 'config',
+        constants: {
+          ENV: 'development'
+        }
+      }],
+      production: [{
+        dest: '<%= yeoman.dist %>/scripts/config.js',
+        wrap: '"use strict";\n\n <%= __ngModule %>',
+        name: 'config',
+        constants: {
+          ENV: 'production'
+        }
+      }]
+    },
     stylus: {
       compile: {
         options: {
@@ -306,6 +328,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development',
       'concurrent:server',
       'stylus',
       'autoprefixer',
@@ -317,6 +340,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:production',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
