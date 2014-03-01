@@ -1,6 +1,6 @@
 // Service to store and retrieve application wide data
 app.factory('PlaceholderTextService', ['$http', '$q', 'ENV',function($http, $q, ENV){
-	URL_BASE = "";
+	var URL_BASE = "";
 	if (ENV === 'development') {
 		URL_BASE = "http://localhost:3000/";
 	}
