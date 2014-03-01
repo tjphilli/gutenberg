@@ -6,7 +6,7 @@ var app = angular.module('gutenbergApp', ['ngTouch', 'vr.directives.slider', 'ng
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
 ])
-.config(['$routeProvider', function ($routeProvider) {
+.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -15,4 +15,8 @@ var app = angular.module('gutenbergApp', ['ngTouch', 'vr.directives.slider', 'ng
       .otherwise({
         redirectTo: '/'
       });
+      $locationProvider
+        .html5Mode(false)
+        .hashPrefix('!');
   }]);
+
