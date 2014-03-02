@@ -1,0 +1,23 @@
+{
+  "name": "angular-foundation-colorpicker",
+  "version": "1.0.0",
+  "main": "js/foundation-colorpicker-module.js",
+  "ignore": [
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/buberdds/angular-foundation-colorpicker",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "ce9eb7279732fcc47bac1bdab32685677aa832da"
+  },
+  "_source": "git://github.com/buberdds/angular-foundation-colorpicker.git",
+  "_target": "~1.0.0",
+  "_originalSource": "angular-foundation-colorpicker",
+  "_direct": true
+}
