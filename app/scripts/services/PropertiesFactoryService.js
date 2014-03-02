@@ -81,10 +81,10 @@ app.factory('Properties',['Property',
 				value: 'left',
 				type: 'options',
 				options: [
-					{name: 'left'},
-					{name: 'right'},
-					{name: 'center'},
-					{name: 'justify'}
+					{name: 'left', value:'left'},
+					{name: 'right', value:'right'},
+					{name: 'center', value:'center'},
+					{name: 'justify', value:'justify'}
 				]
 			},
 			decoration: {
@@ -93,12 +93,36 @@ app.factory('Properties',['Property',
 				value: 'none',
 				type: 'options',
 				options: [
-					{name: 'none'},
-					{name: 'underline'},
-					{name: 'overline'},
-					{name: 'line-through'}
+					{name: 'none', value: 'none'},
+					{name: 'underline', value: 'underline'},
+					{name: 'overline', value: 'overline'},
+					{name: 'line-through', value: 'line-through'}
 				]
-			}
+			},
+			transform: {
+				name: 'Case',
+				'property-name':'text-transform',
+				value: 'none',
+				type: 'options',
+				options: [
+					{name: 'none', value:'none'},
+					{name: 'capitalize', value:'capitalize'},
+					{name: 'uppercase', value:'uppercase'},
+					{name: 'lowercase', value:'lowercase'}
+				]
+			},
+			 typeface: {
+			 	name: 'Typeface',
+			 	'property-name' : 'font-family',
+	            value: 'Garamond',
+	            type: 'options',
+	            options: [
+	                {name: "Times New Roman", value:'Times New Roman'},
+	                {name: "Helvetica Neue" , value: 'Helvetica Neue'}, 
+	                {name: "Garamond", value: 'Garamond'}
+	            ]
+	        },
+
 		};
 		this.create = function(name) {
 			return new Property(templates[name]);

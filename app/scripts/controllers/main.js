@@ -29,14 +29,6 @@ app
 
     $scope.type = {
         properties: {},
-        typeface: {
-            value: "garamond",
-            options: [
-                {name: "Times New Roman", 'class':'times-new-roman'},
-                {name: "Helvetica Neue" , 'class': 'helvetica-neue'}, 
-                {name: "Garamond", 'class': 'garamond'}
-            ]
-        },
         style: function() {
             var obj = {};
             for(var key in this.properties) {
@@ -62,9 +54,8 @@ app
         }
 
     };
-    $scope.test = Properties.create("leading");
-    $scope.testString = "something";
     $scope.type.properties["leading"] = Properties.create("leading");
+    $scope.type.properties["typeface"] = Properties.create("typeface");
     $scope.type.properties["size"] = Properties.create("size");
     $scope.addProperty = function (name) {
         $scope.type.properties[name] = Properties.create(name);
