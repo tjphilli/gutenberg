@@ -136,6 +136,17 @@ app.factory('Properties',['Property',
 	                {name: "Garamond", value: 'Garamond'}
 	            ]
 	        },
+	        style: {
+			 	name: 'Style',
+			 	'property-name' : 'font-style',
+	            value: 'italic',
+	            type: 'options',
+	            options: [
+	                {name: "italic", value:'italic'},
+	                {name: "oblique" , value: 'oblique'}, 
+	                {name: "none", value: 'none'}
+	            ]
+	        }
 
 		};
 		this.create = function(name) {
