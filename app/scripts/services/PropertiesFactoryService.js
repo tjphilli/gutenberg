@@ -161,6 +161,12 @@ app.factory('Properties',['Property',
 	                {name: "oblique" , value: 'oblique'}, 
 	                {name: "none", value: 'none'}
 	            ]
+	        },
+	        color: {
+			 	name: 'color',
+			 	'property-name' : 'color',
+	            value: '#333',
+	            type: 'color'
 	        }
 
 		};
