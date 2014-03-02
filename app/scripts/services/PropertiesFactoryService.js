@@ -75,6 +75,20 @@ app.factory('Properties',['Property',
 	    			step: 1
 	    		}
 			},
+			weight: {
+				name: 'Weight',
+				'property-name':'font-weight',
+				value: '500',
+				type: 'number',
+				inc: 100,
+				micro_inc: 100,
+				slider: {
+	    			floor: 100,
+	    			ceiling: 900,
+	    			precision: 0,
+	    			step: 100
+	    		}
+			},
 			alignment: {
 				name: 'Alignment',
 				'property-name':'text-align',
