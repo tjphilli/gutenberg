@@ -6,6 +6,11 @@
 		text-align center
 		border-top 1px solid darken(#F8F8F8, 10%)
 		background-color #F8F8F8
-		span
+		[class^=icon]
+			display inline-block 
 			cursor pointer
+			transition all 0.3s
+	.expander-target:not(.is-hiding) + .expander-trigger
+		[class^=icon]
+			transform rotate(180deg)
 

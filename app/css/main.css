@@ -197,8 +197,17 @@ slider span.bubble {
   background-color: #f8f8f8;
 }
 
-.property-container .expander-trigger span {
+.property-container .expander-trigger [class^=icon] {
+  display: inline-block;
   cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.property-container .expander-target:not(.is-hiding) + .expander-trigger [class^=icon] {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 a {
@@ -240,6 +249,20 @@ body {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  font-size: 12px;
+  color: #999;
+  font-weight: 300;
+  text-align: center;
+}
+
+footer a {
+  color: #aaa;
 }
 
 .is-showing {
