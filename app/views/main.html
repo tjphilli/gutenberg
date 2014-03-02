@@ -21,7 +21,14 @@
 	</div>
 	<div ng-repeat="(key,property) in type.properties">
 		<div property="property" name="key" remove="removeProperty">
-			<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+			<div ng-switch on="property.type">
+				<div ng-switch-when="number">
+					<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+				</div>
+				<div ng-switch-when="options">
+					<select name="" id="" ng-model="property.value" ng-options="o.name as o.name for o in property.options"></select>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="face">

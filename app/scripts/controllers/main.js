@@ -74,6 +74,7 @@ app
         delete $scope.type.properties[name]
     }
     $scope.availableProperties = function() {
+        console.log($scope.type.currentProperties());
         return   Properties.getAvailable($scope.type.currentProperties());
     }
     $scope.testIt = function() {
