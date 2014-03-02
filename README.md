@@ -16,9 +16,9 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 - font-weight
 - font-style
 - word-spacing
+- color
 
 ## Future Supported Properties:
-- color
 - background-color (page)
 - p:first (drop caps)
 - text-shadow
