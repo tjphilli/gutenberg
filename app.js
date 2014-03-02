@@ -1,10 +1,13 @@
 var express = require('express');
 var app = express();
-var crawlme = require('crawlme');
+// var crawlme = require('crawlme');
 
 app.use(express.json()); 
 app.use(express.urlencoded());
-app.use(crawlme());
+// app.use(crawlme());
+
+app.use(require('prerender-node').set('prerenderToken', 'j3B4cKcyHoaveNZDVBGG'));
+
 
 app.configure('production', function(){
 	app.use(express.static(__dirname +'/dist'));
