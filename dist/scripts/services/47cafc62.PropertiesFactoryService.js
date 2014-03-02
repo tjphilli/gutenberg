@@ -6,6 +6,7 @@ app.factory('Properties',['Property',
 				name: 'Leading',
 				'property-name':'line-height',
 				value: '1',
+				type: 'number',
 				inc: 1,
 				micro_inc: 0.05,
 				slider: {
@@ -17,8 +18,9 @@ app.factory('Properties',['Property',
 			},
 			columns: {
 				name: 'Columns',
-				'property-name':'columns',
+				'property-name':'-webkit-columns',
 				value: '1',
+				type: 'number',
 				inc: 1,
 				micro_inc: 1,
 				slider: {
@@ -32,6 +34,7 @@ app.factory('Properties',['Property',
 				name: 'Size',
 				'property-name':'font-size',
 				value: '16',
+				type: 'number',
 				unit:'px',
 				inc: 5,
 				micro_inc: 1,
@@ -46,6 +49,7 @@ app.factory('Properties',['Property',
 				name: 'Container Width',
 				'property-name':'width',
 				value: '600',
+				type: 'number',
 				unit:'px',
 				inc: 50,
 				micro_inc: 1,
@@ -60,16 +64,65 @@ app.factory('Properties',['Property',
 				name: 'Tracking',
 				'property-name':'letter-spacing',
 				value: '0',
+				type: 'number',
 				unit:'px',
 				inc: 5,
 				micro_inc: 1,
 				slider: {
-	    			floor: '-4',
+	    			floor: -4,
 	    			ceiling: 4,
 	    			precision: 0,
 	    			step: 1
 	    		}
-			}
+			},
+			alignment: {
+				name: 'Alignment',
+				'property-name':'text-align',
+				value: 'left',
+				type: 'options',
+				options: [
+					{name: 'left', value:'left'},
+					{name: 'right', value:'right'},
+					{name: 'center', value:'center'},
+					{name: 'justify', value:'justify'}
+				]
+			},
+			decoration: {
+				name: 'Decoration',
+				'property-name':'text-decoration',
+				value: 'none',
+				type: 'options',
+				options: [
+					{name: 'none', value: 'none'},
+					{name: 'underline', value: 'underline'},
+					{name: 'overline', value: 'overline'},
+					{name: 'line-through', value: 'line-through'}
+				]
+			},
+			transform: {
+				name: 'Case',
+				'property-name':'text-transform',
+				value: 'none',
+				type: 'options',
+				options: [
+					{name: 'none', value:'none'},
+					{name: 'capitalize', value:'capitalize'},
+					{name: 'uppercase', value:'uppercase'},
+					{name: 'lowercase', value:'lowercase'}
+				]
+			},
+			 typeface: {
+			 	name: 'Typeface',
+			 	'property-name' : 'font-family',
+	            value: 'Garamond',
+	            type: 'options',
+	            options: [
+	                {name: "Times New Roman", value:'Times New Roman'},
+	                {name: "Helvetica Neue" , value: 'Helvetica Neue'}, 
+	                {name: "Garamond", value: 'Garamond'}
+	            ]
+	        },
+
 		};
 		this.create = function(name) {
 			return new Property(templates[name]);
