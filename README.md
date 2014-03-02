@@ -10,12 +10,12 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 - columns
 - width (containing element)
 - font-family
+- text-align
+- text-decoration
 
 ## Future Supported Properties:
 - font-weight
-- text-align
 - color
-- text-decoration
 - font-style
 - p:first (drop caps)
 - text-shadow
