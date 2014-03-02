@@ -9,8 +9,7 @@ var app = angular.module('gutenbergApp', ['ngTouch', 'vr.directives.slider', 'ng
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainController'
+        templateUrl: 'views/main.html'
       })
       .otherwise({
         redirectTo: '/'

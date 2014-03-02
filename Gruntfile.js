@@ -264,7 +264,11 @@ module.exports = function (grunt) {
             'images/{,*/}*.{gif,webp}',
             'css/fonts/*',
             'lib/*',
-            'scripts/**/*'
+            'scripts/app.js',
+            'scripts/directives/*',
+            'scripts/services/*',
+            'scripts/controllers/*',
+            'scripts/templates/*'
           ]
         }, {
           expand: true,
@@ -328,7 +332,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'ngconstant:development',
+      'ngconstant:production',
       'concurrent:server',
       'stylus',
       'autoprefixer',

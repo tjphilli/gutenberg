@@ -18,23 +18,37 @@ app
     $scope.obj = {test: "hello!"};
     $scope.getDownload =  function(obj) {
         DownloadService.getDownload(obj).success(function(data){
-            console.log(data);
+            // console.log(data);
         });
     }
     $scope.getDl =  function(num) {
         DownloadService.getDownload(num).success(function(data){
-            console.log(data);
         });
     }
 
     $scope.type = {
         properties: {},
         style: function() {
+            console.log(this.properties);
             var obj = {};
             for(var key in this.properties) {
-                obj[this.properties[key]['property-name']] = this.properties[key]['propertyValue']()
+                if (this.properties[key]['special'] != true) {
+                    obj[this.properties[key]['property-name']] = this.properties[key]['propertyValue']()
+                }
             }
             return obj
+        },
+        backgroundStyle: function() {
+            console.log(this);
+            var obj = {};
+            for(var key in $scope.type.properties) {
+                console.log(this.properties[key]['name']);
+                if (this.properties[key]['special'] == true) {
+                    obj[this.properties[key]['property-name']] = this.properties[key]['propertyValue']()
+                    console.log("message");
+                }
+            }
+            return obj;
         },
         css: function() {
             var style = this.style();
@@ -65,7 +79,6 @@ app
         delete $scope.type.properties[name]
     }
     $scope.availableProperties = function() {
-        console.log($scope.type.currentProperties());
         return   Properties.getAvailable($scope.type.currentProperties());
     }
     $scope.testIt = function() {

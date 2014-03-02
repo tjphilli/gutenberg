@@ -163,10 +163,17 @@ app.factory('Properties',['Property',
 	            ]
 	        },
 	        color: {
-			 	name: 'color',
+			 	name: 'Color',
 			 	'property-name' : 'color',
 	            value: '#333',
 	            type: 'color'
+	        },
+	        background: {
+			 	name: 'Page Color',
+			 	'property-name' : 'background-color',
+	            value: '#333',
+	            type: 'color',
+	            special: true
 	        }
 
 		};

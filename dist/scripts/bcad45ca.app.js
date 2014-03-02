@@ -16,10 +16,7 @@ var app = angular.module('gutenbergApp', [
     '$routeProvider',
     '$locationProvider',
     function ($routeProvider, $locationProvider) {
-      $routeProvider.when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainController'
-      }).otherwise({ redirectTo: '/' });
+      $routeProvider.when('/', { templateUrl: 'views/main.html' }).otherwise({ redirectTo: '/' });
       $locationProvider.html5Mode(false).hashPrefix('!');
     }
   ]);
