@@ -89,6 +89,21 @@ app.factory('Properties',['Property',
 	    			step: 100
 	    		}
 			},
+			spacing: {
+				name: 'Word Spacing',
+				'property-name':'word-spacing',
+				value: '0',
+				unit: 'px',
+				type: 'number',
+				inc: 5,
+				micro_inc: 1,
+				slider: {
+	    			floor: 0,
+	    			ceiling: 20,
+	    			precision: 0,
+	    			step: 1
+	    		}
+			},
 			alignment: {
 				name: 'Alignment',
 				'property-name':'text-align',
