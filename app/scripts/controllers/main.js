@@ -62,6 +62,7 @@ app
         }
 
     };
+    $scope.test = Properties.create("leading");
     $scope.testString = "something";
     $scope.type.properties["leading"] = Properties.create("leading");
     $scope.type.properties["size"] = Properties.create("size");
@@ -75,7 +76,7 @@ app
     $scope.availableProperties = function() {
         return   Properties.getAvailable($scope.type.currentProperties());
     }
-    $scope.test = function() {
+    $scope.testIt = function() {
         console.log('message');
     }
   }]);

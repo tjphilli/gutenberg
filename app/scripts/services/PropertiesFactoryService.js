@@ -17,7 +17,7 @@ app.factory('Properties',['Property',
 			},
 			columns: {
 				name: 'Columns',
-				'property-name':'columns',
+				'property-name':'-webkit-columns',
 				value: '1',
 				inc: 1,
 				micro_inc: 1,
@@ -64,7 +64,7 @@ app.factory('Properties',['Property',
 				inc: 5,
 				micro_inc: 1,
 				slider: {
-	    			floor: '-4',
+	    			floor: -4,
 	    			ceiling: 4,
 	    			precision: 0,
 	    			step: 1

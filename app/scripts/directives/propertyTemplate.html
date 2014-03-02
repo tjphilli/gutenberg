@@ -9,14 +9,7 @@
 		<button ng-click="property.decrease()">-</button>
 		<button ng-click="property.microIncrease()">+</button>
 		<button ng-click="property.microDecrease()">-</button>
-		<slider
-		    ng-model="property.value"
-		    floor="{{property.slider.floor}}"
-		    ceiling="{{property.slider.ceiling}}"
-		    precision="{{property.slider.precision}}"
-		    step="{{property.slider.step}}"
-	    >
-		</slider>
+		<div ng-transclude></div>
 	</div>
 	<div class="expander-trigger">
 		<span class="">+</span>

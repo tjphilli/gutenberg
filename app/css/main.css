@@ -100,10 +100,6 @@ slider span.bubble {
   padding-bottom: 5px;
 }
 
-.property-container slider {
-  display: none;
-}
-
 #clip {
   display: block;
   margin-top: 20px;
