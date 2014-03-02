@@ -85,16 +85,19 @@ app.factory('Properties',['Property',
 					{name: 'right'},
 					{name: 'center'},
 					{name: 'justify'}
-				],
-				unit:'',
-				inc: 5,
-				micro_inc: 1,
-				slider: {
-	    			floor: -4,
-	    			ceiling: 4,
-	    			precision: 0,
-	    			step: 1
-	    		}
+				]
+			},
+			decoration: {
+				name: 'Decoration',
+				'property-name':'text-decoration',
+				value: 'none',
+				type: 'options',
+				options: [
+					{name: 'none'},
+					{name: 'underline'},
+					{name: 'overline'},
+					{name: 'line-through'}
+				]
 			}
 		};
 		this.create = function(name) {
