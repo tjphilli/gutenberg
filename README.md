@@ -1,5 +1,7 @@
- gutenberg test
+Gutenberg
 =========
+
+Gutenberg is an experimental type tester to introduce
 
 ## Currently Supported Properties:
 - font-size
