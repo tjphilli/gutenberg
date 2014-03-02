@@ -75,6 +75,35 @@ app.factory('Properties',['Property',
 	    			step: 1
 	    		}
 			},
+			weight: {
+				name: 'Weight',
+				'property-name':'font-weight',
+				value: '500',
+				type: 'number',
+				inc: 100,
+				micro_inc: 100,
+				slider: {
+	    			floor: 100,
+	    			ceiling: 900,
+	    			precision: 0,
+	    			step: 100
+	    		}
+			},
+			spacing: {
+				name: 'Word Spacing',
+				'property-name':'word-spacing',
+				value: '0',
+				unit: 'px',
+				type: 'number',
+				inc: 5,
+				micro_inc: 1,
+				slider: {
+	    			floor: 0,
+	    			ceiling: 20,
+	    			precision: 0,
+	    			step: 1
+	    		}
+			},
 			alignment: {
 				name: 'Alignment',
 				'property-name':'text-align',
@@ -122,6 +151,17 @@ app.factory('Properties',['Property',
 	                {name: "Garamond", value: 'Garamond'}
 	            ]
 	        },
+	        style: {
+			 	name: 'Style',
+			 	'property-name' : 'font-style',
+	            value: 'italic',
+	            type: 'options',
+	            options: [
+	                {name: "italic", value:'italic'},
+	                {name: "oblique" , value: 'oblique'}, 
+	                {name: "none", value: 'none'}
+	            ]
+	        }
 
 		};
 		this.create = function(name) {
