@@ -13,6 +13,12 @@ app
             $scope.paras = data;
         });
     }
+    $scope.firstLetter = function(str) {
+        return str[0];
+    }
+    $scope.restOf = function(str) {
+        return str.substr(1);
+    }
     $scope.getText(2);
 
     $scope.obj = {test: "hello!"};
@@ -29,23 +35,28 @@ app
     $scope.type = {
         properties: {},
         style: function() {
-            console.log(this.properties);
             var obj = {};
             for(var key in this.properties) {
-                if (this.properties[key]['special'] != true) {
+                if (this.properties[key]['applies'] == undefined) {
                     obj[this.properties[key]['property-name']] = this.properties[key]['propertyValue']()
                 }
             }
             return obj
         },
         backgroundStyle: function() {
-            console.log(this);
             var obj = {};
             for(var key in $scope.type.properties) {
-                console.log(this.properties[key]['name']);
-                if (this.properties[key]['special'] == true) {
+                if (this.properties[key]['applies'] == 'background') {
                     obj[this.properties[key]['property-name']] = this.properties[key]['propertyValue']()
-                    console.log("message");
+                }
+            }
+            return obj;
+        },
+        dropcap: function() {
+            var obj = {};
+            if($scope.type.properties['dropcap']) {
+                for(var key in $scope.type.properties['dropcap'].properties) {
+                    obj[this.properties['dropcap']['properties'][key]['property-name']] = this.properties['dropcap']['properties'][key]['propertyValue']()
                 }
             }
             return obj;

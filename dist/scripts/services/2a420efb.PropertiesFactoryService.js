@@ -1,7 +1,7 @@
 // Service to store and retrieve application wide data
-app.factory('Properties',['Property',
-	function(Property){
-		var templates = {
+app.factory('Properties',['Property', 'Value',
+	function(Property, Value){
+		this.templates = {
 			leading: {
 				name: 'Leading',
 				'property-name':'line-height',
@@ -173,19 +173,44 @@ app.factory('Properties',['Property',
 			 	'property-name' : 'background-color',
 	            value: '#333',
 	            type: 'color',
-	            special: true
+	            applies: 'background'
+	        },
+	        shadow: {
+			 	name: 'Drop Shadow',
+			 	'property-name' : 'text-shadow',
+	            value: '3px 2px 4px #479',
+				type: 'shorthand',
+				values: [
+					new Value(2, 'length'),
+					new Value(2, 'length'),
+					new Value(4, 'length'),
+					new Value('#478', 'color')
+				]
+	        },
+			dropcap: {
+			 	name: 'Drop Cap',
+				type: 'compound',
+				properties: {},
+				add: ['size', 'color', 'style'],
+	            applies: 'dropcap'
 	        }
-
+		};
+		this.compoundTemplates = {
 		};
 		this.create = function(name) {
-			return new Property(templates[name]);
+			if(this.templates[name]['type'] === 'compound') {
+				for(i = 0; i < this.templates[name]['add'].length; i++) {
+					this.templates[name]['properties'][String(this.templates[name]['add'][i])]= this.create(this.templates[name]['add'][i]);
+				}
+			}
+			return new Property(this.templates[name]);
 		}
 		this.getAvailable = function(compObj) {
 			var obj = {};
-			for(var property in templates) {
+			for(var property in this.templates) {
 				if (property in compObj) {}
 				else {
-					obj[property] = templates[property]['name']
+					obj[property] = this.templates[property]['name']
 				}
 			}
 			return obj;

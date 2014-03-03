@@ -100,6 +100,10 @@ slider span.bubble {
   padding-bottom: 5px;
 }
 
+.property-container .property-container {
+  margin: 5px 20px;
+}
+
 #clip {
   display: block;
   margin-top: 20px;
@@ -320,6 +324,10 @@ a {
   text-decoration: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+}
+
+.dropcap {
+  float: left;
 }
 
 body {

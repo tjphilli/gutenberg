@@ -7,6 +7,13 @@ app.factory('Property', function(){
 		return this.name.replace(' ', '-').toLowerCase();
 	}
 	Property.prototype.propertyValue = function(){
+		var str = "";
+		if(this.type === 'shorthand') {
+			for(var i = 0; i < this.values.length;i++) {
+				str += (this.values[i]['value']() + " ");
+			}
+			return str;
+		}
 		return String( this.unit != null ? this.value + this.unit : this.value)
 	}
 	Property.prototype.increase = function(){
