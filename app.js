@@ -68,7 +68,7 @@ api.handle = function(req, res){
 		        res.json(text);
 		});
 	} else {
-		request({url:URL_BASE + "/" + num}, function(err, http_res, body) {
+		request({url:URL_BASE + "/" + num + "/plaintext"}, function(err, http_res, body) {
 			if(err) { console.log(err); return; }
 			  var data = body;
 		        var arr = data.split('\n\n')
@@ -77,37 +77,37 @@ api.handle = function(req, res){
 	}
 }
 
-app.get('/test/*/*/*', api.handle); // api/source/num/type
-app.get('/test/*/*', api.handle);
-app.get('/test/*', api.handle);
-app.get('/test/', api.handle);
+app.get('/api/*/*/*', api.handle); // api/source/num/type
+app.get('/api/*/*', api.handle);
+app.get('/api/*', api.handle);
+app.get('/api/', api.handle);
 
 
 
 
-var http = require("http");
+// var http = require("http");
 
-app.get('/api/:num', function(req, res){
-  	var num = req.params.num || 2
-	res.set('Access-Control-Allow-Origin', '*');
-  	res.set('Access-Control-Allow-Method', 'GET, POST');
-  	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
-	var options = {
-    	host: 'loripsum.net',
-    	path: '/api/'+ num +'/plaintext'
-	};
+// app.get('/api/:num', function(req, res){
+//   	var num = req.params.num || 2
+// 	res.set('Access-Control-Allow-Origin', '*');
+//   	res.set('Access-Control-Allow-Method', 'GET, POST');
+//   	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+// 	var options = {
+//     	host: 'loripsum.net',
+//     	path: '/api/'+ num +'/plaintext'
+// 	};
 
-	http.get(options, function (http_res) {
-	    var data = "";
-	    http_res.on("data", function (chunk) {
-	        data += chunk;
-	    });
-	    http_res.on("end", function () {
-	        var arr = data.split('\n\n')
-	        res.jsonp(arr);
-	    });
-	});
-});
+// 	http.get(options, function (http_res) {
+// 	    var data = "";
+// 	    http_res.on("data", function (chunk) {
+// 	        data += chunk;
+// 	    });
+// 	    http_res.on("end", function () {
+// 	        var arr = data.split('\n\n')
+// 	        res.jsonp(arr);
+// 	    });
+// 	});
+// });
 
 
 var port = process.env.PORT || 3000;
