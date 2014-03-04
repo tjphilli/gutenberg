@@ -32,3 +32,7 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 - text-rendering
 - webkit-font-smoothing
 - font-variant
+
+# Gutenberg API
+
+The api in its current form is very limited, but my plan is to create a flexible version which accepts requests: ` /api/{lorem/bacon/hipster}/{:number}/{long/short}/{html/json}

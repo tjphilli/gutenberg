@@ -1,6 +1,6 @@
 {
   "name": "gutenberg",
-  "version": "0.0.01",
+  "version": "0.0.1",
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
@@ -29,7 +29,8 @@
     "autoprefixer-stylus": "0.0.3",
     "express": "~3.4.8",
     "crawlme": "~0.0.6",
-    "prerender-node": "~0.1.18"
+    "prerender-node": "~0.1.18",
+    "request": "~2.34.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

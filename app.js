@@ -38,13 +38,59 @@ app.post('/download/', function(req, res, next){
 	console.log(req.body.test);
 	res.end();
 });
+var api = {};
+var request = require("request");
+api.handle = function(req, res){
+	var type = "lorem",
+		json = true,
+		num = 2,
+		URL_BASE = "http://loripsum.net/api";
+	for(var i = 0; i < req.params.length; i++) {
+		if(req.params[i] == 'bacon' || req.params[i] == 'lorem' || req.params[i] == 'hipster') {
+			type = req.params[i];
+		}
+		else if (!isNaN(req.params[i])) {
+			num = req.params[i];
+		}
+	}
+	// begin response blocks
+	res.set('Access-Control-Allow-Origin', '*');
+  	res.set('Access-Control-Allow-Method', 'GET, POST');
+  	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+	if (type == 'hipster') {
+		URL_BASE = 'http://hipsterjesus.com/api/'
+		request({url:URL_BASE, qs:{'paras': num, 'html': false}, json: true}, function(err, http_res, body) {
+			if(err) { console.log(err); return; }
+			  var data = body;
+		        var text = data.text.split('\n')
+		        // console.log(data.text)
+		        // console.log(http_res);
+		        res.json(text);
+		});
+	} else {
+		request({url:URL_BASE + "/" + num}, function(err, http_res, body) {
+			if(err) { console.log(err); return; }
+			  var data = body;
+		        var arr = data.split('\n\n')
+		        res.json(arr);
+		});
+	}
+}
 
+app.get('/test/*/*/*', api.handle); // api/source/num/type
+app.get('/test/*/*', api.handle);
+app.get('/test/*', api.handle);
+app.get('/test/', api.handle);
+
+
+
+
+var http = require("http");
 
 app.get('/api/:num', function(req, res){
-  	var http = require("http");
   	var num = req.params.num || 2
 	res.set('Access-Control-Allow-Origin', '*');
-  	res.set('Access-Control-Allow-MethodGenetic and Morphological Relationships Between Ungulatess', 'GET, POST');
+  	res.set('Access-Control-Allow-Method', 'GET, POST');
   	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
 	var options = {
     	host: 'loripsum.net',
@@ -52,24 +98,15 @@ app.get('/api/:num', function(req, res){
 	};
 
 	http.get(options, function (http_res) {
-	    // initialize the container for our data
 	    var data = "";
-
-	    // this event fires many times, each time collecting another piece of the response
 	    http_res.on("data", function (chunk) {
-	        // append this chunk to our growing `data` var
 	        data += chunk;
 	    });
-
-	    // this event fires *one* time, after all the `data` events/chunks have been gathered
 	    http_res.on("end", function () {
-	        // you can use res.send instead of console.log to output via express
-	        console.log(data);
 	        var arr = data.split('\n\n')
 	        res.jsonp(arr);
 	    });
 	});
-	// res.jsonp(["Lorem ipsum Sunt ea qui incididunt sed commodo et in dolore. Lorem ipsum Dolor amet aliquip amet proident aliqua et voluptate eiusmod.", "Gutnberg solor dat ip atsum dada mone."]);
 });
 
 
