@@ -67,6 +67,16 @@ api.handle = function(req, res){
 		        // console.log(http_res);
 		        res.json(text);
 		});
+	} else if (type == 'bacon') {
+		URL_BASE = 'http://baconipsum.com/api/?'
+		request({url:URL_BASE, qs:{'paras': num, 'type': 'meat'}, json: true}, function(err, http_res, body) {
+			if(err) { console.log(err); return; }
+			  var text = body;
+		        // var text = data.text.split('\n')
+		        // console.log(data.text)
+		        // console.log(http_res);
+		        res.send(text);
+		});
 	} else {
 		request({url:URL_BASE + "/" + num + "/plaintext"}, function(err, http_res, body) {
 			if(err) { console.log(err); return; }
