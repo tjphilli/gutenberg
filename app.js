@@ -59,7 +59,7 @@ api.handle = function(req, res){
   	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
 	if (type == 'hipster') {
 		URL_BASE = 'http://hipsterjesus.com/api/'
-		request({url:URL_BASE, qs:{'paras': num, 'html': false}, json: true}, function(err, http_res, body) {
+		request({url:URL_BASE, qs:{'paras': num, 'html': false, 'type': 'hipster-centric'}, json: true}, function(err, http_res, body) {
 			if(err) { console.log(err); return; }
 			  var data = body;
 		        var text = data.text.split('\n')
