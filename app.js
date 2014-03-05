@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var Chance = require('chance');
+var chance = new Chance();
 // var crawlme = require('crawlme');
 
 app.use(express.json()); 
@@ -40,53 +42,96 @@ app.post('/download/', function(req, res, next){
 });
 var api = {};
 var request = require("request");
+api.wrap = function(textArr, wraptag) {
+	var str = "";
+	for(var i = 0; i < textArr.length; i++) {
+		str += "<" +wraptag+">" + textArr[i]+ "</" +wraptag+">"
+	}
+	return str;
+}
 api.handle = function(req, res){
 	var type = "lorem",
 		json = true,
 		num = 2,
-		URL_BASE = "http://loripsum.net/api";
+		req_num = 2,
+		URL_BASE = "http://loripsum.net/api",
+		format = "json",
+		list = false;
 	for(var i = 0; i < req.params.length; i++) {
-		if(req.params[i] == 'bacon' || req.params[i] == 'lorem' || req.params[i] == 'hipster') {
+		if(req.params[i] == 'bacon' || req.params[i] == 'lorem' || req.params[i] == 'hipster' || req.params[i] == 'lorem2' || req.params[i] == 'random') {
 			type = req.params[i];
-		}
-		else if (!isNaN(req.params[i])) {
-			num = req.params[i];
+		} else if (!isNaN(req.params[i])) {
+			req_num = num = req.params[i];
+		} else if (req.params[i] === "html") {
+			format = "html";
+		} else if (req.params[i] === "list") {
+			list = true;
 		}
 	}
 	// begin response blocks
 	res.set('Access-Control-Allow-Origin', '*');
   	res.set('Access-Control-Allow-Method', 'GET, POST');
   	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+  	function sendResponse (text) {
+  		var str = "";
+  		if(list) {
+	  		str = text[0].match( /[^\.!\?]+[\.!\?]+/g );
+	  		if(str.length < req_num) {
+	  			str = str.concat(text[1].match( /[^\.!\?]+[\.!\?]+/g ))	;
+	  		}
+	  		str.splice(req_num);
+	  		text = str;
+	  	}
+  		if (format === "html") {
+  			list ? text = api.wrap(text, "li") : text = api.wrap(text, "p")
+  			res.send(text);
+  		}
+  		else {
+  			res.json(text);
+  		}
+  	}
+  	var text = [];
+  	if(list) {
+  		num = 3;
+  	}
 	if (type == 'hipster') {
 		URL_BASE = 'http://hipsterjesus.com/api/'
 		request({url:URL_BASE, qs:{'paras': num, 'html': false, 'type': 'hipster-centric'}, json: true}, function(err, http_res, body) {
 			if(err) { console.log(err); return; }
-			  var data = body;
-		        var text = data.text.split('\n')
-		        // console.log(data.text)
-		        // console.log(http_res);
-		        res.json(text);
+		        text = body.text.split('\n')
+		        sendResponse(text);
 		});
 	} else if (type == 'bacon') {
 		URL_BASE = 'http://baconipsum.com/api/?'
 		request({url:URL_BASE, qs:{'paras': num, 'type': 'meat'}, json: true}, function(err, http_res, body) {
 			if(err) { console.log(err); return; }
-			  var text = body;
-		        // var text = data.text.split('\n')
-		        // console.log(data.text)
-		        // console.log(http_res);
-		        res.send(text);
+			  	text = body;
+			  	sendResponse(text);
+		});
+	} else if (type == 'random') {
+			for(var i = 0; i < num; i++) {
+			  	text.push(chance.paragraph());
+			 }
+		  	sendResponse(text);
+	} else if (type == 'lorem2') {
+		URL_BASE = 'http://www.randomtext.me/api/lorem/p-'
+		request({url:URL_BASE + num, json: true}, function(err, http_res, body) {
+			if(err) { console.log(err); return; }
+			  	text = body.text_out;
+			  	sendResponse(text);
 		});
 	} else {
 		request({url:URL_BASE + "/" + num + "/plaintext"}, function(err, http_res, body) {
-			if(err) { console.log(err); return; }
-			  var data = body;
-		        var arr = data.split('\n\n')
-		        res.json(arr);
+			if(err) { console.log(err); return; };
+		        text = body.split('\n\n')
+		        text.pop();
+		        sendResponse(text);
 		});
 	}
+    
 }
 
+app.get('/api/*/*/*/*', api.handle); 
 app.get('/api/*/*/*', api.handle); // api/source/num/type
 app.get('/api/*/*', api.handle);
 app.get('/api/*', api.handle);

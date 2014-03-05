@@ -30,7 +30,8 @@
     "express": "~3.4.8",
     "crawlme": "~0.0.6",
     "prerender-node": "~0.1.18",
-    "request": "~2.34.0"
+    "request": "~2.34.0",
+    "chance": "~0.5.4"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

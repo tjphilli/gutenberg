@@ -1,15 +1,14 @@
 'use strict';
 
 app
-  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Property', 'Properties', function($scope, $document, PlaceholderTextService, DownloadService, Property, Properties) {
-	
+  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Property', 'Properties', '$routeParams', function($scope, $document, PlaceholderTextService, DownloadService, Property, Properties, $routeParams) {
     $scope.controls = false;
     $scope.toggleControls = function() {
-    	$scope.controls = !$scope.controls;
+        $scope.controls = !$scope.controls;
     }
     $scope.paras = "";
-    $scope.getText =  function(num) {
-        PlaceholderTextService.getLocalText(num).success(function(data){
+    $scope.getText =  function(num, type) {
+        PlaceholderTextService.getLocalText(num, type).success(function(data){
             $scope.paras = data;
         });
     }
@@ -19,7 +18,7 @@ app
     $scope.restOf = function(str) {
         return str.substr(1);
     }
-    $scope.getText(2);
+    $scope.getText(2, $routeParams.type);
 
     $scope.obj = {test: "hello!"};
     $scope.getDownload =  function(obj) {
