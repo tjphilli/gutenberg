@@ -20,7 +20,7 @@
 <div class="styles" ng-class="{'is-hiding': controls}">
 	<div class="add-property expander" expander="">
 		<button class="expander-trigger"><i class="icon-plus2"></i> Property</button>
-		<ul class="expander-target">
+		<ul class="expander-target properties-menu">
 			<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 		</ul>
 	</div>
