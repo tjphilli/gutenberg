@@ -10,7 +10,14 @@
 			display inline-block 
 			cursor pointer
 			transition all 0.3s
-	.expander-target:not(.is-hiding) + .expander-trigger
+	.expander-target:not(.is-collapsed) + .expander-trigger
 		[class^=icon]
 			transform rotate(180deg)
-
+.expander-target
+	overflow hidden !important
+	max-height 800px
+	transition all 0.3s
+.is-collapsed
+	max-height 0 !important
+	// visibility hidden
+	

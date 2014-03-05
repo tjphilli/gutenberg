@@ -97,7 +97,6 @@ slider span.bubble {
 
 .property-container .controls {
   background-color: #f8f8f8;
-  padding-bottom: 5px;
 }
 
 .property-container .property-container {
@@ -208,10 +207,21 @@ slider span.bubble {
   transition: all 0.3s;
 }
 
-.property-container .expander-target:not(.is-hiding) + .expander-trigger [class^=icon] {
+.property-container .expander-target:not(.is-collapsed) + .expander-trigger [class^=icon] {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+.expander-target {
+  overflow: hidden !important;
+  max-height: 800px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.is-collapsed {
+  max-height: 0 !important;
 }
 
 .colorpicker-visible,
