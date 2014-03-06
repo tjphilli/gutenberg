@@ -21,13 +21,11 @@ app
     $scope.getText(2, $routeParams.type);
 
     $scope.obj = {test: "hello!"};
-    $scope.getDownload =  function(obj) {
-        DownloadService.getDownload(obj).success(function(data){
-            // console.log(data);
-        });
-    }
-    $scope.getDl =  function(num) {
-        DownloadService.getDownload(num).success(function(data){
+   
+
+    $scope.postTest = function() {
+        DownloadService.getDownload({markup: $scope.paras, css: $scope.type.css()}).success(function(response){
+            window.location = "dl/" + response.file;
         });
     }
 

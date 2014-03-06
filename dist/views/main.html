@@ -1,5 +1,5 @@
 <div class="toggle-controls" keypress="">
-	<button ng-click="toggleControls()">Toggle</button>
+	<button ng-click="toggleControls()" class="button-reset"><i class="icon-settings"></i></button>
 </div>
 <div class="container">
 	<div class="set-text-container" style="" ng-style="type.style()" dropcap="">
@@ -17,55 +17,61 @@
 		</span>
 	</div>
 </div>
-<div class="styles" ng-class="{'is-hiding': controls}">
-	<div class="add-property expander" expander="">
-		<button class="expander-trigger"><i class="icon-plus2"></i> Property</button>
-		<ul class="expander-target properties-menu">
-			<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
-		</ul>
-	</div>
-	<div ng-repeat="(key,property) in type.properties">
-		<div property="property" name="key" remove="removeProperty">
-			<div ng-switch="" on="property.type">
-				<div ng-switch-when="number">
-					<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
-				</div>
-				<div ng-switch-when="options">
-					<select name="" id="" ng-model="property.value" ng-options="o.name as o.name for o in property.options"></select>
-				</div>
-				<div ng-switch-when="color">
-					
-					<input colorpicker="" type="text" ng-model="property.value">
-				</div>
-				<div ng-switch-when="shorthand">
-					<div ng-repeat="value in property.values | orderBy: '-type'">
-						<span ng-switch="" on="value.type">
-							<div ng-switch-when="color">
-								<label for="{{$index}}">Color</label>
-								<input id="{{$index}}" colorpicker="" type="text" ng-model="value.init">
-							</div>
-							<div ng-switch-default="">
-								<ng-include src="'scripts/templates/nestedSliderTemplate.html'"></ng-include>
-							</div>
-						</span>
+<div class="inspector" ng-class="{'is-off-canvas': controls}">
+	<div class="styles">
+		<div class="add-property expander" expander="">
+			<button class="expander-trigger"><i class="icon-plus2"></i> Property</button>
+			<ul class="expander-target properties-menu">
+				<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
+			</ul>
+		</div>
+		<div ng-repeat="(key,property) in type.properties">
+			<div property="property" name="key" remove="removeProperty">
+				<div ng-switch="" on="property.type">
+					<div ng-switch-when="number">
+						<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
 					</div>
-				</div>
-				<div ng-switch-when="compound">
-						<div ng-repeat="property in property.properties | orderBy: '-type'">
-							<div property="property">
-								<div ng-switch="" on="property.type">
-									<div ng-switch-when="number">
-										<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
-									</div>
-									<div ng-switch-when="color">				
-										<input colorpicker="" type="text" ng-model="property.value">
+					<div ng-switch-when="options">
+						<select name="" id="" ng-model="property.value" ng-options="o.name as o.name for o in property.options"></select>
+					</div>
+					<div ng-switch-when="color">
+						
+						<input colorpicker="" type="text" ng-model="property.value"> 
+					</div>
+					<div ng-switch-when="shorthand">
+						<div ng-repeat="value in property.values | orderBy: '-type'">
+							<span ng-switch="" on="value.type">
+								<div ng-switch-when="color">
+									<label for="{{$index}}">Color</label>
+									<input id="{{$index}}" colorpicker="" type="text" ng-model="value.init">
+								</div>
+								<div ng-switch-default="">
+									<ng-include src="'scripts/templates/nestedSliderTemplate.html'"></ng-include>
+								</div>
+							</span>
+						</div>
+					</div>
+					<div ng-switch-when="compound">
+							<div ng-repeat="property in property.properties | orderBy: '-type'">
+								<div property="property">
+									<div ng-switch="" on="property.type">
+										<div ng-switch-when="number">
+											<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+										</div>
+										<div ng-switch-when="color">				
+											<input colorpicker="" type="text" ng-model="property.value">
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<a href="" id="clip" clip-copy="type.css()" clip-click="doSomething()" hoverhover=""><i class="icon-copy"></i>Copy CSS</a>
+	<div class="actions">
+		<a href="" id="clip" class="action" clip-copy="type.css()" clip-click="doSomething()" hoverhover=""><i class="icon-copy"></i>Copy CSS</a>
+		<a href="" ng-click="postTest()" class="action download"><i class="icon-in"></i></a>
+		<a href="" ng-click="postTest()" class="action show-css"><i class="icon-code2"></i></a>
+	</div>
 </div>

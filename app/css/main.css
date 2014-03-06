@@ -403,6 +403,31 @@ a {
   float: left;
 }
 
+.button-reset {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  padding: 0 13px;
+  line-height: 40px;
+  color: #666;
+  border: none;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+
+.button-reset:hover {
+  opacity: 1;
+  -ms-filter: none;
+  -webkit-filter: none;
+  filter: none;
+}
+
 body {
   color: #333;
   font-family: 'Helvetica Neue';
