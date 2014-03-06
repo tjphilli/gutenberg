@@ -3,8 +3,12 @@
 app
   .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Property', 'Properties', '$routeParams', function($scope, $document, PlaceholderTextService, DownloadService, Property, Properties, $routeParams) {
     $scope.controls = false;
+    $scope.live_code = false;
     $scope.toggleControls = function() {
         $scope.controls = !$scope.controls;
+    }
+    $scope.toggleLiveCode = function() {
+        $scope.live_code = !$scope.live_code;
     }
     $scope.paras = "";
     $scope.getText =  function(num, type) {
@@ -58,11 +62,14 @@ app
             }
             return obj;
         },
-        css: function() {
+        css: function(html) {
             var style = this.style();
             var str = "";
             for(var property in style) {
                 str += property + ": "+ style[property] + ";\n"  ;
+            }
+            if(html) {
+                str = str.replace(/\n/g, "<br>")
             }
             return str;
         },

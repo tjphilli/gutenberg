@@ -10,12 +10,13 @@
 		transition all 0.3s
 		outline none
 		i
-			display block
+			display inline-block
 			transition all 0.3s
 		&:hover
 			background-color darken(#ccc, 10%)
+		&.is-triggered
 			i
-				transform rotateZ(90deg)
+				transform rotateZ(45deg)
 	ul
 		margin 0 20px 0 0
 		padding 0

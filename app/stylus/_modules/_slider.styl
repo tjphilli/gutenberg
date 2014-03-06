@@ -2,15 +2,16 @@ slider
 	display block
 	position relative
 	height 20px
-	width 100%
+	width 90%
+	margin 0 auto
 	// margin 50px 0 50px 100px
 	vertical-align middle
 	span.bar
-		height 50%
-		z-index 1000
-		background #eee
+		height 25%
+		z-index 999
+		background #ccc
 		left 0
-		top 25%
+		top 50%
 		cursor pointer
 		&.selection 
 			background #0a0
@@ -20,14 +21,19 @@ slider
 			background #a00
 			opacity    0.5
 	span.pointer 
-		// z-index 1000 !important
+		position absolute
+		// z-index 2 !important
 		display block
 		cursor pointer
-		width 15px
-		border-radius 7px
-		top 0
+		width 12px
+		height 12px !important
+		border-radius 6px
+		top 31%
 		bottom 0
-		background-color #00a
+		background-color #fff
+		border 1px solid #ddd
+		&:hover
+			background-color #eee
 	span.bubble
 		font-size 0.7em
 		line-height 1.4em
