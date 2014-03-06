@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'gutenberg';
-	src:url('fonts/gutenberg.eot?cgwloi');
-	src:url('fonts/gutenberg.eot?#iefixcgwloi') format('embedded-opentype'),
-		url('fonts/gutenberg.woff?cgwloi') format('woff'),
-		url('fonts/gutenberg.ttf?cgwloi') format('truetype'),
-		url('fonts/gutenberg.svg?cgwloi#gutenberg') format('svg');
+	src:url('fonts/gutenberg.eot?qpzg05');
+	src:url('fonts/gutenberg.eot?#iefixqpzg05') format('embedded-opentype'),
+		url('fonts/gutenberg.woff?qpzg05') format('woff'),
+		url('fonts/gutenberg.ttf?qpzg05') format('truetype'),
+		url('fonts/gutenberg.svg?qpzg05#gutenberg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -38,6 +38,24 @@
 .icon-eye:before {
 	content: "\e61a";
 }
+.icon-github:before {
+	content: "\e61d";
+}
+.icon-twitter:before {
+	content: "\e61e";
+}
+.icon-twitter2:before {
+	content: "\e61f";
+}
+.icon-github2:before {
+	content: "\e620";
+}
+.icon-download:before {
+	content: "\e62b";
+}
+.icon-checkmark:before {
+	content: "\e632";
+}
 .icon-align-left:before {
 	content: "\e604";
 }
@@ -61,6 +79,27 @@
 }
 .icon-align-justify:before {
 	content: "\e60b";
+}
+.icon-code:before {
+	content: "\e62c";
+}
+.icon-cloud-download:before {
+	content: "\e62d";
+}
+.icon-github-sign:before {
+	content: "\e62e";
+}
+.icon-twitter-sign:before {
+	content: "\e62f";
+}
+.icon-eye-close:before {
+	content: "\e630";
+}
+.icon-eye-open:before {
+	content: "\e631";
+}
+.icon-edit:before {
+	content: "\e633";
 }
 .icon-paragraph-left:before {
 	content: "\e60c";
@@ -109,4 +148,221 @@
 }
 .icon-copy3:before {
 	content: "\e61c";
+}
+.icon-code2:before {
+	content: "\e621";
+}
+.icon-settings:before {
+	content: "\e622";
+}
+.icon-equalizer:before {
+	content: "\e623";
+}
+.icon-download2:before {
+	content: "\e624";
+}
+.icon-cloud-download2:before {
+	content: "\e625";
+}
+.icon-twitter3:before {
+	content: "\e626";
+}
+.icon-github3:before {
+	content: "\e627";
+}
+.icon-github4:before {
+	content: "\e628";
+}
+.icon-twitter4:before {
+	content: "\e629";
+}
+.icon-in:before {
+	content: "\e62a";
+}
+.icon-compose:before {
+	content: "\e634";
+}
+@font-face {
+	font-family: 'gutenberg';
+	src:url('fonts/gutenberg.eot?qpzg05');
+	src:url('fonts/gutenberg.eot?#iefixqpzg05') format('embedded-opentype'),
+		url('fonts/gutenberg.woff?qpzg05') format('woff'),
+		url('fonts/gutenberg.ttf?qpzg05') format('truetype'),
+		url('fonts/gutenberg.svg?qpzg05#gutenberg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'gutenberg';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down:before {
+	content: "\e600";
+}
+.icon-arrow-up:before {
+	content: "\e601";
+}
+.icon-plus:before {
+	content: "\e602";
+}
+.icon-cross:before {
+	content: "\e603";
+}
+.icon-eye:before {
+	content: "\e61a";
+}
+.icon-github:before {
+	content: "\e61d";
+}
+.icon-twitter:before {
+	content: "\e61e";
+}
+.icon-twitter2:before {
+	content: "\e61f";
+}
+.icon-github2:before {
+	content: "\e620";
+}
+.icon-download:before {
+	content: "\e62b";
+}
+.icon-checkmark:before {
+	content: "\e632";
+}
+.icon-align-left:before {
+	content: "\e604";
+}
+.icon-align-center:before {
+	content: "\e605";
+}
+.icon-align-right:before {
+	content: "\e606";
+}
+.icon-text-height:before {
+	content: "\e607";
+}
+.icon-text-width:before {
+	content: "\e608";
+}
+.icon-bold:before {
+	content: "\e609";
+}
+.icon-italic:before {
+	content: "\e60a";
+}
+.icon-align-justify:before {
+	content: "\e60b";
+}
+.icon-code:before {
+	content: "\e62c";
+}
+.icon-cloud-download:before {
+	content: "\e62d";
+}
+.icon-github-sign:before {
+	content: "\e62e";
+}
+.icon-twitter-sign:before {
+	content: "\e62f";
+}
+.icon-eye-close:before {
+	content: "\e630";
+}
+.icon-eye-open:before {
+	content: "\e631";
+}
+.icon-edit:before {
+	content: "\e633";
+}
+.icon-paragraph-left:before {
+	content: "\e60c";
+}
+.icon-paragraph-center:before {
+	content: "\e60d";
+}
+.icon-paragraph-right:before {
+	content: "\e60e";
+}
+.icon-paragraph-justify:before {
+	content: "\e60f";
+}
+.icon-paragraph-left2:before {
+	content: "\e610";
+}
+.icon-paragraph-center2:before {
+	content: "\e611";
+}
+.icon-paragraph-right2:before {
+	content: "\e612";
+}
+.icon-paragraph-justify2:before {
+	content: "\e613";
+}
+.icon-file-css:before {
+	content: "\e614";
+}
+.icon-file-xml:before {
+	content: "\e615";
+}
+.icon-plus2:before {
+	content: "\e617";
+}
+.icon-minus:before {
+	content: "\e618";
+}
+.icon-plus3:before {
+	content: "\e619";
+}
+.icon-copy:before {
+	content: "\e616";
+}
+.icon-copy2:before {
+	content: "\e61b";
+}
+.icon-copy3:before {
+	content: "\e61c";
+}
+.icon-code2:before {
+	content: "\e621";
+}
+.icon-settings:before {
+	content: "\e622";
+}
+.icon-equalizer:before {
+	content: "\e623";
+}
+.icon-download2:before {
+	content: "\e624";
+}
+.icon-cloud-download2:before {
+	content: "\e625";
+}
+.icon-twitter3:before {
+	content: "\e626";
+}
+.icon-github3:before {
+	content: "\e627";
+}
+.icon-github4:before {
+	content: "\e628";
+}
+.icon-twitter4:before {
+	content: "\e629";
+}
+.icon-in:before {
+	content: "\e62a";
+}
+.icon-compose:before {
+	content: "\e634";
 }

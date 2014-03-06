@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var Chance = require('chance');
 var chance = new Chance();
+var fs = require('fs');
+var request = require("request");
+var jade = require('jade');
 // var crawlme = require('crawlme');
 
 app.use(express.json()); 
@@ -9,6 +12,8 @@ app.use(express.urlencoded());
 // app.use(crawlme());
 
 app.use(require('prerender-node').set('prerenderToken', 'j3B4cKcyHoaveNZDVBGG'));
+
+request('http://gutenberg.io/api/bacon/2/html').pipe(fs.createWriteStream('temp.html'))
 
 
 app.configure('production', function(){
@@ -21,27 +26,24 @@ app.configure('development', function(){
 	console.log("development used");
 })
 
-app.get('/dl/:id', function(req, res, next){
-	var id = req.params.id;
-    res.setHeader('Content-disposition', 'attachment; filename=theDocument.txt');
-	res.setHeader('Content-type', 'text/plain');
-	res.charset = 'UTF-8';
-	res.write("Hello, world" + id);
-	res.end();
+app.get('/dl/:file', function(req, res, next){
+	var file = req.params.file;
+	res.download('dl/' + file, 'bacon.html')
 });
 
-app.post('/download/', function(req, res, next){
-	var test = req.body.test;
-    res.setHeader('Content-disposition', 'attachment; filename=theDocument.txt');
-
-	res.setHeader('Content-type', 'text/html');
-	res.charset = 'UTF-8';
-	res.write("Hello, world" + test);
-	console.log(req.body.test);
-	res.end();
+app.post('/dl/', function(req, res, next){
+	var data = {
+		markup: req.body.markup,
+		css: req.body.css
+	} 
+	var file_name = chance.string({pool: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', length: 10});
+	// file_name = file_name;
+	var html = jade.renderFile('lib/templates/download.jade', data);
+	fs.writeFile('dl/'+ file_name, html);
+	res.contentType('json');
+	res.send({ file: file_name });
 });
 var api = {};
-var request = require("request");
 api.wrap = function(textArr, wraptag) {
 	var str = "";
 	for(var i = 0; i < textArr.length; i++) {

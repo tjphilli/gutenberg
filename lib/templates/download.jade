@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    title Gutenberg
+    style(type='text/css').
+      .container {
+        width: 600px;
+        margin: 200px auto 0;
+      }
+      body {
+        #{css}
+      }
+  body
+    .container
+      - each para in markup
+        p= para

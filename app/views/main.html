@@ -35,7 +35,7 @@
 				</div>
 				<div ng-switch-when="color">
 					
-					<input colorpicker type="text" ng-model="property.value" />
+					<input colorpicker type="text" ng-model="property.value" /> 
 				</div>
 				<div ng-switch-when="shorthand">
 					<div ng-repeat="value in property.values | orderBy: '-type'">
@@ -67,5 +67,8 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="actions">
 	<a href="" id="clip" clip-copy="type.css()" clip-click="doSomething()" hoverhover><i class="icon-copy"></i>Copy CSS</a>
+	<a href="" ng-click="postTest()"><i class="icon-in"></i></a>
 </div>

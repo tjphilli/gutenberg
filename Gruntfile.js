@@ -29,27 +29,66 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
-      coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-        tasks: ['coffee:dist']
+      js: {
+        files: ['app.js', '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js'],
+        options:  {
+          livereload: true
+        }
       },
       styles: {
         files: ['<%= yeoman.app %>/stylus/{,*/}*.styl'],
-        tasks: ['copy:styles', 'autoprefixer', 'stylus']
+        tasks: ['copy:styles', 'autoprefixer', 'stylus'],
+        options:  {
+          livereload: true
+        }
       },
-      livereload: {
-        options: {
-          livereload: LIVERELOAD_PORT
-        },
-        files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '<%= yeoman.app %>/views/*.html',
-          '<%= yeoman.app %>/css/{,*/}*.css',
-          '.tmp/css/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
+      html: {
+        files: ['<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/views/*.html'],
+          options: {
+            livereload: true
+          },
       }
+      // livereload: {
+      //   options: {
+      //     livereload: LIVERELOAD_PORT
+      //   },
+      //   files: [
+          
+      //     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+      //   ]
+      // }
+    },
+    nodemon: {
+        dev: {
+            script: 'app.js',
+            options: {
+                args: [],
+                ignore: ['app/**'],
+                ext: 'js',
+                nodeArgs: ['--debug'],
+                delayTime: 1,
+                env: {
+                    PORT: 3000
+                },
+                cwd: __dirname
+            }
+        }
+    },
+    concurrent: {
+        tasks: ['nodemon', 'watch'],
+        options: {
+            logConcurrentOutput: true
+        },
+        server: [
+        'copy:styles'
+        ],
+        dist: [
+          'copy:styles',
+          'imagemin',
+          'svgmin',
+          'htmlmin'
+        ]
     },
     ngconstant: {
       options: {
@@ -96,36 +135,36 @@ module.exports = function (grunt) {
         }]
       }
     },
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost'
-      },
-      livereload: {
-        options: {
-          middleware: function (connect) {
-            return [
-              lrSnippet,
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, yeomanConfig.app)
-            ];
-          }
-        }
-      },
-      dist: {
-        options: {
-          middleware: function (connect) {
-            return [
-              mountFolder(connect, yeomanConfig.dist)
-            ];
-          }
-        }
-      }
-    },
+    // connect: {
+    //   options: {
+    //     port: 9000,
+    //     // Change this to '0.0.0.0' to access the server from outside.
+    //     hostname: 'localhost'
+    //   },
+    //   livereload: {
+    //     options: {
+    //       middleware: function (connect) {
+    //         return [
+    //           lrSnippet,
+    //           mountFolder(connect, '.tmp'),
+    //           mountFolder(connect, yeomanConfig.app)
+    //         ];
+    //       }
+    //     }
+    //   },
+    //   dist: {
+    //     options: {
+    //       middleware: function (connect) {
+    //         return [
+    //           mountFolder(connect, yeomanConfig.dist)
+    //         ];
+    //       }
+    //     }
+    //   }
+    // },
     open: {
       server: {
-        url: 'http://localhost:<%= connect.options.port %>'
+        url: 'http://localhost:3000'
       }
     },
     clean: {
@@ -286,19 +325,6 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
-    concurrent: {
-      server: [
-        'coffee:dist',
-        'copy:styles'
-      ],
-      dist: [
-        'coffee',
-        'copy:styles',
-        'imagemin',
-        'svgmin',
-        'htmlmin'
-      ]
-    },
     cdnify: {
       dist: {
         html: ['<%= yeoman.dist %>/*.html']
@@ -324,6 +350,8 @@ module.exports = function (grunt) {
       }
     }
   });
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
 
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
@@ -333,12 +361,11 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'ngconstant:production',
-      'concurrent:server',
       'stylus',
       'autoprefixer',
-      'connect:livereload',
+      // 'connect:livereload',
       'open',
-      'watch'
+      'concurrent'
     ]);
   });
 
