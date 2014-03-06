@@ -1,3 +1,34 @@
 .actions
-	width 200px
-
+	position absolute
+	bottom 0
+	padding-top 120px
+	padding-bottom: 30px
+	background linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 60%)
+	right 10px
+	width 300px
+	.action
+		float left
+	#clip
+		width 39%
+	.download, .show-css
+		margin-left 10px
+		width 20%
+		line-height 60px
+		text-align center
+		border-radius 3px
+		transition all 0.3s
+	.download
+		background-color b = tint(cornflowerblue, 50%)
+		&:hover 
+			background-color shade(b, 10%)
+			& [class*='icon']
+				transform translateY(3px)
+		[class*='icon']
+			display inline-block
+			transition all 0.3s;
+		&:active [class*='icon']
+			transform translateY(10px)
+	.show-css
+		background-color c = tint(orange, 50%)
+		&:hover 
+			background-color shade(c, 10%);

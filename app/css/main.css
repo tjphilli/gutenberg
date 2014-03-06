@@ -105,9 +105,7 @@ slider span.bubble {
 
 #clip {
   display: block;
-  margin-top: 20px;
-  margin-right: 10px;
-  padding: 10px 20px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   font-weight: 300;
@@ -329,7 +327,68 @@ colorpicker-preview {
 }
 
 .actions {
-  width: 200px;
+  position: absolute;
+  bottom: 0;
+  padding-top: 120px;
+  padding-bottom: 30px;
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, #fff 60%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(#fff));
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 60%);
+  right: 10px;
+  width: 300px;
+}
+
+.actions .action {
+  float: left;
+}
+
+.actions #clip {
+  width: 39%;
+}
+
+.actions .download,
+.actions .show-css {
+  margin-left: 10px;
+  width: 20%;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.actions .download {
+  background-color: #b1caf6;
+}
+
+.actions .download:hover {
+  background-color: #9fb5dd;
+}
+
+.actions .download:hover [class*='icon'] {
+  -webkit-transform: translateY(3px);
+  -ms-transform: translateY(3px);
+  transform: translateY(3px);
+}
+
+.actions .download [class*='icon'] {
+  display: inline-block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.actions .download:active [class*='icon'] {
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.actions .show-css {
+  background-color: #ffd27f;
+}
+
+.actions .show-css:hover {
+  background-color: #e5bd72;
 }
 
 a {
@@ -375,6 +434,21 @@ body {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
+}
+
+.is-off-canvas {
+  -webkit-transform: translateX(300px);
+  -ms-transform: translateX(300px);
+  transform: translateX(300px);
+}
+
+.inspector {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 footer {
