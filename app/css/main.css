@@ -77,6 +77,12 @@ slider span.bubble {
   cursor: pointer;
 }
 
+.undo {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
 .property-container {
   color: #444;
   margin-top: 10px;
@@ -435,12 +441,15 @@ colorpicker-preview {
 }
 
 .live-code.is-collapsed {
+  height: 0;
+  overflow: hidden;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -webkit-transform: translateY(200px);
   -ms-transform: translateY(200px);
   transform: translateY(200px);
+  display: none;
 }
 
 a {
@@ -513,10 +522,13 @@ body {
   filter: alpha(opacity=0);
 }
 
+.outer-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
 .is-off-canvas {
-  -webkit-transform: translateX(350px);
-  -ms-transform: translateX(350px);
-  transform: translateX(350px);
+  margin-right: -350px;
 }
 
 .inspector {

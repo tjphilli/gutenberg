@@ -32,7 +32,7 @@ app
             window.location = "dl/" + response.file;
         });
     }
-
+    var caretaker = [];
     $scope.type = {
         properties: {},
         style: function() {
@@ -80,9 +80,28 @@ app
             }
             return obj;
 
+        },
+        caretaker: function() {
+            return caretaker;
+        },
+        caretadker: function() {
+            return this.mementos;
+            console.log("message");
+        },
+        restore: function(index) {
+            console.log(caretaker);
+            this.properties = caretaker[0].properties;
+            this.dropcap = caretaker[0].dropcap;
+        },
+        saveMemento: function(){
+            // console.log("message");
+            var obj = {index: 1, 'properties': this.properties, 'dropcap': this.dropcap}
+            caretaker.unshift(obj);
         }
 
     };
+
+    // $scope.caretaker = [];
     $scope.type.properties["leading"] = Properties.create("leading");
     $scope.type.properties["typeface"] = Properties.create("typeface");
     $scope.type.properties["size"] = Properties.create("size");
