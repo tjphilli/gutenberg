@@ -1,7 +1,13 @@
+[contenteditable=true]:hover
+	outline 1px solid #eee
+	outline-offset 8px
 .set-text-container
 	margin 200px auto 0
 	width 600px
 	font-family 'Times New Roman'
+	&[contenteditable=true]:focus
+		outline 1px solid #bbb
+		outline-offset 8px
 	p
 		font-size 1em
 		transition all 0.3s

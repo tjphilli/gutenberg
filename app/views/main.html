@@ -12,7 +12,30 @@
 </div>
 <div class="outer-wrap">
 	<div class="container">
-		<div class="set-text-container" style="" ng-style="type.style()" dropcap>
+		<div class="edit-content">
+			<span>Give me</span>
+			<select name="" id="" ng-model="placeholder.number">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+			</select>
+			<select name="" id="" ng-model="placeholder.type">
+				<option value="list">list-items</option>
+				<option value="paras">paragraphs</option>
+			</select>
+			<span>of</span>
+			<select name="" id="" ng-model="placeholder.source">
+				<option value="lorem">lorem</option>
+				<option value="hipster">hipster</option>
+				<option value="bacon">bacon</option>
+				<option value="random">random</option>
+			</select>
+		</div>
+		<div class="set-text-container" contenteditable="true" spellcheck="false" style="" ng-style="type.style()" dropcap>
 			<!-- <p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec faucibus est. Cras a luctus felis. Donec ornare massa lorem, eget blandit erat semper ac. Sed ullamcorper mauris quis tellus venenatis euismod. Duis luctus venenatis sapien, non tristique magna ultricies vel. Etiam vulputate vitae metus eget viverra. In hac habitasse platea dictumst.
 			</p>

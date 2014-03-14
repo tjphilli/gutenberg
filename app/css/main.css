@@ -1,7 +1,17 @@
+[contenteditable=true]:hover {
+  outline: 1px solid #eee;
+  outline-offset: 8px;
+}
+
 .set-text-container {
   margin: 200px auto 0;
   width: 600px;
   font-family: 'Times New Roman';
+}
+
+.set-text-container[contenteditable=true]:focus {
+  outline: 1px solid #bbb;
+  outline-offset: 8px;
 }
 
 .set-text-container p {
@@ -450,6 +460,13 @@ colorpicker-preview {
   -ms-transform: translateY(200px);
   transform: translateY(200px);
   display: none;
+}
+
+.edit-content {
+  position: absolute;
+  left: 37%;
+  top: 150px;
+  font-family: 'Helvetica Neue',sans-serif;
 }
 
 a {
