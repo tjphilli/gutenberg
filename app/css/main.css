@@ -173,6 +173,66 @@ slider span.bubble {
   background-color: #8f8f8f;
 }
 
+.property.color input {
+  background: transparent;
+  border: none;
+  max-width: 80px;
+}
+
+.property.color .color-preview {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: sub;
+  background-color: #fff;
+}
+
+.colorpicker {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.colorpicker:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 6px;
+  border-color: transparent transparent #fff transparent;
+  border-bottom-style: solid;
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  z-index: 99;
+}
+
+.colorpicker:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 7px;
+  border-color: transparent transparent #ddd transparent;
+  border-bottom-style: solid;
+  position: absolute;
+  top: -14px;
+  left: 9px;
+  z-index: 98;
+}
+
+.colorpicker button {
+  margin-top: 8px;
+  color: #333;
+  background-color: #ddd;
+  border: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.colorpicker button:hover {
+  background-color: #ccc;
+}
+
 .property.options {
   position: relative;
   padding-right: 0;
