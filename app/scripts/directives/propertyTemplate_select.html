@@ -1,0 +1,7 @@
+<div class="{{property.className()}} property-container expander" expander>
+	<div class="property">
+		<span class="delete" ng-click="remove(name)"><i class="icon-cross"></i></span>
+		<span class="name">{{property.name}}:</span>
+		<select name="" id="" ng-model="property.value" ng-options="o.name as o.name for o in property.options"></select>
+	</div>
+</div>

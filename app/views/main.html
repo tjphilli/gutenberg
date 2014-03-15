@@ -59,45 +59,27 @@
 				</ul>
 			</div>
 			<div ng-repeat="(key,property) in type.properties">
-				<div property="property" name="key" remove="removeProperty">
-					<div ng-switch on="property.type">
-						<div ng-switch-when="number">
+				<div ng-switch on="property.type">
+					<div ng-switch-when="number">
+						<div property="property" property-number name="key" remove="removeProperty">
 							<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
 						</div>
-						<div ng-switch-when="options">
-							<select name="" id="" ng-model="property.value" ng-options="o.name as o.name for o in property.options"></select>
+					</div>
+					<div ng-switch-when="options">
+						<div property="property" property-select name="key" remove="removeProperty">		
 						</div>
-						<div ng-switch-when="color">
-							
-							<input colorpicker type="text" ng-model="property.value" /> 
+					</div>
+					<div ng-switch-when="color">
+						<div property="property" property-color name="key" remove="removeProperty">		
 						</div>
-						<div ng-switch-when="shorthand">
-							<div ng-repeat="value in property.values | orderBy: '-type'">
-								<span ng-switch on="value.type">
-									<div ng-switch-when="color">
-										<label for="{{$index}}">Color</label>
-										<input id="{{$index}}" colorpicker type="text" ng-model="value.init" />
-									</div>
-									<div ng-switch-default>
-										<ng-include src="'scripts/templates/nestedSliderTemplate.html'"></ng-include>
-									</div>
-								</span>
-							</div>
+					</div>
+					<div ng-switch-when="shorthand">
+						<div property="property" property-shorthand name="key" remove="removeProperty">
 						</div>
-						<div ng-switch-when="compound">
-								<div ng-repeat="property in property.properties | orderBy: '-type'">
-									<div property="property">
-										<div ng-switch on="property.type">
-											<div ng-switch-when="number">
-												<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
-											</div>
-											<div ng-switch-when="color">				
-												<input colorpicker type="text" ng-model="property.value" />
-											</div>
-										</div>
-									</div>
-								</div>
-						</div>
+					</div>
+					<div ng-switch-when="compound">
+						<div property="property" property-compound name="key" remove="removeProperty">
+						</div>	
 					</div>
 				</div>
 			</div>

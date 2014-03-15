@@ -1,0 +1,24 @@
+<div class="{{property.className()}} property-container expander" expander>
+	<div class="property">
+		<span class="delete" ng-click="remove(name)"><i class="icon-cross"></i></span>
+		<span class="name">{{property.name}}:</span>
+		<span class="value">{{property.propertyValue()}}</span>
+	</div>
+	<div class="controls expander-target">
+		<div ng-repeat="property in property.properties | orderBy: '-type'">
+			<div property="property">
+				<div ng-switch on="property.type">
+					<div ng-switch-when="number">
+						<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+					</div>
+					<div ng-switch-when="color">				
+						<input colorpicker type="text" ng-model="property.value" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="expander-trigger">
+		<i class="icon-arrow-down"></i>
+	</div>
+</div>
