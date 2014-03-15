@@ -1,0 +1,8 @@
+<div class="{{property.className()}} property-container expander" expander>
+	<div class="property {{property.type}}">
+		<span class="delete" ng-click="remove(name)"><i class="icon-cross"></i></span>
+		<span class="name">{{property.name}}:</span>
+		<input colorpicker type="text" ng-model="property.value" />
+		<span class="color-preview" style="background-color: {{property.value}}"></span>
+	</div>
+</div>

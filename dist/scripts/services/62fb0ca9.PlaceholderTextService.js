@@ -17,9 +17,9 @@ app.factory('PlaceholderTextService', ['$http', '$q', 'ENV',function($http, $q, 
 		getHipsterIpsum: function(){
 		   return $http.jsonp("http://hipsterjesus.com/api/");
 		},
-		getLocalText: function(num, type) {
+		getLocalText: function(num, type, format) {
 			console.log(type);
-			return $http.get(URL_BASE +"api/"+num + "/" + type);
+			return $http.get(URL_BASE +"api/"+num + "/" + type + "/" + format);
 		}
 	}
 

@@ -10,19 +10,32 @@ app
     $scope.toggleLiveCode = function() {
         $scope.live_code = !$scope.live_code;
     }
-    $scope.paras = "";
-    $scope.getText =  function(num, type) {
-        PlaceholderTextService.getLocalText(num, type).success(function(data){
+
+    $scope.placeholder = {
+        number: 2,
+        type: 'paras',
+        source: 'lorem'
+    };
+
+    $scope.paras =  "";
+    $scope.getText = function(num, type, format){
+        PlaceholderTextService.getLocalText(num, type, format).success(function(data){
             $scope.paras = data;
+            console.log("called!");
         });
     }
+    $scope.getText(2);
+
+    $scope.$watchCollection('placeholder', function(){
+        console.log("updated!");
+        $scope.getText($scope.placeholder.number, $scope.placeholder.source, $scope.placeholder.type);
+    });
     $scope.firstLetter = function(str) {
         return str[0];
     }
     $scope.restOf = function(str) {
         return str.substr(1);
     }
-    $scope.getText(2, $routeParams.type);
 
     $scope.obj = {test: "hello!"};
    
@@ -33,6 +46,8 @@ app
         });
     }
 
+
+    var caretaker = [];
     $scope.type = {
         properties: {},
         style: function() {
@@ -80,9 +95,28 @@ app
             }
             return obj;
 
+        },
+        caretaker: function() {
+            return caretaker;
+        },
+        caretadker: function() {
+            return this.mementos;
+            console.log("message");
+        },
+        restore: function(index) {
+            console.log(caretaker);
+            this.properties = caretaker[0].properties;
+            this.dropcap = caretaker[0].dropcap;
+        },
+        saveMemento: function(){
+            // console.log("message");
+            var obj = {index: 1, 'properties': angular.copy(this.properties), 'dropcap': this.dropcap}
+            caretaker.unshift(obj); 
         }
 
     };
+
+    // $scope.caretaker = [];
     $scope.type.properties["leading"] = Properties.create("leading");
     $scope.type.properties["typeface"] = Properties.create("typeface");
     $scope.type.properties["size"] = Properties.create("size");
