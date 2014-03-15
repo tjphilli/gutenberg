@@ -1,6 +1,12 @@
+[contenteditable=true] {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  outline-offset: 8px;
+  outline: 1px solid #fff;
+}
+
 [contenteditable=true]:hover {
   outline: 1px solid #eee;
-  outline-offset: 8px;
 }
 
 .set-text-container {
@@ -11,7 +17,6 @@
 
 .set-text-container[contenteditable=true]:focus {
   outline: 1px solid #bbb;
-  outline-offset: 8px;
 }
 
 .set-text-container p {
