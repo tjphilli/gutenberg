@@ -173,6 +173,60 @@ slider span.bubble {
   background-color: #8f8f8f;
 }
 
+.property.options {
+  position: relative;
+  padding-right: 0;
+}
+
+.property.options:hover select {
+  color: #111;
+}
+
+.property.options:hover::after {
+  color: rgba(0,0,0,0.6);
+}
+
+.property.options:hover::before {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.property.options select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding-right: 47px;
+}
+
+.property.options::after,
+.property.options::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.property.options::before {
+  background-color: rgba(0,0,0,0.15);
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.property.options::after {
+  color: rgba(0,0,0,0.4);
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
 .add-property {
   margin-bottom: 70px;
 }
