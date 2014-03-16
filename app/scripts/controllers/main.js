@@ -37,9 +37,6 @@ app
         return str.substr(1);
     }
 
-    $scope.obj = {test: "hello!"};
-   
-
     $scope.postTest = function() {
         DownloadService.getDownload({markup: $scope.paras, css: $scope.type.css()}).success(function(response){
             window.location = "dl/" + response.file;
@@ -47,7 +44,6 @@ app
     }
 
 
-    var caretaker = [];
     $scope.type = {
         properties: {},
         style: function() {
@@ -94,32 +90,14 @@ app
                 obj[key] = this.properties[key]['name'];
             }
             return obj;
-
-        },
-        caretaker: function() {
-            return caretaker;
-        },
-        caretadker: function() {
-            return this.mementos;
-            console.log("message");
-        },
-        restore: function(index) {
-            console.log(caretaker);
-            this.properties = caretaker[0].properties;
-            this.dropcap = caretaker[0].dropcap;
-        },
-        saveMemento: function(){
-            // console.log("message");
-            var obj = {index: 1, 'properties': angular.copy(this.properties), 'dropcap': this.dropcap}
-            caretaker.unshift(obj); 
         }
 
     };
 
-    // $scope.caretaker = [];
     $scope.type.properties["leading"] = Properties.create("leading");
     $scope.type.properties["typeface"] = Properties.create("typeface");
     $scope.type.properties["size"] = Properties.create("size");
+    $scope.type.properties["weight"] = Properties.create("weight");
     $scope.addProperty = function (name) {
         $scope.type.properties[name] = Properties.create(name);
     }

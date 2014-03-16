@@ -58,7 +58,7 @@
 					<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 				</ul>
 			</div>
-			<div ng-repeat="(key,property) in type.properties">
+			<div ng-repeat="(key,property) in type.properties" container="type">
 				<div ng-switch on="property.type">
 					<div ng-switch-when="number">
 						<div property="property" property-number name="key" remove="removeProperty">

@@ -8,12 +8,14 @@ app.factory('Properties',['Property', 'Value',
 				value: '1',
 				type: 'number',
 				inc: 1,
-				micro_inc: 0.05,
+				micro_inc: function(){
+					return Math.ceil( (1/this.dependent_int) * 100) / 100;
+				},
+				dependent_int: 16,
 				slider: {
 	    			floor: 0,
 	    			ceiling: 4,
-	    			precision: 2,
-	    			step: 0.05
+	    			precision: 2
 	    		}
 			},
 			columns: {
@@ -22,7 +24,7 @@ app.factory('Properties',['Property', 'Value',
 				value: '1',
 				type: 'number',
 				inc: 1,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 1,
 	    			ceiling: 6,
@@ -37,7 +39,7 @@ app.factory('Properties',['Property', 'Value',
 				type: 'number',
 				unit:'px',
 				inc: 5,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 4,
 	    			ceiling: 72,
@@ -52,7 +54,7 @@ app.factory('Properties',['Property', 'Value',
 				type: 'number',
 				unit:'px',
 				inc: 50,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 300,
 	    			ceiling: 900,
@@ -67,7 +69,7 @@ app.factory('Properties',['Property', 'Value',
 				type: 'number',
 				unit:'px',
 				inc: 5,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: -4,
 	    			ceiling: 4,
@@ -78,16 +80,12 @@ app.factory('Properties',['Property', 'Value',
 			weight: {
 				name: 'Weight',
 				'property-name':'font-weight',
-				value: '500',
-				type: 'number',
-				inc: 100,
-				micro_inc: 100,
-				slider: {
-	    			floor: 100,
-	    			ceiling: 900,
-	    			precision: 0,
-	    			step: 100
-	    		}
+				value: 'bold',
+				type: 'options',
+				options: [
+					{name: 'normal', value:'normal'},
+					{name: 'bold', value:'bold'}
+				]
 			},
 			spacing: {
 				name: 'Word Spacing',
@@ -96,7 +94,7 @@ app.factory('Properties',['Property', 'Value',
 				unit: 'px',
 				type: 'number',
 				inc: 5,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 0,
 	    			ceiling: 20,
@@ -145,10 +143,23 @@ app.factory('Properties',['Property', 'Value',
 			 	'property-name' : 'font-family',
 	            value: 'Garamond',
 	            type: 'options',
+	            weights: function(){
+	            	var arr = [];
+	            	for(var i = 0; i < this.options.length; i++) {
+	            		if(this.options[i].value === this.value) {
+	            			for(var j = 0; j <this.options[i].weights.length; j++){
+	            				arr.push({'value': this.options[i].weights[j]})
+	            			}
+
+	            		}
+	            	}
+	            	console.log(arr);
+	            	return arr;
+	            },
 	            options: [
-	                {name: "Times New Roman", value:'Times New Roman'},
-	                {name: "Helvetica Neue" , value: 'Helvetica Neue'}, 
-	                {name: "Garamond", value: 'Garamond'}
+	                {name: "Times New Roman", value:'Times New Roman', weights: ['normal', 'bold']},
+	                {name: "Helvetica Neue" , value: 'Helvetica Neue', weights: ['lighter','normal', 'bold']}, 
+	                {name: "Garamond", value: 'Garamond', weights: ['normal', 'bold']}
 	            ]
 	        },
 	        style: {
