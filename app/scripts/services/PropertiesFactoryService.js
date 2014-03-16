@@ -158,7 +158,7 @@ app.factory('Properties',['Property', 'Value',
 	            },
 	            options: [
 	                {name: "Times New Roman", value:'Times New Roman', weights: ['normal', 'bold']},
-	                {name: "Helvetica Neue" , value: 'Helvetica Neue', weights: ['lighter','normal', 'bold']}, 
+	                {name: "Helvetica Neue" , value: 'Helvetica Neue', weights: ['100','200', '400', '500', '600']}, 
 	                {name: "Garamond", value: 'Garamond', weights: ['normal', 'bold']}
 	            ]
 	        },

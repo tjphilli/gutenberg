@@ -1,0 +1,36 @@
+tip-background-color = #333;
+tip-color = #eee;
+.tooltip
+	position: absolute;
+	padding: 7px 12px;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	color: tip-color;
+	background: tip-background-color;
+	visibility:hidden;
+	opacity:0;
+	transition: visibility 0s 0.2s, opacity 0.2s;
+	&:before
+		content: "";
+		position: absolute;
+		border: 5px solid transparent; // triangle base
+	&.top:before
+		top: 100%;
+		border-top-color: tip-background-color;
+	&.bottom:before
+		bottom: 100%;
+		border-bottom-color: tip-background-color;
+	&.left:before
+		top: 32%;
+		left: 100%;
+		border-left-color: tip-background-color;
+	&.right:before
+		top: 32%;
+		right: 100%;
+		border-right-color: tip-background-color;
+	&.is-active-tooltip
+		visibility visible
+		opacity 1
+		transition-delay 0s
+

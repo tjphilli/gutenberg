@@ -61,6 +61,7 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
             if(scope.property.name === "Weight") {
                 $rootScope.$on('FACE_CHANGE', function(event, mass) {
                     scope.property.options = ContainerCtrl.getWeights();
+                    scope.property.value = scope.property.options[scope.property.options.length -1].value;
                 });
             }
         }
