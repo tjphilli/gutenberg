@@ -3,10 +3,11 @@
 </div>
 <div class="undo">
 	<button class="save" ng-click="content.addHeading()">Add Heading</button>
+	<button class="save" ng-click="ui.editMode()">Edit</button>
 </div>
 <div class="outer-wrap">
 	<div class="container">
-		<div class="edit-content">
+		<div class="edit-content" ng-show="ui.edit_mode">
 			<span>Give me</span>
 			<select name="" id="" ng-model="placeholder.number">
 				<option value="1">1</option>
@@ -29,7 +30,7 @@
 				<option value="random">random</option>
 			</select>
 		</div>
-		<div class="set-text-container" contenteditable="true" spellcheck="false" style="" ng-style="container.style()" dropcap>
+		<div class="set-text-container" contenteditable="true" spellcheck="false" style="" ng-style="container.style()" dropcap focus-show="ui.editMode()">
 			<!-- <p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec faucibus est. Cras a luctus felis. Donec ornare massa lorem, eget blandit erat semper ac. Sed ullamcorper mauris quis tellus venenatis euismod. Duis luctus venenatis sapien, non tristique magna ultricies vel. Etiam vulputate vitae metus eget viverra. In hac habitasse platea dictumst.
 			</p>

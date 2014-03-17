@@ -624,6 +624,25 @@ colorpicker-preview {
   left: 37%;
   top: 150px;
   font-family: 'Helvetica Neue',sans-serif;
+  opacity: 1;
+  -ms-filter: none;
+  -webkit-filter: none;
+  filter: none;
+  visibility: visible;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.edit-content.ng-hide {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  visibility: hidden;
+}
+
+.edit-content.ng-hide-add,
+.edit-content.ng-hide-remove {
+  display: block !important;
 }
 
 .tooltip {

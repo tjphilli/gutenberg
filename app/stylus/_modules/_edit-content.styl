@@ -3,3 +3,11 @@
 	left 37%
 	top 150px
 	font-family 'Helvetica Neue', sans-serif
+	opacity 1
+	visibility visible
+	transition all 0.5s
+	&.ng-hide
+		opacity 0
+		visibility hidden
+	&.ng-hide-add, &.ng-hide-remove
+		display block !important

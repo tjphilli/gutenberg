@@ -4,7 +4,14 @@ app
   .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams) {
     $scope.controls = false;
     $scope.live_code = false;
-    $scope.edit_mode = false;
+    // $scope.edit_mode = false;
+    $scope.ui = {
+        edit_mode: false,
+        editMode: function(){
+            console.log("edit mode activated");
+            this.edit_mode = !this.edit_mode
+        }
+    }
     $scope.toggleControls = function() {
         $scope.controls = !$scope.controls;
     }
