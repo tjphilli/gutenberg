@@ -7,17 +7,16 @@ app.directive('expander', function () {
                 $(e.target).closest('.expander-trigger').toggleClass('is-triggered')
                 $target.toggleClass('is-collapsed');
                 scope.$apply()
-                console.log("lcikc 1");
            })
            $(element).on('click', '.expander .expander-trigger', function(e){
                 $(e.target).closest('.expander-trigger').toggleClass('is-triggered')
                 $(element).children('.expander-target').toggleClass('is-collapsed');
                 scope.$apply()
-                console.log("lcikc 2");
            })
-           $(element).children('.properties-menu').on('click', function(){
+           $(element).children('.properties-menu').on('click', function(e){
            		console.log("messsagegfdgsfd");
            		$target.toggleClass('is-collapsed');
+              $target.siblings('.expander-trigger').toggleClass('is-triggered')
            });
         }
     };

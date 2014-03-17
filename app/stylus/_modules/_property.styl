@@ -3,7 +3,19 @@
 	top 100px
 	left 100px
 
+.test.ng-enter 
+	transition all .9s
+	.property-container
+		transition all .9s
+		box-shadow 0px 0px 0px #777
+.test.ng-enter.ng-enter-active
+	.property-container
+		background-color darken(#EBEBEB, 17%)
+		box-shadow 0px 0px 4px #777
+		// box-shadow 0 0 0 transparent
+	
 .property-container
+	transition all .9s
 	color #444
 	margin-top 10px
 	margin-right 20px

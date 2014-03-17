@@ -98,7 +98,27 @@ slider span.bubble {
   left: 100px;
 }
 
+.test.ng-enter {
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+
+.test.ng-enter .property-container {
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+  -webkit-box-shadow: 0 0 0 #777;
+  box-shadow: 0 0 0 #777;
+}
+
+.test.ng-enter.ng-enter-active .property-container {
+  background-color: #c3c3c3;
+  -webkit-box-shadow: 0 0 4px #777;
+  box-shadow: 0 0 4px #777;
+}
+
 .property-container {
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
   color: #444;
   margin-top: 10px;
   margin-right: 20px;
@@ -320,9 +340,12 @@ slider span.bubble {
 }
 
 .add-property ul {
+  position: absolute;
+  width: 80%;
   margin: 0 20px 0 0;
   padding: 0;
   list-style: none;
+  z-index: 1000;
 }
 
 .add-property ul li {

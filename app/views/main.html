@@ -1,16 +1,8 @@
 <div class="toggle-controls" keypress>
 	<button ng-click="toggleControls()" class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
-	<input type="text" ng-model="testname">
-	<button ng-click="addProperty(testname)">Add</button>
 </div>
 <div class="undo">
-	<pre>{{type.caretaker}}</pre>
-	<button class="save" ng-click="type.saveMemento()">Save State</button>
-	<ul>
-		<li ng-repeat="index in type.caretaker()">
-			<a href="" ng-click="type.restore(index)">Restore</a>
-		</li>
-	</ul>
+	<button class="save" ng-click="content.addHeading()">Add Heading</button>
 </div>
 <div class="outer-wrap">
 	<div class="container">
@@ -42,6 +34,7 @@
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec faucibus est. Cras a luctus felis. Donec ornare massa lorem, eget blandit erat semper ac. Sed ullamcorper mauris quis tellus venenatis euismod. Duis luctus venenatis sapien, non tristique magna ultricies vel. Etiam vulputate vitae metus eget viverra. In hac habitasse platea dictumst.
 			</p>
 			<p>Nunc mattis et eros vitae laoreet. Pellentesque faucibus eros nec quam porta euismod. Morbi gravida ut enim tempor convallis. Fusce hendrerit sed orci vel pellentesque. Integer mollis justo lacus, sit amet vulputate neque commodo ac. Suspendisse ac odio purus. Etiam venenatis suscipit sollicitudin. In hac habitasse platea dictumst. Ut eu lacus augue. Ut euismod luctus purus ut dapibus.</p> -->
+			<h1>{{content.heading.text}}</h1>
 			<span ng-repeat="para in paras" ng-switch on="$index">
 				<p ng-switch-when="0">
 					<span class="dropcap" ng-style="type.dropcap()">{{firstLetter(para)}}</span>{{restOf(para)}}
@@ -60,7 +53,7 @@
 					<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 				</ul>
 			</div>
-			<div ng-repeat="property in container.getProperties()" container="container">
+			<div ng-repeat="property in container.getProperties()" container="container" class="test">
 				<div ng-switch on="property.type">
 					<div ng-switch-when="number">
 						<div property="property" property-number name="property.key" remove="removeProperty">

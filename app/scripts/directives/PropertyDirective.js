@@ -25,10 +25,15 @@ app.directive('container',['$rootScope', function ($rootScope) {
             this.getWeights = function(){
                 return $scope.container.findProperty('typeface').weights();   
             }
-            $scope.$watch('container.properties.findProperty("size")', function(){
+            $scope.$watch(function(){
+                return $scope.container.findProperty("size").value;
+                }, function(){
                 $rootScope.$broadcast('SIZE_CHANGE', {some: 'val'});
             });
-            $scope.$watch('container.properties.findProperty("typeface")', function(){
+            $scope.$watch(function(){
+                return $scope.container.findProperty("typeface").value;
+                }, function(){
+                console.log("CAUGHTS!");
                 $rootScope.$broadcast('FACE_CHANGE', {some: 'val'});
             });
         },
@@ -75,6 +80,7 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
         link: function(scope, elem, attrs, ContainerCtrl){
             if(scope.property.name === "Weight") {
                 $rootScope.$on('FACE_CHANGE', function(event, mass) {
+                    console.log("CHANGED!!!!");
                     scope.property.options = ContainerCtrl.getWeights();
                     scope.property.value = scope.property.options[scope.property.options.length -1].value;
                 });

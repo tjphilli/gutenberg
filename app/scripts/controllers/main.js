@@ -18,6 +18,15 @@ app
     };
 
     $scope.paras =  "";
+    $scope.content = {
+        paras: ""
+    };
+    $scope.content.addHeading = function(){
+        $scope.content.heading = {};
+        $scope.content.heading.visible = true;
+        $scope.content.heading.container = new Container();
+        $scope.content.heading.text = "Gutenberg Heading";
+    }
     $scope.getText = function(num, type, format){
         PlaceholderTextService.getLocalText(num, type, format).success(function(data){
             $scope.paras = data;

@@ -6,11 +6,10 @@ app.factory('Container', ['Properties', function(Properties){
 	Container.prototype.style = function() {
         var obj = {};
         for(var i =0; i < this.properties.length; i++) {
-            // if (this.properties[i]['applies'] == undefined) {
+            if (this.properties[i]['applies'] == undefined) {
                 obj[this.properties[i]['property-name']] = this.properties[i]['propertyValue']()
-            // }
+            }
         }
-        console.log(obj);
         return obj
     }
     Container.prototype.getProperties = function() {
@@ -30,8 +29,10 @@ app.factory('Container', ['Properties', function(Properties){
         this.properties.splice(index, 1);
     }
     Container.prototype.findProperty = function(name) {
+        console.log("find called");
     	for (var i = 0; i < this.properties.length; i++) {
     		if(this.properties[i].key === name) {
+                console.log(this.properties[i]);
     			return this.properties[i];
     		}
     	}
