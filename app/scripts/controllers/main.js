@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Property', 'Properties', '$routeParams', function($scope, $document, PlaceholderTextService, DownloadService, Property, Properties, $routeParams) {
+  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams) {
     $scope.controls = false;
     $scope.live_code = false;
     $scope.toggleControls = function() {
@@ -46,15 +46,6 @@ app
 
     $scope.type = {
         properties: {},
-        style: function() {
-            var obj = {};
-            for(var key in this.properties) {
-                if (this.properties[key]['applies'] == undefined) {
-                    obj[this.properties[key]['property-name']] = this.properties[key]['propertyValue']()
-                }
-            }
-            return obj
-        },
         backgroundStyle: function() {
             var obj = {};
             for(var key in $scope.type.properties) {
@@ -72,43 +63,22 @@ app
                 }
             }
             return obj;
-        },
-        css: function(html) {
-            var style = this.style();
-            var str = "";
-            for(var property in style) {
-                str += property + ": "+ style[property] + ";\n"  ;
-            }
-            if(html) {
-                str = str.replace(/\n/g, "<br>")
-            }
-            return str;
-        },
-        currentProperties: function(){
-            var obj = {};
-            for (var key in this.properties) {
-                obj[key] = this.properties[key]['name'];
-            }
-            return obj;
         }
-
     };
+    $scope.container = new Container();
+    $scope.container.addProperty("leading");
+    $scope.container.addProperty("typeface");
+    $scope.container.addProperty("size");
+    $scope.container.addProperty("weight");
 
-    $scope.type.properties["leading"] = Properties.create("leading");
-    $scope.type.properties["typeface"] = Properties.create("typeface");
-    $scope.type.properties["size"] = Properties.create("size");
-    $scope.type.properties["weight"] = Properties.create("weight");
     $scope.addProperty = function (name) {
-        $scope.type.properties[name] = Properties.create(name);
+        $scope.container.addProperty(name);
+        console.log($scope.container);
     }
     $scope.removeProperty = function (name) {
-        console.log("called");
-        delete $scope.type.properties[name]
+        $scope.container.removeProperty(name);
     }
     $scope.availableProperties = function() {
-        return   Properties.getAvailable($scope.type.currentProperties());
-    }
-    $scope.testIt = function() {
-        console.log('message');
+        return   Properties.getAvailable($scope.container.currentProperties());
     }
   }]);

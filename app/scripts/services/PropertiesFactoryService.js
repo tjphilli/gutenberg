@@ -3,6 +3,7 @@ app.factory('Properties',['Property', 'Value',
 	function(Property, Value){
 		this.templates = {
 			leading: {
+				key: 'leading',
 				name: 'Leading',
 				'property-name':'line-height',
 				value: '1',
@@ -19,6 +20,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			columns: {
+				key: 'columns',
 				name: 'Columns',
 				'property-name':'-webkit-columns',
 				value: '1',
@@ -33,6 +35,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			size: {
+				key: 'size',
 				name: 'Size',
 				'property-name':'font-size',
 				value: '16',
@@ -48,6 +51,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			width: {
+				key: 'width',
 				name: 'Container Width',
 				'property-name':'width',
 				value: '600',
@@ -63,6 +67,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			tracking: {
+				key: 'tracking',
 				name: 'Tracking',
 				'property-name':'letter-spacing',
 				value: '0',
@@ -78,6 +83,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			weight: {
+				key: 'weight',
 				name: 'Weight',
 				'property-name':'font-weight',
 				value: 'bold',
@@ -88,6 +94,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			spacing: {
+				key: 'spacing',
 				name: 'Word Spacing',
 				'property-name':'word-spacing',
 				value: '0',
@@ -103,6 +110,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			alignment: {
+				key: 'alignment',
 				name: 'Alignment',
 				'property-name':'text-align',
 				value: 'left',
@@ -115,6 +123,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			decoration: {
+				key: 'decoration',
 				name: 'Decoration',
 				'property-name':'text-decoration',
 				value: 'none',
@@ -127,6 +136,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			transform: {
+				key: 'transform',
 				name: 'Case',
 				'property-name':'text-transform',
 				value: 'none',
@@ -139,6 +149,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			 typeface: {
+			 	key: 'typeface',
 			 	name: 'Typeface',
 			 	'property-name' : 'font-family',
 	            value: 'Garamond',
@@ -163,6 +174,7 @@ app.factory('Properties',['Property', 'Value',
 	            ]
 	        },
 	        style: {
+	        	key: 'style',
 			 	name: 'Style',
 			 	'property-name' : 'font-style',
 	            value: 'italic',
@@ -174,12 +186,14 @@ app.factory('Properties',['Property', 'Value',
 	            ]
 	        },
 	        color: {
+	        	key: 'color',
 			 	name: 'Color',
 			 	'property-name' : 'color',
 	            value: '#333',
 	            type: 'color'
 	        },
 	        background: {
+	        	key: 'background',
 			 	name: 'Page Color',
 			 	'property-name' : 'background-color',
 	            value: '#333',
@@ -187,6 +201,7 @@ app.factory('Properties',['Property', 'Value',
 	            applies: 'background'
 	        },
 	        shadow: {
+	        	key: 'shadow',
 			 	name: 'Drop Shadow',
 			 	'property-name' : 'text-shadow',
 	            value: '3px 2px 4px #479',
@@ -199,6 +214,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 	        },
 			dropcap: {
+				key: 'dropcap',
 			 	name: 'Drop Cap',
 				type: 'compound',
 				properties: {},
@@ -214,7 +230,9 @@ app.factory('Properties',['Property', 'Value',
 					this.templates[name]['properties'][String(this.templates[name]['add'][i])]= this.create(this.templates[name]['add'][i]);
 				}
 			}
-			return new Property(this.templates[name]);
+			var temp = new Property(this.templates[name]);
+			console.log(temp);
+			return temp;
 		}
 		this.getAvailable = function(compObj) {
 			var obj = {};

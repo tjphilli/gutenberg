@@ -2,11 +2,11 @@ app.directive('property', function () {
     return {
         // replace: true,
         // transclude: true,
-        scope: {
-            property: '=',
-            name: '=',
-            remove:'='
-        },
+        // scope: {
+        //     property: '=',
+        //     name: '=',
+        //     remove:'='
+        // },
         // templateUrl: "scripts/directives/propertyTemplate.html",
         link: function (scope, element, attrs) {
            console.log(scope.name);
@@ -20,15 +20,15 @@ app.directive('container',['$rootScope', function ($rootScope) {
         },
         controller: function($scope) {
             this.getSize = function(){
-                return $scope.container.properties.size.value;
+                return $scope.container.findProperty('size').value;
             }
             this.getWeights = function(){
-                return $scope.container.properties.typeface.weights();   
+                return $scope.container.findProperty('typeface').weights();   
             }
-            $scope.$watch('container.properties.size.value', function(){
+            $scope.$watch('container.properties.findProperty("size")', function(){
                 $rootScope.$broadcast('SIZE_CHANGE', {some: 'val'});
             });
-            $scope.$watch('container.properties.typeface.value', function(){
+            $scope.$watch('container.properties.findProperty("typeface")', function(){
                 $rootScope.$broadcast('FACE_CHANGE', {some: 'val'});
             });
         },
@@ -39,6 +39,11 @@ app.directive('container',['$rootScope', function ($rootScope) {
 }]);
 app.directive('propertyNumber', ['$rootScope', function ($rootScope) {
     return {
+        scope: {
+            property: '=',
+            name: '=',
+            remove: '='
+        },
         require: '^container',
         replace: true,
         transclude: true,
@@ -53,6 +58,16 @@ app.directive('propertyNumber', ['$rootScope', function ($rootScope) {
 }]);
 app.directive('propertySelect', ['$rootScope', function ($rootScope){
     return {
+        scope: {
+            property: '=',
+            name: '=',
+            remove: '='
+        },
+        // scope: {
+        //     property: '=',
+        //     name: '=',
+        //     remove:'='
+        // },
         replace: true,
         require: '^container',
         transclude: true,
@@ -69,6 +84,11 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
 }]);
 app.directive('propertyColor', function () {
     return {
+        scope: {
+            property: '=',
+            name: '=',
+            remove: '='
+        },
         replace: true,
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_color.html",
@@ -81,6 +101,11 @@ app.directive('propertyColor', function () {
 });
 app.directive('propertyShorthand', function () {
     return {
+        scope: {
+            property: '=',
+            name: '=',
+            remove: '='
+        },
         replace: true,
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_shorthand.html",
@@ -91,6 +116,11 @@ app.directive('propertyShorthand', function () {
 });
 app.directive('propertyCompound', function () {
     return {
+        scope: {
+            property: '=',
+            name: '=',
+            remove: '='
+        },
         replace: true,
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_compound.html",

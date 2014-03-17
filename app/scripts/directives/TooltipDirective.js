@@ -12,7 +12,7 @@ app.directive('tooltip', function () {
             $('body').append($tooltip);
             console.log(scope);
             var direction = attrs.direction || 'top',
-                el_height = $trigger.height(),
+                el_height = $trigger.innerHeight(),
                 el_width = $trigger.innerWidth(),
                 tip_height = $tooltip.innerHeight(),
                 tip_width = $tooltip.innerWidth(),
