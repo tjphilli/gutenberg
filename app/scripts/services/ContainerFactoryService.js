@@ -16,7 +16,6 @@ app.factory('Container', ['Properties', function(Properties){
         return this.properties;
     }
     Container.prototype.addProperty = function(name){
-    	console.log(name);
         this.properties.unshift(Properties.create(name));
     }
     Container.prototype.removeProperty = function(name){
@@ -29,10 +28,8 @@ app.factory('Container', ['Properties', function(Properties){
         this.properties.splice(index, 1);
     }
     Container.prototype.findProperty = function(name) {
-        console.log("find called");
     	for (var i = 0; i < this.properties.length; i++) {
     		if(this.properties[i].key === name) {
-                console.log(this.properties[i]);
     			return this.properties[i];
     		}
     	}

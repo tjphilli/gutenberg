@@ -34,7 +34,7 @@ app.directive('container',['$rootScope', function ($rootScope) {
                 return $scope.container.findProperty("typeface").value;
                 }, function(){
                 console.log("CAUGHTS!");
-                $rootScope.$broadcast('FACE_CHANGE', {some: 'val'});
+                $rootScope.$broadcast('FACE_CHANGE', $scope.container.findProperty("typeface").value);
             });
         },
         link: function (scope, element, attrs) {
@@ -78,11 +78,14 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_select.html",
         link: function(scope, elem, attrs, ContainerCtrl){
+            var face_name = "";
             if(scope.property.name === "Weight") {
-                $rootScope.$on('FACE_CHANGE', function(event, mass) {
-                    console.log("CHANGED!!!!");
-                    scope.property.options = ContainerCtrl.getWeights();
-                    scope.property.value = scope.property.options[scope.property.options.length -1].value;
+                $rootScope.$on('FACE_CHANGE', function(event, face) {
+                    if(face_name != face) {
+                        face_name = face;
+                        scope.property.options = ContainerCtrl.getWeights();
+                        scope.property.value = scope.property.options[scope.property.options.length -1].value;
+                    }
                 });
             }
         }

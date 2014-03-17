@@ -98,22 +98,41 @@ slider span.bubble {
   left: 100px;
 }
 
-.test.ng-enter {
+.inspector-styles {
+  margin-top: 70px;
+}
+
+.property-module.ng-enter {
   -webkit-transition: all 0.9s;
   transition: all 0.9s;
 }
 
-.test.ng-enter .property-container {
+.property-module.ng-enter .property-container {
   -webkit-transition: all 0.9s;
   transition: all 0.9s;
   -webkit-box-shadow: 0 0 0 #777;
   box-shadow: 0 0 0 #777;
 }
 
-.test.ng-enter.ng-enter-active .property-container {
+.property-module.ng-enter.ng-enter-active .property-container {
   background-color: #c3c3c3;
   -webkit-box-shadow: 0 0 4px #777;
   box-shadow: 0 0 4px #777;
+}
+
+.property-module.ng-leave {
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  max-height: 80px;
+}
+
+.property-module.ng-leave.ng-leave-active {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.property-module:first-child .property-container {
+  margin-top: 0;
 }
 
 .property-container {
@@ -305,10 +324,6 @@ slider span.bubble {
   right: 1.2em;
   top: 50%;
   margin-top: -.5em;
-}
-
-.add-property {
-  margin-bottom: 70px;
 }
 
 .add-property .expander-trigger {
