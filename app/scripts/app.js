@@ -1,26 +1,26 @@
 'use strict';
 
-var app = angular.module('gutenbergApp', ['ngTouch', 'vr.directives.slider', 'ngClipboard', 'ngRoute', 'config', 'colorpicker.module', 'ngAnimate'])
+var app = angular.module('gutenbergApp', ['ui.router', 'ngTouch', 'vr.directives.slider', 'ngClipboard', 'ngRoute', 'config', 'colorpicker.module', 'ngAnimate'])
 .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
 ])
-.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider
-      .when('/', {
+.config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('main', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainController'
       })
-      .when('/:type', {
-        templateUrl: 'views/main.html',
+      .state('main.about', {
+        url: 'about',
+        templateUrl: 'views/about.html',
         controller: 'MainController'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
       $locationProvider
         .html5Mode(false)
         .hashPrefix('!');
+      $urlRouterProvider.otherwise('/');
   }]);
 

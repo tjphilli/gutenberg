@@ -30,8 +30,8 @@
 
     <!-- Add your site or application content here -->
     <div class="page-border">
-        <div ng-view="" class="view-container"></div>
-        <footer>Gutenberg is a simple tool for testing and learning web typography. It's brought to you with great love and care by <a href="http://tjphilli.com">Trevor Phillippi</a> </footer>
+        <div ui-view="" class="view-container"></div>
+        <footer><a ui-sref="main.about">Gutenberg</a> is a simple tool for testing and learning web typography. It's brought to you with great love and care by <a href="http://tjphilli.com">Trevor Phillippi</a> </footer>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -48,6 +48,7 @@
     <script src="lib/ZeroClipboard.min.js"></script>
     <script src="lib/modernizr.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="lib/angular-slider.js"></script>
@@ -79,5 +80,7 @@
         <script src="scripts/services/PropertiesFactoryService.js"></script>
         <script src="scripts/services/DownloadService.js"></script>
         <!-- endbuild -->
+        <script type="text/javascript" src="//use.typekit.net/ryh5wir.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </body>
 </html>

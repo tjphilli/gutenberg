@@ -1,0 +1,26 @@
+<div class="about-overlay overlay">
+	<a ui-sref="main" class="close-button">
+		<i class="icon-cross"></i>
+	</a>
+	<div class="internal">
+		<div class="title">
+			<img src="img/title@2x.png" alt="">
+		</div>
+		<h1 class="intro-text">A practical and pedagogical tool for web typography.<br/> Designed &amp; built by <a href="http://tjphilli.com">Trevor Phillippi</a></h1>
+		<h2>Why did I make Gutenberg?</h2>
+		<p>Quite simply, web typography is still way harder than it needs to be. Most people have heard "the web is 95% type", yet somehow there is still a lack of tools to aid designers and developers in making beautiful, readable type for the web. Most tools out there suck, and those that are powerful are too bloated, and are not focused on helping people learn. Powerful tools tend to encourage people to create production-ready code with no development knowledge rather than aid in learning the tools necessary to do so on one's own. I'm trying to do something different, to help people learn how to code by utilizing the same mental model used when setting web type. Tools that are out there aren't as comprehensive as I'd like, and they ignore properties that might lead to "ugly" type, rather than teaching people the wealth of properties available anyway and trusting them to use them properly. I wanted Gutenberg to exist for my sake, as well. I wanted a visual tool for setting web type; being able to use the code that was generated after was simply a bonus. I wanted Gutenberg to reduce the friction for exploration of CSS properties related to web typography.</p>
+		<h2>Why makes Gutenberg special?</h2>
+		<p>Gutenberg is an experimental project designed for practical and pedagogical use cases. My hope is that people will find it useful practically in their work for setting web type, but also that they would see it as a playground to explore the vast number of properties available. By forcing users to assume the mental model of a front-end developer setting web type, I hope to prime them for when they feel confident enough to just plain write CSS. When you write CSS, you decide on an element to style and write a selector, then you add properties with values within that selector to modify the appearance of the element. In the same way, with Gutenberg, you select an element and add properties that can be modified visually and numerically. There is little direct manipulation on elements, because there is no direct manipulation when writing CSS, as it symbolically modifies appearance.</p>
+		<h2>How is Gutenberg made?</h2>
+		<p>Gutenberg is a single page web application built in AngularJS, an incredibly robust Javascript framework. The client Angular app is backed by a very simple NodeJS REST api and download service. The REST api is a publicly accessible api for flexible and powerful placeholder text generation. A special thanks to the maintainers of those apis. Check out the other Gutenberg tools below.</p>
+		<div class="other-products cf">
+			<a tooltip="'A RESTful api for placeholder text'" href="http://github.com/tjphilli/gutenberg" class="product-link">
+				<img src="/img/api@2x.png" alt="">
+			</a>
+			<a tooltip="'coming soon'" href="" class="product-link">
+				<img src="/img/text@2x.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+</div>

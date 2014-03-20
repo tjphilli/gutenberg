@@ -23,10 +23,20 @@ app.factory('Property', function(){
 		this.value -= this.inc;
 	}
 	Property.prototype.microIncrease = function(){
-		this.value = parseFloat((this.value +=this.micro_inc).toFixed(2))
+		if(this.name === 'Leading') {
+
+			this.value = parseFloat((this.value +=this.micro_inc()).toFixed(2))
+		}
+		else {
+			this.value = parseFloat((this.value +=this.micro_inc()).toFixed(2))
+		}
 	}
 	Property.prototype.microDecrease = function(){
-		this.value = parseFloat((this.value -=this.micro_inc).toFixed(2))
+		if(this.name === 'Leading') {
+
+			this.value = parseFloat((this.value -=this.micro_inc()).toFixed(2))
+		}
+		this.value = parseFloat((this.value -=this.micro_inc()).toFixed(2))
 	}
 	return Property;
 });

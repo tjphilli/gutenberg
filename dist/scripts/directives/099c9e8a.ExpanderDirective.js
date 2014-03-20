@@ -7,17 +7,45 @@ app.directive('expander', function () {
                 $(e.target).closest('.expander-trigger').toggleClass('is-triggered')
                 $target.toggleClass('is-collapsed');
                 scope.$apply()
-                console.log("lcikc 1");
            })
            $(element).on('click', '.expander .expander-trigger', function(e){
                 $(e.target).closest('.expander-trigger').toggleClass('is-triggered')
                 $(element).children('.expander-target').toggleClass('is-collapsed');
                 scope.$apply()
-                console.log("lcikc 2");
            })
-           $(element).children('.properties-menu').on('click', function(){
+           $(element).children('.properties-menu').on('click', function(e){
            		console.log("messsagegfdgsfd");
            		$target.toggleClass('is-collapsed');
+              $target.siblings('.expander-trigger').toggleClass('is-triggered')
+           });
+        }
+    };
+});
+
+app.directive('focusShow', function () {
+    return {
+        scope: {
+          focusShow: '&'
+        },
+        link: function (scope, element, attrs) {
+          var visible = false;
+          $element = $(element)
+           $element.on('focus', function(){
+            console.log(scope);
+            if(!visible) {
+              visible = !visible;
+              scope.focusShow();
+              scope.$apply();
+            }
+           });
+           $('body').on('click', function(e){
+            if(!$element.is(e.target) && $element.has(e.target).length === 0) {
+              if(visible) {
+                visible = !visible;
+                scope.focusShow();
+                scope.$apply();
+              }
+            }
            });
         }
     };

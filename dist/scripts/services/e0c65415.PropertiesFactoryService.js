@@ -3,56 +3,79 @@ app.factory('Properties',['Property', 'Value',
 	function(Property, Value){
 		this.templates = {
 			leading: {
+				key: 'leading',
 				name: 'Leading',
 				'property-name':'line-height',
 				value: '1',
 				type: 'number',
 				inc: 1,
-				micro_inc: 0.05,
+				micro_inc: function(){
+					return Math.ceil( (1/this.dependent_int) * 100) / 100;
+				},
+				dependent_int: 16,
 				slider: {
 	    			floor: 0,
 	    			ceiling: 4,
-	    			precision: 2,
-	    			step: 0.05
+	    			precision: 2
 	    		}
 			},
 			columns: {
+				key: 'columns',
 				name: 'Columns',
 				'property-name':'-webkit-columns',
 				value: '1',
 				type: 'number',
 				inc: 1,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 1,
 	    			ceiling: 6,
 	    			precision: 1,
 	    			step: 1
-	    		}
+	    		},
+	    		linked: 'columngap', 
+	    		columngap: {
+					key: 'columngap',
+					name: 'Column Gap',
+					'property-name':'-webkit-column-gap',
+					value: '1',
+					unit: 'px',
+					type: 'number',
+					inc: 20,
+					micro_inc: function() { return 10},
+					slider: {
+		    			floor: 0,
+		    			ceiling: 100,
+		    			precision: 1,
+		    			step: 10
+		    		}
+				},
 			},
 			size: {
+				key: 'size',
 				name: 'Size',
 				'property-name':'font-size',
 				value: '16',
 				type: 'number',
 				unit:'px',
 				inc: 5,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
-	    			floor: 4,
-	    			ceiling: 72,
+	    			floor: 0,
+	    			ceiling: 100,
 	    			precision: 0,
 	    			step: 1
 	    		}
 			},
 			width: {
+				key: 'width',
 				name: 'Container Width',
 				'property-name':'width',
 				value: '600',
 				type: 'number',
 				unit:'px',
 				inc: 50,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 300,
 	    			ceiling: 900,
@@ -61,13 +84,14 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			tracking: {
+				key: 'tracking',
 				name: 'Tracking',
 				'property-name':'letter-spacing',
 				value: '0',
 				type: 'number',
 				unit:'px',
 				inc: 5,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: -4,
 	    			ceiling: 4,
@@ -76,27 +100,25 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			weight: {
+				key: 'weight',
 				name: 'Weight',
 				'property-name':'font-weight',
-				value: '500',
-				type: 'number',
-				inc: 100,
-				micro_inc: 100,
-				slider: {
-	    			floor: 100,
-	    			ceiling: 900,
-	    			precision: 0,
-	    			step: 100
-	    		}
+				value: 'bold',
+				type: 'options',
+				options: [
+					{name: 'normal', value:'normal'},
+					{name: 'bold', value:'bold'}
+				]
 			},
 			spacing: {
+				key: 'spacing',
 				name: 'Word Spacing',
 				'property-name':'word-spacing',
 				value: '0',
 				unit: 'px',
 				type: 'number',
 				inc: 5,
-				micro_inc: 1,
+				micro_inc: function() { return 1},
 				slider: {
 	    			floor: 0,
 	    			ceiling: 20,
@@ -105,6 +127,7 @@ app.factory('Properties',['Property', 'Value',
 	    		}
 			},
 			alignment: {
+				key: 'alignment',
 				name: 'Alignment',
 				'property-name':'text-align',
 				value: 'left',
@@ -117,6 +140,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			decoration: {
+				key: 'decoration',
 				name: 'Decoration',
 				'property-name':'text-decoration',
 				value: 'none',
@@ -129,6 +153,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			transform: {
+				key: 'transform',
 				name: 'Case',
 				'property-name':'text-transform',
 				value: 'none',
@@ -141,17 +166,32 @@ app.factory('Properties',['Property', 'Value',
 				]
 			},
 			 typeface: {
+			 	key: 'typeface',
 			 	name: 'Typeface',
 			 	'property-name' : 'font-family',
 	            value: 'Garamond',
 	            type: 'options',
+	            weights: function(){
+	            	var arr = [];
+	            	for(var i = 0; i < this.options.length; i++) {
+	            		if(this.options[i].value === this.value) {
+	            			for(var j = 0; j <this.options[i].weights.length; j++){
+	            				arr.push({'value': this.options[i].weights[j]})
+	            			}
+
+	            		}
+	            	}
+	            	console.log(arr);
+	            	return arr;
+	            },
 	            options: [
-	                {name: "Times New Roman", value:'Times New Roman'},
-	                {name: "Helvetica Neue" , value: 'Helvetica Neue'}, 
-	                {name: "Garamond", value: 'Garamond'}
+	                {name: "Times New Roman", value:'Times New Roman', weights: ['normal', 'bold']},
+	                {name: "Helvetica Neue" , value: 'Helvetica Neue', weights: ['100','200', '400', '500', '600']}, 
+	                {name: "Garamond", value: 'Garamond', weights: ['normal', 'bold']}
 	            ]
 	        },
 	        style: {
+	        	key: 'style',
 			 	name: 'Style',
 			 	'property-name' : 'font-style',
 	            value: 'italic',
@@ -163,12 +203,14 @@ app.factory('Properties',['Property', 'Value',
 	            ]
 	        },
 	        color: {
+	        	key: 'color',
 			 	name: 'Color',
 			 	'property-name' : 'color',
 	            value: '#333',
 	            type: 'color'
 	        },
 	        background: {
+	        	key: 'background',
 			 	name: 'Page Color',
 			 	'property-name' : 'background-color',
 	            value: '#333',
@@ -176,6 +218,7 @@ app.factory('Properties',['Property', 'Value',
 	            applies: 'background'
 	        },
 	        shadow: {
+	        	key: 'shadow',
 			 	name: 'Drop Shadow',
 			 	'property-name' : 'text-shadow',
 	            value: '3px 2px 4px #479',
@@ -188,6 +231,7 @@ app.factory('Properties',['Property', 'Value',
 				]
 	        },
 			dropcap: {
+				key: 'dropcap',
 			 	name: 'Drop Cap',
 				type: 'compound',
 				properties: {},
@@ -203,7 +247,9 @@ app.factory('Properties',['Property', 'Value',
 					this.templates[name]['properties'][String(this.templates[name]['add'][i])]= this.create(this.templates[name]['add'][i]);
 				}
 			}
-			return new Property(this.templates[name]);
+			var temp = new Property(this.templates[name]);
+			console.log(temp);
+			return temp;
 		}
 		this.getAvailable = function(compObj) {
 			var obj = {};

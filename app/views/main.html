@@ -2,10 +2,10 @@
 	<div class="toggle-controls" keypress>
 		<button ng-click="toggleControls()" ng-class="{'is-active': !controls}"class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
 	</div>
-	<div class="undo">
+	<!-- <div class="undo">
 		<button class="save" ng-click="content.addHeading()">Add Heading</button>
 		<button class="save" ng-click="ui.editMode()">Edit</button>
-	</div>
+	</div> -->
 	<div class="container">
 		<div class="edit-content" ng-show="ui.edit_mode">
 			<span>Give me</span>
@@ -98,3 +98,4 @@
 		</div>
 	</div>
 </div>
+<div ui-view></div>

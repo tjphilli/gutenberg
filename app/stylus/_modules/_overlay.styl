@@ -1,0 +1,58 @@
+.overlay
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	background: #eee;
+	overflow scroll
+	z-index 10000
+.about-overlay
+	.title
+		margin-top 20px
+		width 400px
+	.intro-text
+		margin-top 0
+		margin-bottom 30px
+		font-style italic
+		font-size 24px
+		font-weight 300
+
+	h2
+		margin-bottom 0
+	p
+		margin-top 9px
+		line-height 1.6
+	.close-button
+		position absolute
+		left 15px
+		top 15px
+		opacity .5
+		&:hover
+			opacity 1
+		i
+			font-size 2em
+	.internal
+		margin 0 auto
+		max-width 800px
+	.other-products 
+		margin-top: 30px
+		margin-bottom 20px
+		a.product-link
+			display block
+			padding 20px
+			float left
+			width 50%
+			height 100px
+			box-sizing border-box
+			background-color: #D8D8D8
+			transition all 0.3s
+			&:first-child
+				border-right 1px solid #eee
+			&:last-child
+				border-left 1px solid #eee
+			&:hover
+				background-color: #ccc
+			
+

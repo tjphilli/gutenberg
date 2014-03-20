@@ -1,8 +1,13 @@
 <div class="{{property.className()}} property-container expander" expander>
-	<div class="property">
-		<span class="delete" ng-click="remove(name)"><i class="icon-cross"></i></span>
-		<span class="name">{{property.name}}:</span>
-		<span class="value">{{property.propertyValue()}}</span>
+	<div class="property cf">
+		<div class="property-name">
+			<span class="delete" ng-click="remove(name)"><i class="icon-cross"></i></span>
+			<span class="name">{{property.name}}:</span>
+		</div>
+		<div class="property-value">
+			<input type='number' step="{{property.micro_inc()}}" value="{{property.value}}" ng-model="property.value" class="value">
+			<span class="name">{{property.unit}}</span>
+		</div>
 	</div>
 	<div class="controls expander-target">
 		<div ng-transclude></div>

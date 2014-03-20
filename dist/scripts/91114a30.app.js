@@ -1,11 +1,13 @@
 'use strict';
 var app = angular.module('gutenbergApp', [
+    'ui.router',
     'ngTouch',
     'vr.directives.slider',
     'ngClipboard',
     'ngRoute',
     'config',
-    'colorpicker.module'
+    'colorpicker.module',
+    'ngAnimate'
   ]).config([
     '$httpProvider',
     function ($httpProvider) {
@@ -15,14 +17,19 @@ var app = angular.module('gutenbergApp', [
   ]).config([
     '$routeProvider',
     '$locationProvider',
-    function ($routeProvider, $locationProvider) {
-      $routeProvider.when('/', {
+    '$stateProvider',
+    '$urlRouterProvider',
+    function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+      $stateProvider.state('main', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainController'
-      }).when('/:type', {
-        templateUrl: 'views/main.html',
+      }).state('main.about', {
+        url: 'about',
+        templateUrl: 'views/about.html',
         controller: 'MainController'
-      }).otherwise({ redirectTo: '/' });
+      });
       $locationProvider.html5Mode(false).hashPrefix('!');
+      $urlRouterProvider.otherwise('/');
     }
   ]);
