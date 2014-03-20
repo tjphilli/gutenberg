@@ -16,7 +16,7 @@ app.directive('tooltip', function () {
                 el_width = $trigger.innerWidth(),
                 tip_height = $tooltip.innerHeight(),
                 tip_width = $tooltip.innerWidth(),
-                buffer = 10;
+                buffer = 10,
                 offset = { top: -tip_height - buffer, left: 0};
             $tooltip.addClass(direction);
             switch(direction) {
