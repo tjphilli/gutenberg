@@ -49,7 +49,7 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
         require: '^container',
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_select.html",
-        link: function(scope, elem, attrs, ContainerCtrl, $rootScope){
+        link: function(scope, elem, attrs, ContainerCtrl){
             var face_name = "";
             if(scope.property.name === "Weight") {
                 $rootScope.$on('FACE_CHANGE', function(event, face) {
