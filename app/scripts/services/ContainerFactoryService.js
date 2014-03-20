@@ -1,5 +1,5 @@
 // Service to store and retrieve application wide data
-app.factory('Container', ['Properties', function(Properties){
+app.factory('Container', ['Properties', 'Property', function(Properties, Property){
 	var Container = function(options) {
 		this.properties = [];
 	};
@@ -18,6 +18,12 @@ app.factory('Container', ['Properties', function(Properties){
     Container.prototype.addProperty = function(name){
         this.properties.unshift(Properties.create(name));
     }
+    Container.prototype.addLinkedProperty = function(name){
+        var temp =  Properties.create(name);
+        var property = this.findProperty(name);
+        this.properties.unshift(new Property(temp[temp.linked]));
+        this.properties.unshift(temp);
+    }
     Container.prototype.removeProperty = function(name){
     	var index = 0;
     	for (var i = 0; i < this.properties.length; i++) {
@@ -27,12 +33,41 @@ app.factory('Container', ['Properties', function(Properties){
     	}
         this.properties.splice(index, 1);
     }
+    Container.prototype.removeLinkedProperty = function(name){
+        var index = 0;
+        for (var i = 0; i < this.properties.length; i++) {
+            if(this.properties[i].key === name) {
+                index = i;
+            }
+        }
+        if(this.propertyExists(this.properties[index].linked)) {
+            this.properties.splice(index, 2);
+        }
+        else {
+            this.properties.splice(index, 1);
+        }
+    }
     Container.prototype.findProperty = function(name) {
     	for (var i = 0; i < this.properties.length; i++) {
     		if(this.properties[i].key === name) {
     			return this.properties[i];
     		}
     	}
+    }
+    Container.prototype.getPropertyIndex = function(name) {
+        for (var i = 0; i < this.properties.length; i++) {
+            if(this.properties[i].key === name) {
+                return i;
+            }
+        }
+    }
+    Container.prototype.propertyExists = function(name) {
+        for (var i = 0; i < this.properties.length; i++) {
+            if(this.properties[i].key === name) {
+                return true;
+            }
+        }
+        return false;
     }
 	Container.prototype.css = function(html){
 		var style = this.style();

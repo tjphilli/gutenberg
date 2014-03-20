@@ -89,11 +89,19 @@ app
     $scope.container.addProperty("weight");
 
     $scope.addProperty = function (name) {
-        $scope.container.addProperty(name);
-        console.log($scope.container);
+        if(name === 'columns') {
+            $scope.container.addLinkedProperty(name);
+        }
+        else{
+            $scope.container.addProperty(name);
+        }
     }
     $scope.removeProperty = function (name) {
-        $scope.container.removeProperty(name);
+        if(name === 'columns') {
+            $scope.container.removeLinkedProperty(name);
+        } else {
+            $scope.container.removeProperty(name);
+        }
     }
     $scope.availableProperties = function() {
         return   Properties.getAvailable($scope.container.currentProperties());

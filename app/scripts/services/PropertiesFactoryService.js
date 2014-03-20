@@ -32,7 +32,24 @@ app.factory('Properties',['Property', 'Value',
 	    			ceiling: 6,
 	    			precision: 1,
 	    			step: 1
-	    		}
+	    		},
+	    		linked: 'columngap', 
+	    		columngap: {
+					key: 'columngap',
+					name: 'Column Gap',
+					'property-name':'-webkit-column-gap',
+					value: '1',
+					unit: 'px',
+					type: 'number',
+					inc: 20,
+					micro_inc: function() { return 10},
+					slider: {
+		    			floor: 0,
+		    			ceiling: 100,
+		    			precision: 1,
+		    			step: 10
+		    		}
+				},
 			},
 			size: {
 				key: 'size',

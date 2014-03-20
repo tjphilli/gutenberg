@@ -762,6 +762,20 @@ colorpicker-preview {
   transition-delay: 0s;
 }
 
+input[type=number] {
+  text-align: right;
+  border: 1px solid #999;
+  border-radius: 3px;
+  background: #ddd;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  outline: none;
+}
+
+input[type=number]:focus {
+  background: #fff;
+}
+
 a {
   color: #333;
   font-weight: 300;
