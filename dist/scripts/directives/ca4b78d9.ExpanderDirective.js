@@ -28,7 +28,7 @@ app.directive('focusShow', function () {
           focusShow: '&'
         },
         link: function (scope, element, attrs) {
-          var visible = false;
+          var visible = false,
           $element = $(element)
            $element.on('focus', function(){
             console.log(scope);
