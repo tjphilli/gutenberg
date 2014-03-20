@@ -42,5 +42,3 @@ Options are includes as simple paramaters, the order of the parameters does not 
 Format of requests: `http://gutenberg.io/api/:source/:number/:type`
 
 Where `:source` can be `lorem`, `hipster`, `bacon`, `random`.  Where `:number` can be `1-99`. Where `:type` can be `json` or `html`. 
-
-The api in its current form is very limited, but my plan is to create a flexible version which accepts requests: ` /api/{lorem/bacon/hipster}/{:number}/{long/short}/{html/json}

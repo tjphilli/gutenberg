@@ -86,7 +86,7 @@ app
     $scope.container.addProperty("leading");
     $scope.container.addProperty("typeface");
     $scope.container.addProperty("size");
-    $scope.container.addProperty("weight");
+    // $scope.container.addProperty("weight");
 
     $scope.addProperty = function (name) {
         if(name === 'columns') {
