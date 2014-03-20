@@ -1,10 +1,27 @@
+.cf:after
+	content: "";
+	display: table;
+	clear: both;
+
 .undo
 	position absolute
 	top 100px
 	left 100px
 .inspector-styles
-	margin-top 70px
-
+	position relative
+	margin-top 50px
+	padding-top 20px
+	padding-bottom 100px
+	max-height 70%
+	overflow scroll
+	box-sizing border-box
+	.top-scroll-cutoff
+		position: fixed;
+		width 90%
+		height: 20px;
+		background: linear-gradient(to top, rgba(255,255,255,0) 0%, white 45%);
+		z-index: 1000;
+		top: 169px;
 
 .property-module
 	&.ng-enter 
@@ -44,6 +61,17 @@
 		padding 0 5px
 		font-weight 300
 		line-height 2
+		.property-name
+			width 50%
+			float left
+		.property-value
+			width 50%
+			float left
+			select
+				width 100%
+			input[type=number]
+				max-width 50px
+
 	.controls
 		background-color #F8F8F8
 		.slider-btn
@@ -125,40 +153,47 @@
 		transition all 0.3s
 		&:hover
 			background-color #ccc
+.typeface.property-container
+	.property-name
+		width 40%
+	.property-value
+		width 60%
+			
 .property.options
 	position relative
 	padding-right 0
-	&:hover
+	.property-value
+		position relative
+		&:hover
+			select
+				color #111
+			&::after
+				color: rgba(0,0,0,.6);
+			&::before
+				background-color: rgba(0,0,0,.2);
 		select
-			color #111
-		&::after
-			color: rgba(0,0,0,.6);
+			appearance none
+			background-color transparent
+			border none
+		&::after, &::before
+			content: "";
+			position: absolute;
+			pointer-events: none;
+			transition all 0.3s
 		&::before
-			background-color: rgba(0,0,0,.2);
-	select
-		appearance none
-		background-color transparent
-		border none
-		padding-right 47px
-	&::after, &::before
-		content: "";
-		position: absolute;
-		pointer-events: none;
-		transition all 0.3s
-	&::before
-		background-color: rgba(0,0,0,.15);
-		width: 2em;
-		right: 0;
-		top: 0;
-		bottom: 0;
-	&::after
-		color: rgba(0,0,0,.4);
-		content: "\25BC";
-		height: 1em;
-		font-size: .625em;
-		line-height: 1;
-		right: 1.2em;
-		top: 50%;
-		margin-top: -.5em;
+			background-color: rgba(0,0,0,.15);
+			width: 2em;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		&::after
+			color: rgba(0,0,0,.4);
+			content: "\25BC";
+			height: 1em;
+			font-size: .625em;
+			line-height: 1;
+			right: 1.2em;
+			top: 50%;
+			margin-top: -.5em;
 
 

@@ -44,8 +44,8 @@ app.factory('Properties',['Property', 'Value',
 				inc: 5,
 				micro_inc: function() { return 1},
 				slider: {
-	    			floor: 4,
-	    			ceiling: 72,
+	    			floor: 0,
+	    			ceiling: 100,
 	    			precision: 0,
 	    			step: 1
 	    		}

@@ -55,7 +55,7 @@ app
     }
 
     $scope.postTest = function() {
-        DownloadService.getDownload({markup: $scope.paras, css: $scope.type.css()}).success(function(response){
+        DownloadService.getDownload({markup: $scope.paras, css: $scope.container.css()}).success(function(response){
             window.location = "dl/" + response.file;
         });
     }

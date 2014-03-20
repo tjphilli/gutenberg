@@ -1,11 +1,11 @@
-<div class="toggle-controls" keypress>
-	<button ng-click="toggleControls()" class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
-</div>
-<div class="undo">
-	<button class="save" ng-click="content.addHeading()">Add Heading</button>
-	<button class="save" ng-click="ui.editMode()">Edit</button>
-</div>
 <div class="outer-wrap">
+	<div class="toggle-controls" keypress>
+		<button ng-click="toggleControls()" ng-class="{'is-active': !controls}"class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
+	</div>
+	<div class="undo">
+		<button class="save" ng-click="content.addHeading()">Add Heading</button>
+		<button class="save" ng-click="ui.editMode()">Edit</button>
+	</div>
 	<div class="container">
 		<div class="edit-content" ng-show="ui.edit_mode">
 			<span>Give me</span>
@@ -55,6 +55,7 @@
 				</ul>
 			</div>
 			<div class="inspector-styles">
+				<div class="top-scroll-cutoff"></div>
 				<div ng-repeat="property in container.getProperties()" container="container" class="property-module">
 					<div ng-switch on="property.type">
 						<div ng-switch-when="number">
@@ -84,6 +85,9 @@
 		</div>
 		<div class="actions">
 			<div class="live-code" ng-class="{'is-collapsed': !live_code}">
+				<span class="live-code-close" ng-click="toggleLiveCode()">
+					<i class="icon-cross"></i>
+				</span>
 				<div ng-repeat="prop in container.getProperties()">
 					{{prop['property-name']}}: {{prop.propertyValue()}};
 				</div>

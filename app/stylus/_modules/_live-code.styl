@@ -1,16 +1,22 @@
 .live-code
 	position absolute
 	bottom 41%
-	margin-bottom 15px
+	margin-bottom 25px
 	clear left
 	width 100%
 	box-sizing border-box
 	padding 5px
 	background-color #eee
 	border 3px solid #ddd
+	border-top-width 15px
 	font-family 'Andale Mono'
 	opacity 1
 	transition all 0.3s
+	.live-code-close
+		top -15px
+		left 0
+		position absolute
+		cursor pointer
 	&.is-collapsed
 		height 0
 		overflow hidden
