@@ -13,35 +13,7 @@ app.directive('property', function () {
         }
     };
 });
-app.directive('container',['$rootScope', function ($rootScope) {
-    return {
-        scope: {
-            container: '=',
-        },
-        controller: function($scope) {
-            this.getSize = function(){
-                return $scope.container.findProperty('size').value;
-            }
-            this.getWeights = function(){
-                return $scope.container.findProperty('typeface').weights();   
-            }
-            $scope.$watch(function(){
-                return $scope.container.findProperty("size").value;
-                }, function(){
-                $rootScope.$broadcast('SIZE_CHANGE', {some: 'val'});
-            });
-            $scope.$watch(function(){
-                return $scope.container.findProperty("typeface").value;
-                }, function(){
-                console.log("CAUGHTS!");
-                $rootScope.$broadcast('FACE_CHANGE', $scope.container.findProperty("typeface").value);
-            });
-        },
-        link: function (scope, element, attrs) {
-           console.log(scope.name);
-        }
-    };
-}]);
+
 app.directive('propertyNumber', ['$rootScope', function ($rootScope) {
     return {
         scope: {
@@ -77,7 +49,7 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
         require: '^container',
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_select.html",
-        link: function(scope, elem, attrs, ContainerCtrl){
+        link: function(scope, elem, attrs, ContainerCtrl, $rootScope){
             var face_name = "";
             if(scope.property.name === "Weight") {
                 $rootScope.$on('FACE_CHANGE', function(event, face) {

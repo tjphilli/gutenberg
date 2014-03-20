@@ -15,11 +15,10 @@ var app = angular.module('gutenbergApp', [
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
   ]).config([
-    '$routeProvider',
     '$locationProvider',
     '$stateProvider',
     '$urlRouterProvider',
-    function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+    function ($locationProvider, $stateProvider, $urlRouterProvider) {
       $stateProvider.state('main', {
         url: '/',
         templateUrl: 'views/main.html',

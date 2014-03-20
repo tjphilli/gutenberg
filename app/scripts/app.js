@@ -6,7 +6,7 @@ var app = angular.module('gutenbergApp', ['ui.router', 'ngTouch', 'vr.directives
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
 ])
-.config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('main', {
         url: '/',

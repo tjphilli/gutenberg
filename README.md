@@ -35,4 +35,12 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 
 # Gutenberg API
 
+You can make a get request to the Gutenberg api at: `http://gutenberg.io/api/`
+
+Options are includes as simple paramaters, the order of the parameters does not matter. Therefore `http://gutenberg.io/api/hipster/4` is the same as `http://gutenberg.io/api/4/hipster`.
+
+Format of requests: `http://gutenberg.io/api/:source/:number/:type`
+
+Where `:source` can be `lorem`, `hipster`, `bacon`, `random`.  Where `:number` can be `1-99`. Where `:type` can be `json` or `html`. 
+
 The api in its current form is very limited, but my plan is to create a flexible version which accepts requests: ` /api/{lorem/bacon/hipster}/{:number}/{long/short}/{html/json}
