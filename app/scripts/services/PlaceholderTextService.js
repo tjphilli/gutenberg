@@ -1,5 +1,5 @@
 // Service to store and retrieve application wide data
-app.factory('PlaceholderTextService', ['$http', '$q', 'ENV',function($http, $q, ENV){
+app.factory('PlaceholderTextService', ['$http', 'ENV',function($http, ENV){
 	var URL_BASE = "";
 	console.log(ENV);
 	if (ENV === 'development') {
