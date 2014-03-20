@@ -26,9 +26,9 @@ app.directive('propertyNumber', ['$rootScope', function ($rootScope) {
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate.html",
         link: function(scope, elem, attrs, ContainerCtrl) {
-            $rootScope.$on('SIZE_CHANGE', function(event, mass) {
-                scope.property.dependent_int = ContainerCtrl.getSize();    
-            });
+            // $rootScope.$on('SIZE_CHANGE', function(event, mass) {
+            //     scope.property.dependent_int = ContainerCtrl.getSize();    
+            // });
             
         }
     };
@@ -50,16 +50,16 @@ app.directive('propertySelect', ['$rootScope', function ($rootScope){
         transclude: true,
         templateUrl: "scripts/directives/propertyTemplate_select.html",
         link: function(scope, elem, attrs, ContainerCtrl){
-            var face_name = "";
-            if(scope.property.name === "Weight") {
-                $rootScope.$on('FACE_CHANGE', function(event, face) {
-                    if(face_name != face) {
-                        face_name = face;
-                        scope.property.options = ContainerCtrl.getWeights();
-                        scope.property.value = scope.property.options[scope.property.options.length -1].value;
-                    }
-                });
-            }
+        //     var face_name = "";
+        //     if(scope.property.name === "Weight") {
+        //         $rootScope.$on('FACE_CHANGE', function(event, face) {
+        //             if(face_name != face) {
+        //                 face_name = face;
+        //                 scope.property.options = ContainerCtrl.getWeights();
+        //                 scope.property.value = scope.property.options[scope.property.options.length -1].value;
+        //             }
+        //         });
+        //     }
         }
     };
 }]);

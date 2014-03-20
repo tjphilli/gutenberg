@@ -7,7 +7,7 @@ app.directive('keypress', function () {
         };
         $(window).bind("keydown keypress", function (event) {
             if(wasPressed(event, 38)) {
-                scope.type.properties.leading.microIncrease()
+                scope.container.findProperty('leading').microIncrease()
                 scope.$apply()
                 event.preventDefault();
             }
