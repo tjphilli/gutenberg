@@ -74,13 +74,28 @@
 
 	.controls
 		background-color #F8F8F8
+		.property-tray
+			padding 20px 0 10px
 		.slider-btn
+			position relative
 			border-radius 100%
 			border none
 			outline none
+			width 20px
+			line-height 13px
+			z-index 11000
+			background #ddd
+			border 1px solid #bbb
+			transition background 0.3s
+			box-sizing border-box
+			&:hover 
+				background #ccc
 		.decrease
+			left 8px
 			float left
 		.increase
+			left auto
+			right 8px
 			float right
 		// padding-bottom 5px
 	// styles for nested properties
@@ -104,7 +119,7 @@
 	&.zeroclipboard-is-hover
 		background-color darken(#ccc, 10%)
 	&.zeroclipboard-is-active
-		margin-top 25px
+		transform: translateY(10px)
 		background-color darken(#ccc, 30%)
 
 .property.color

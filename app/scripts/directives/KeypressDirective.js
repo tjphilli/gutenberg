@@ -12,18 +12,18 @@ app.directive('keypress', function () {
                 event.preventDefault();
             }
             else if(wasPressed(event, 40)) {
-                scope.type.properties.leading.microDecrease()
+                scope.container.findProperty('leading').microDecrease()
                 scope.$apply()
                 event.preventDefault();
                 window.test = event.shiftKey;
             }
             else if(wasPressed(event, 187)) {
-                scope.type.properties.size.microIncrease()
+                scope.container.findProperty('size').microIncrease()
                 scope.$apply()
                 event.preventDefault();
             }
             else if(wasPressed(event, 189)) {
-                scope.type.properties.size.microDecrease()
+                scope.container.findProperty('size').microDecrease()
                 scope.$apply()
                 event.preventDefault();
                 window.test = event.shiftKey;

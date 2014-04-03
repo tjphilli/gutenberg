@@ -43,7 +43,7 @@ slider {
 }
 
 slider span.bar {
-  height: 25%;
+  height: 15%;
   z-index: 999;
   background: #ccc;
   left: 0;
@@ -72,8 +72,8 @@ slider span.pointer {
   cursor: pointer;
   width: 12px;
   height: 12px !important;
-  border-radius: 6px;
-  top: 31%;
+  border-radius: 8px;
+  top: 20%;
   bottom: 0;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -211,17 +211,39 @@ slider span.bubble {
   background-color: #f8f8f8;
 }
 
+.property-container .controls .property-tray {
+  padding: 20px 0 10px;
+}
+
 .property-container .controls .slider-btn {
+  position: relative;
   border-radius: 100%;
   border: none;
   outline: none;
+  width: 20px;
+  line-height: 13px;
+  z-index: 11000;
+  background: #ddd;
+  border: 1px solid #bbb;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.property-container .controls .slider-btn:hover {
+  background: #ccc;
 }
 
 .property-container .controls .decrease {
+  left: 8px;
   float: left;
 }
 
 .property-container .controls .increase {
+  left: auto;
+  right: 8px;
   float: right;
 }
 
@@ -252,7 +274,9 @@ slider span.bubble {
 }
 
 #clip.zeroclipboard-is-active {
-  margin-top: 25px;
+  -webkit-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px);
   background-color: #8f8f8f;
 }
 
@@ -932,7 +956,7 @@ html {
 
 body {
   color: #333;
-  font-family: 'Helvetica Neue';
+  font-family: 'Helvetica Neue','Helvetica','FreightSans','Arial','Sans-serif';
   background-color: #fff;
   height: 100%;
 }

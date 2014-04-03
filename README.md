@@ -17,11 +17,11 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 - font-style
 - word-spacing
 - color
-- background-color (page)
+- background-color (page, currently broken)
+- text-shadow (needs styling)
 
 ## Future Supported Properties:
 - p:first (drop caps)
-- text-shadow
 
 
 ## Far Future Supported Properties
@@ -32,6 +32,13 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 - text-rendering
 - webkit-font-smoothing
 - font-variant
+
+## Roadmap of Features
+- Add support of multi-element generation/styling
+- Drag to reorder souce markup
+- Drag to reorder properties
+- Support to copy to clipboard as Sass/Stylus/Less
+- "HTML Mode" for composing content
 
 # Gutenberg API
 

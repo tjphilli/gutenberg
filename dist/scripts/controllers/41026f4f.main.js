@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams) {
+  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', 'Selection', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams, Selection) {
     $scope.controls = false;
     $scope.live_code = false;
     // $scope.edit_mode = false;
@@ -12,6 +12,11 @@ app
             this.edit_mode = !this.edit_mode
         }
     }
+    $scope.selection = Selection;
+    // $scope.$watch(function(){return Selection.element},
+    //     function(newVal){
+    //         $scope.selection =Selection;
+    //     })
     $scope.toggleControls = function() {
         $scope.controls = !$scope.controls;
     }

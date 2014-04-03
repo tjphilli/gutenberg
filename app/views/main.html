@@ -1,6 +1,7 @@
 <div class="outer-wrap">
 	<div class="toggle-controls" keypress>
 		<button ng-click="toggleControls()" ng-class="{'is-active': !controls}"class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
+		<!-- <button class="test" tp-selection>Test</button> -->
 	</div>
 	<!-- <div class="undo">
 		<button class="save" ng-click="content.addHeading()">Add Heading</button>
@@ -37,7 +38,7 @@
 			<p>Nunc mattis et eros vitae laoreet. Pellentesque faucibus eros nec quam porta euismod. Morbi gravida ut enim tempor convallis. Fusce hendrerit sed orci vel pellentesque. Integer mollis justo lacus, sit amet vulputate neque commodo ac. Suspendisse ac odio purus. Etiam venenatis suscipit sollicitudin. In hac habitasse platea dictumst. Ut eu lacus augue. Ut euismod luctus purus ut dapibus.</p> -->
 			<h1>{{content.heading.text}}</h1>
 			<span ng-repeat="para in paras" ng-switch on="$index">
-				<p ng-switch-when="0">
+				<p ng-switch-when="0" tp-selection>
 					<span class="dropcap" ng-style="type.dropcap()">{{firstLetter(para)}}</span>{{restOf(para)}}
 				</p>
 				<p ng-switch-default>
@@ -54,13 +55,16 @@
 					<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 				</ul>
 			</div>
+			<!-- {{selection.getElement()}} -->
 			<div class="inspector-styles">
 				<div class="top-scroll-cutoff"></div>
 				<div ng-repeat="property in container.getProperties()" container="container" class="property-module">
 					<div ng-switch on="property.type">
 						<div ng-switch-when="number">
 							<div property="property" property-number name="property.key" remove="removeProperty">
-								<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+								<div class="property-tray">
+									<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+								</div>
 							</div>
 						</div>
 						<div ng-switch-when="options">
