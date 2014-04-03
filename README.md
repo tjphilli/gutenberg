@@ -39,6 +39,7 @@ Gutenberg is an experimental type tester to introduce traditional designers to w
 - Drag to reorder properties
 - Support to copy to clipboard as Sass/Stylus/Less
 - "HTML Mode" for composing content
+- Implementation of my tests for determining whether typeface exists/what weights are available
 
 # Gutenberg API
 
