@@ -44,6 +44,12 @@ app
     $scope.changeHeading = function() {
         $scope.dom.elements[0].container.addProperty("size");
     }
+    $scope.moveDown = function() {
+        $scope.dom.moveDown($scope.selection.getElement());
+    }
+    $scope.moveUp = function() {
+        $scope.dom.moveUp($scope.selection.getElement());
+    }
     $scope.content.addHeading = function(){
         $scope.content.heading = {};
         $scope.content.heading.visible = true;
@@ -87,6 +93,22 @@ app
                 if(this.elements[i].selector() == selector) {
                     return i;
                 }
+            }
+        },
+        moveDown: function(selector) {
+            var index = this.find(selector);
+            if(index != this.elements.length -1) {
+                var temp = this.elements[index];
+                this.elements[index] = this.elements[index+1];
+                this.elements[index+1] =  temp;
+            }
+        },
+        moveUp: function(selector) {
+            var index = this.find(selector);
+            if(index != 0) {
+                var temp = this.elements[index];
+                this.elements[index] = this.elements[index-1];
+                this.elements[index-1] =  temp;
             }
         }
     };
@@ -156,6 +178,10 @@ app
         }
     }
     $scope.availableProperties = function() {
-        return   Properties.getAvailable($scope.dom.wrapper.currentProperties());
+        if($scope.selection.getElement() != 'none') {
+            return   Properties.getAvailable($scope.dom.elements[$scope.dom.find($scope.selection.getElement())].container.currentProperties());
+        } else {
+            return   Properties.getAvailable($scope.dom.wrapper.currentProperties());
+        }
     }
   }]);

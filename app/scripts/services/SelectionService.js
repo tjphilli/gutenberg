@@ -7,6 +7,9 @@ app.factory('Selection', ['Properties', 'Property', function(Properties, Propert
 		},
 		setElement: function(name) {
 			this.element = name;
+		},
+		isSelected: function(selector) {
+			return this.element === selector;	
 		}
 	}
 

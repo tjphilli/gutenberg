@@ -3,7 +3,8 @@
 		<button ng-click="toggleControls()" ng-class="{'is-active': !controls}"class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
 		<button class="test" ng-click="testFunction()">Add h1</button>
 		<button class="test" ng-click="addHeading()">Add h2</button>
-		<button class="test" ng-click="changeHeading()">Change Heading</button>
+		<button class="test" ng-click="moveDown()">moveDown</button>
+		<button class="test" ng-click="moveUp()">moveUp</button>
 	</div>
 	<!-- <div class="undo">
 		<button class="save" ng-click="content.addHeading()">Add Heading</button>
@@ -65,7 +66,7 @@
 				<div ng-repeat="property in dom.wrapper.getProperties()" container="dom.wrapper" class="property-module">
 					<ng-include src="'/views/templates/property_container.html'"></ng-include>
 				</div>
-				<div ng-repeat="element in dom.elements" class="element-container">
+				<div ng-repeat="element in dom.elements" class="element-container" ng-class="{'is-selected': selection.isSelected(element.selector())}">
 					<span>{{element.selector()}}</span>
 					<div ng-repeat="property in element.container.getProperties()" container="element.container" class="property-module">
 						<ng-include src="'/views/templates/property_container.html'"></ng-include>
