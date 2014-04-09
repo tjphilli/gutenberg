@@ -248,7 +248,24 @@ app.factory('Properties',['Property', 'Value',
 				properties: {},
 				add: ['size', 'color', 'style'],
 	            applies: 'dropcap'
-	        }
+	        },
+	        padding: {
+				key: 'padding',
+				name: 'padding',
+				'property-name':'padding',
+				value: '5',
+				type: 'number',
+				unit:'px',
+				inc: 1,
+				micro_inc: function() { return 1},
+				slider: {
+	    			floor: 0,
+	    			ceiling: 100,
+	    			precision: 0,
+	    			step: 1
+	    		},
+	    		applies: 'element'
+			}
 		};
 		this.compoundTemplates = {
 		};
@@ -262,12 +279,25 @@ app.factory('Properties',['Property', 'Value',
 			console.log(temp);
 			return temp;
 		}
-		this.getAvailable = function(compObj) {
+		this.getAvailable = function(compObj, container_type) {
 			var obj = {};
 			for(var property in this.templates) {
 				if (property in compObj) {}
 				else {
-					obj[property] = this.templates[property]['name']
+					console.log(this.templates[property].applies);
+					if(this.templates[property].applies == 'background') {
+						if(container_type == "wrapper") {
+							obj[property] = this.templates[property]['name']
+						}
+					}
+					else if (this.templates[property].applies == 'element') {
+						if(container_type == "element") {
+							obj[property] = this.templates[property]['name']
+						}
+					}
+					else {
+						obj[property] = this.templates[property]['name']
+					}
 				}
 			}
 			return obj;

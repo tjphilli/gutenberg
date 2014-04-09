@@ -1,17 +1,31 @@
 // Service to store and retrieve application wide data
 app.factory('Container', ['Properties', 'Property', function(Properties, Property){
-	var Container = function(options) {
+	var Container = function(properties) {
 		this.properties = [];
+        if(properties != undefined) {
+            for(var i = 0; i < properties.length; i++) {
+                this.addProperty(properties[i]);
+            }
+        }
 	};
 	Container.prototype.style = function() {
         var obj = {};
         for(var i =0; i < this.properties.length; i++) {
-            if (this.properties[i]['applies'] == undefined) {
+            if (this.properties[i]['applies'] == undefined || this.properties[i]['applies'] == 'element') {
                 obj[this.properties[i]['property-name']] = this.properties[i]['propertyValue']()
             }
         }
         return obj
     }
+    Container.prototype.backgroundStyle = function() {
+            var obj = {};
+            for(var i =0; i < this.properties.length; i++) {
+                if (this.properties[i]['applies'] == 'background') {
+                    obj[this.properties[i]['property-name']] = this.properties[i]['propertyValue']()
+                }
+            }
+            return obj;
+        },
     Container.prototype.isNotEmpty = function() {
         return this.properties.length > 0;
     }
@@ -19,6 +33,7 @@ app.factory('Container', ['Properties', 'Property', function(Properties, Propert
         return this.properties;
     }
     Container.prototype.addProperty = function(name){
+        console.log("Added " + name);
         this.properties.unshift(Properties.create(name));
     }
     Container.prototype.addLinkedProperty = function(name){

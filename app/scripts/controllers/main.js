@@ -1,7 +1,9 @@
 'use strict';
 
 app
-  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', 'Selection', 'ElementFactory', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams, Selection, ElementFactory) {
+  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', 'Selection', 'ElementFactory', 'Dom', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams, Selection, ElementFactory, Dom) {
+    $scope.dom = Dom;
+
     $scope.controls = false;
     $scope.live_code = false;
     // $scope.edit_mode = false;
@@ -31,9 +33,6 @@ app
     };
 
     $scope.paras =  "";
-    $scope.content = {
-        paras: ""
-    };
     $scope.test_element = ElementFactory.create("p");
     $scope.testFunction = function() {
         $scope.dom.elements.unshift(ElementFactory.create("h1", "Gutenberg Heading"))
@@ -50,12 +49,10 @@ app
     $scope.moveUp = function() {
         $scope.dom.moveUp($scope.selection.getElement());
     }
-    $scope.content.addHeading = function(){
-        $scope.content.heading = {};
-        $scope.content.heading.visible = true;
-        $scope.content.heading.container = new Container();
-        $scope.content.heading.text = "Gutenberg Heading";
+    $scope.deleteElement = function() {
+        $scope.dom.deleteElement($scope.selection.getElement());
     }
+
     $scope.getText = function(num, type, format){
         PlaceholderTextService.getLocalText(num, type, format).success(function(data){
             $scope.paras = data;
@@ -67,7 +64,6 @@ app
             }
         });
     }
-    $scope.getText(2);
 
     $scope.$watchCollection('placeholder', function(){
         console.log("updated!");
@@ -85,36 +81,6 @@ app
             window.location = "dl/" + response.file;
         });
     }
-    $scope.dom = {
-        wrapper: new Container(),
-        elements: [],
-        find: function(selector){
-            for(var i=0; i < this.elements.length; i++) {
-                if(this.elements[i].selector() == selector) {
-                    return i;
-                }
-            }
-        },
-        moveDown: function(selector) {
-            var index = this.find(selector);
-            if(index != this.elements.length -1) {
-                var temp = this.elements[index];
-                this.elements[index] = this.elements[index+1];
-                this.elements[index+1] =  temp;
-            }
-        },
-        moveUp: function(selector) {
-            var index = this.find(selector);
-            if(index != 0) {
-                var temp = this.elements[index];
-                this.elements[index] = this.elements[index-1];
-                this.elements[index-1] =  temp;
-            }
-        }
-    };
-    $scope.dom.wrapper.addProperty("leading");
-    $scope.dom.wrapper.addProperty("typeface");
-    $scope.dom.wrapper.addProperty("size");
 
     $scope.type = {
         properties: {},
@@ -179,9 +145,10 @@ app
     }
     $scope.availableProperties = function() {
         if($scope.selection.getElement() != 'none') {
-            return   Properties.getAvailable($scope.dom.elements[$scope.dom.find($scope.selection.getElement())].container.currentProperties());
+            console.log($scope.selection.getElement())
+            return   Properties.getAvailable($scope.selection.getReference().container.currentProperties(), "element");
         } else {
-            return   Properties.getAvailable($scope.dom.wrapper.currentProperties());
+            return   Properties.getAvailable($scope.dom.wrapper.currentProperties(), "wrapper");
         }
     }
   }]);

@@ -10,6 +10,7 @@ app.directive('tpSelection', ['Selection', 'Style', function (Selection, Style) 
         link: function (scope, element, attrs) {
             var foo = true;
            $(element).on('click', function(){
+                console.log(scope);
                 scope.selection = Selection;
                 scope.style_block = Style;
                 scope.selection.setElement(scope.selector);

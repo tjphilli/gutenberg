@@ -5,6 +5,8 @@
 		<button class="test" ng-click="addHeading()">Add h2</button>
 		<button class="test" ng-click="moveDown()">moveDown</button>
 		<button class="test" ng-click="moveUp()">moveUp</button>
+		<button class="test" ng-click="deleteElement()">delete</button>
+		<span>{{selection.getReference().type}} <input type="text" ng-model="selection.getReference().name"></span>
 	</div>
 	<!-- <div class="undo">
 		<button class="save" ng-click="content.addHeading()">Add Heading</button>
