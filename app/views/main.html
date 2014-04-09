@@ -66,8 +66,8 @@
 				<div ng-repeat="property in dom.wrapper.getProperties()" container="dom.wrapper" class="property-module">
 					<ng-include src="'/views/templates/property_container.html'"></ng-include>
 				</div>
-				<div ng-repeat="element in dom.elements" class="element-container" ng-class="{'is-selected': selection.isSelected(element.selector())}">
-					<span>{{element.selector()}}</span>
+				<div ng-repeat="element in dom.elements" ng-if="element.container.isNotEmpty()" class="element-container" ng-class="{'is-selected': selection.isSelected(element.selector())}">
+					<div class="selector-name">{{element.selector()}}</div>
 					<div ng-repeat="property in element.container.getProperties()" container="element.container" class="property-module">
 						<ng-include src="'/views/templates/property_container.html'"></ng-include>
 					</div>

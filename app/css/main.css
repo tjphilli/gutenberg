@@ -892,6 +892,10 @@ colorpicker-preview {
   border: 1px solid #f00 !important;
 }
 
+.element-container .selector-name {
+  text-align: center;
+}
+
 input[type=number] {
   text-align: right;
   border: 1px solid #999;

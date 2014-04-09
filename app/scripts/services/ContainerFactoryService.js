@@ -12,6 +12,9 @@ app.factory('Container', ['Properties', 'Property', function(Properties, Propert
         }
         return obj
     }
+    Container.prototype.isNotEmpty = function() {
+        return this.properties.length > 0;
+    }
     Container.prototype.getProperties = function() {
         return this.properties;
     }
