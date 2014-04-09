@@ -1,7 +1,12 @@
 <div class="outer-wrap">
 	<div class="toggle-controls" keypress="">
 		<button ng-click="toggleControls()" ng-class="{'is-active': !controls}" class="button-reset" tooltip="'Hide inspector'" direction="right"><i class="icon-settings"></i></button>
-		<!-- <button class="test" tp-selection>Test</button> -->
+		<button class="test" ng-click="testFunction()">Add h1</button>
+		<button class="test" ng-click="addHeading()">Add h2</button>
+		<button class="test" ng-click="moveDown()">moveDown</button>
+		<button class="test" ng-click="moveUp()">moveUp</button>
+		<button class="test" ng-click="deleteElement()">delete</button>
+		<span>{{selection.getReference().type}} <input type="text" ng-model="selection.getReference().name"></span>
 	</div>
 	<!-- <div class="undo">
 		<button class="save" ng-click="content.addHeading()">Add Heading</button>
@@ -31,18 +36,20 @@
 				<option value="random">random</option>
 			</select>
 		</div>
-		<div class="set-text-container" contenteditable="true" spellcheck="false" style="" ng-style="container.style()" dropcap="" focus-show="ui.editMode()">
+		<div class="set-text-container" contenteditable="true" spellcheck="false" style="" ng-style="dom.wrapper.style()" dropcap="" focus-show="ui.editMode()">
 			<!-- <p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec faucibus est. Cras a luctus felis. Donec ornare massa lorem, eget blandit erat semper ac. Sed ullamcorper mauris quis tellus venenatis euismod. Duis luctus venenatis sapien, non tristique magna ultricies vel. Etiam vulputate vitae metus eget viverra. In hac habitasse platea dictumst.
 			</p>
 			<p>Nunc mattis et eros vitae laoreet. Pellentesque faucibus eros nec quam porta euismod. Morbi gravida ut enim tempor convallis. Fusce hendrerit sed orci vel pellentesque. Integer mollis justo lacus, sit amet vulputate neque commodo ac. Suspendisse ac odio purus. Etiam venenatis suscipit sollicitudin. In hac habitasse platea dictumst. Ut eu lacus augue. Ut euismod luctus purus ut dapibus.</p> -->
 			<h1>{{content.heading.text}}</h1>
-			<span ng-repeat="para in paras" ng-switch="" on="$index">
-				<p ng-switch-when="0" tp-selection="">
-					<span class="dropcap" ng-style="type.dropcap()">{{firstLetter(para)}}</span>{{restOf(para)}}
-				</p>
-				<p ng-switch-default="">
-					{{para}}
+			<span ng-repeat="element in dom.elements" ng-switch="" on="element.type">
+				<!-- <p ng-switch-when="0" tp-selection=""> -->
+					<!-- <span class="dropcap" ng-style="type.dropcap()">{{firstLetter(element.content)}}</span>{{restOf(element.content)}} -->
+				<!-- </p> -->
+				<h1 ng-switch-when="h1" tp-selection="element.selector()" ng-style="element.container.style()">{{element.content}}</h1>
+				<h2 ng-switch-when="h2" tp-selection="element.selector()" ng-style="element.container.style()">{{element.content}}</h2>
+				<p ng-switch-default="" tp-selection="element.selector()" ng-style="element.container.style()">
+					{{element.content}}
 				</p>
 			</span>
 		</div>
@@ -55,34 +62,16 @@
 					<li ng-repeat="(prop, name) in availableProperties()"><a ng-click="addProperty(prop)" href="">{{name}}</a></li>
 				</ul>
 			</div>
-			<!-- {{selection.getElement()}} -->
+			{{selection.getElement()}}
 			<div class="inspector-styles">
 				<div class="top-scroll-cutoff"></div>
-				<div ng-repeat="property in container.getProperties()" container="container" class="property-module">
-					<div ng-switch="" on="property.type">
-						<div ng-switch-when="number">
-							<div property="property" property-number="" name="property.key" remove="removeProperty">
-								<div class="property-tray">
-									<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
-								</div>
-							</div>
-						</div>
-						<div ng-switch-when="options">
-							<div property="property" property-select="" name="property.key" remove="removeProperty">		
-							</div>
-						</div>
-						<div ng-switch-when="color">
-							<div property="property" property-color="" name="property.key" remove="removeProperty">		
-							</div>
-						</div>
-						<div ng-switch-when="shorthand">
-							<div property="property" property-shorthand="" name="property.key" remove="removeProperty">
-							</div>
-						</div>
-						<div ng-switch-when="compound">
-							<div property="property" property-compound="" name="property.key" remove="removeProperty">
-							</div>	
-						</div>
+				<div ng-repeat="property in dom.wrapper.getProperties()" container="dom.wrapper" class="property-module">
+					<ng-include src="'/views/templates/property_container.html'"></ng-include>
+				</div>
+				<div ng-repeat="element in dom.elements" ng-if="element.container.isNotEmpty()" class="element-container" ng-class="{'is-selected': selection.isSelected(element.selector())}">
+					<div class="selector-name">{{element.selector()}}</div>
+					<div ng-repeat="property in element.container.getProperties()" container="element.container" class="property-module">
+						<ng-include src="'/views/templates/property_container.html'"></ng-include>
 					</div>
 				</div>
 			</div>
@@ -92,11 +81,11 @@
 				<span class="live-code-close" ng-click="toggleLiveCode()">
 					<i class="icon-cross"></i>
 				</span>
-				<div ng-repeat="prop in container.getProperties()">
+				<div ng-repeat="prop in dom.wrapper.getProperties()">
 					{{prop['property-name']}}: {{prop.propertyValue()}};
 				</div>
 			</div>
-			<a href="" id="clip" class="action" clip-copy="container.css()" clip-click="doSomething()" hoverhover=""><i class="icon-copy"></i>Copy CSS</a>
+			<a href="" id="clip" class="action" clip-copy="dom.wrapper.css()" clip-click="doSomething()" hoverhover=""><i class="icon-copy"></i>Copy CSS</a>
 			<a href="" ng-click="postTest()" class="action download" tooltip="'Download HTML'"><i class="icon-in"></i></a>
 			<a href="" ng-click="toggleLiveCode()" class="action show-css" tooltip="'Show live code view'"><i class="icon-code2"></i></a>
 		</div>

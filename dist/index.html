@@ -2,19 +2,23 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="gutenbergApp" ng-controller="StyleController"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gutenberg: A Simple Type Tester for learning Web Typography</title>
+    <title>Gutenberg: A Simple Type Tester for learning Web Typography {{test}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/36bc5319.main.css">
+        <link rel="stylesheet" href="css/bab86443.main.css">
     <script src="//localhost:35729/livereload.js"></script>
 </head>
-  <body ng-app="gutenbergApp" ng-controller="MainController" ng-style="type.backgroundStyle()">
+  <body ng-controller="MainController" ng-style="dom.wrapper.backgroundStyle()">
+    <div ng-controller="StyleController">
+        <!-- <input type="text" ng-model="test.style"> -->
+
+    </div>  
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -44,7 +48,7 @@
 
         <script src="scripts/49226f26.modules.js"></script>
         <script src="scripts/a20bf20d.config.js"></script>
-        <script src="scripts/ea24fb6a.scripts.js"></script>
+        <script src="scripts/9645ffc5.scripts.js"></script>
         <script type="text/javascript" src="//use.typekit.net/ryh5wir.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </body>
