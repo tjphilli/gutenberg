@@ -27,7 +27,7 @@
 
 .styles {
   position: absolute;
-  top: 80px;
+  top: 55px;
   right: 0;
   width: 300px;
   height: 100%;
@@ -797,6 +797,10 @@ colorpicker-preview {
   background: #eee;
   overflow: scroll;
   z-index: 10000;
+}
+
+.about-overlay {
+  padding: 20px;
 }
 
 .about-overlay .title {
