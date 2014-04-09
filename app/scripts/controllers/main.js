@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', 'Selection', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams, Selection) {
+  .controller('MainController', ['$scope', '$document', 'PlaceholderTextService', 'DownloadService','Container', 'Property', 'Properties', '$routeParams', 'Selection', 'ElementFactory', function($scope, $document, PlaceholderTextService, DownloadService, Container, Property, Properties, $routeParams, Selection, ElementFactory) {
     $scope.controls = false;
     $scope.live_code = false;
     // $scope.edit_mode = false;
@@ -34,6 +34,16 @@ app
     $scope.content = {
         paras: ""
     };
+    $scope.test_element = ElementFactory.create("p");
+    $scope.testFunction = function() {
+        $scope.dom.elements.unshift(ElementFactory.create("h1", "Gutenberg Heading"))
+    }
+    $scope.addHeading = function() {
+        $scope.dom.elements.unshift(ElementFactory.create("h2", "Gutenberg Sub Heading"))
+    }
+    $scope.changeHeading = function() {
+        $scope.dom.elements[0].container.addProperty("size");
+    }
     $scope.content.addHeading = function(){
         $scope.content.heading = {};
         $scope.content.heading.visible = true;
@@ -43,7 +53,12 @@ app
     $scope.getText = function(num, type, format){
         PlaceholderTextService.getLocalText(num, type, format).success(function(data){
             $scope.paras = data;
+            $scope.dom.elements = new Array();
             console.log("called!");
+            for (var i = 0; i < $scope.paras.length; i++) {
+                console.log($scope.paras[i]);
+                $scope.dom.elements.push(ElementFactory.create("p", $scope.paras[i], String(i+1)))
+            }
         });
     }
     $scope.getText(2);
@@ -64,7 +79,20 @@ app
             window.location = "dl/" + response.file;
         });
     }
-
+    $scope.dom = {
+        wrapper: new Container(),
+        elements: [],
+        find: function(selector){
+            for(var i=0; i < this.elements.length; i++) {
+                if(this.elements[i].selector() == selector) {
+                    return i;
+                }
+            }
+        }
+    };
+    $scope.dom.wrapper.addProperty("leading");
+    $scope.dom.wrapper.addProperty("typeface");
+    $scope.dom.wrapper.addProperty("size");
 
     $scope.type = {
         properties: {},
@@ -87,28 +115,47 @@ app
             return obj;
         }
     };
-    $scope.container = new Container();
-    $scope.container.addProperty("leading");
-    $scope.container.addProperty("typeface");
-    $scope.container.addProperty("size");
+    
     // $scope.container.addProperty("weight");
 
     $scope.addProperty = function (name) {
-        if(name === 'columns') {
-            $scope.container.addLinkedProperty(name);
-        }
-        else{
-            $scope.container.addProperty(name);
+        console.log($scope.selection.getElement())
+        if($scope.selection.getElement() != 'none') {
+            if(name === 'columns') {
+                $scope.dom.elements[$scope.dom.find($scope.selection.getElement())].container.addLinkedProperty(name);
+            }
+            else{
+             $scope.dom.elements[$scope.dom.find($scope.selection.getElement())].container.addProperty(name);
+            }
+        } else {
+            if(name === 'columns') {
+                $scope.dom.wrapper.addLinkedProperty(name);
+            }
+            else{
+                $scope.dom.wrapper.addProperty(name);
+            }
+            
         }
     }
     $scope.removeProperty = function (name) {
-        if(name === 'columns') {
-            $scope.container.removeLinkedProperty(name);
+        if($scope.selection.getElement() != 'none') {
+            if(name === 'columns') {
+                $scope.dom.elements[$scope.dom.find($scope.selection.getElement())].container.removeLinkedProperty(name);
+            }
+            else{
+             $scope.dom.elements[$scope.dom.find($scope.selection.getElement())].container.removeProperty(name);
+            }
         } else {
-            $scope.container.removeProperty(name);
+            if(name === 'columns') {
+                $scope.dom.wrapper.removeLinkedProperty(name);
+            }
+            else{
+                $scope.dom.wrapper.removeProperty(name);
+            }
+            
         }
     }
     $scope.availableProperties = function() {
-        return   Properties.getAvailable($scope.container.currentProperties());
+        return   Properties.getAvailable($scope.dom.wrapper.currentProperties());
     }
   }]);
