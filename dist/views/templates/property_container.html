@@ -1,0 +1,25 @@
+<div ng-switch on="property.type">
+	<div ng-switch-when="number">
+		<div property="property" property-number name="property.key" remove="removeProperty">
+			<div class="property-tray">
+				<ng-include src="'scripts/templates/sliderTemplate.html'"></ng-include>
+			</div>
+		</div>
+	</div>
+	<div ng-switch-when="options">
+		<div property="property" property-select name="property.key" remove="removeProperty">		
+		</div>
+	</div>
+	<div ng-switch-when="color">
+		<div property="property" property-color name="property.key" remove="removeProperty">		
+		</div>
+	</div>
+	<div ng-switch-when="shorthand">
+		<div property="property" property-shorthand name="property.key" remove="removeProperty">
+		</div>
+	</div>
+	<div ng-switch-when="compound">
+		<div property="property" property-compound name="property.key" remove="removeProperty">
+		</div>	
+	</div>
+</div>

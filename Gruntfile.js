@@ -44,7 +44,7 @@ module.exports = function (grunt) {
       },
       html: {
         files: ['<%= yeoman.app %>/{,*/}*.html',
-          '<%= yeoman.app %>/views/*.html'],
+          '<%= yeoman.app %>/views/**/*.html'],
           options: {
             livereload: true
           },
@@ -283,7 +283,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html'],
+          src: ['*.html', 'views/**/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -304,6 +304,7 @@ module.exports = function (grunt) {
             'css/fonts/*',
             'lib/*',
             'img/*',
+            'views/templates/*',
             'scripts/app.js',
             'scripts/directives/*',
             'scripts/services/*',
